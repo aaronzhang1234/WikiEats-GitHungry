@@ -1,11 +1,10 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
-	
-
 	</head>
-
-
-
-</body>
+	<body>
+		<?php
+			 echo "Hello World";
+		 ?>
+	</body>
 </html>
