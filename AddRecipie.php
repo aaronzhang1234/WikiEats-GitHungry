@@ -22,11 +22,11 @@
 				</div>
 				
 				<div id="steps">
-				    <label>Step 1</label>
+				    <label class="numbered">Step 1</label>
 					<textarea name ="step1"></textarea></br>
 					Add a picture to help your readers out!
 					<input type="file" name="fileToUpload"></input></br>
-					<button onclick="more()"> Add new Step</button></div>
+					<button type = "button" onclick="more()"> Add new Step</button></div>
 				
 				<input type="submit"></input>
 			</fieldset>
