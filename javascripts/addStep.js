@@ -31,7 +31,7 @@ function more(){
 
 	
 	var recipiestep= document.createElement("textarea");
-	recipiestep.setAttribute("name","Step"+ stepnumber);
+	recipiestep.setAttribute("name","step"+ stepnumber);
 	var skip = document.createElement("br");
 	
 	var addStep = steps.lastChild;
@@ -43,7 +43,4 @@ function more(){
 	steps.appendChild(fileupload);
 	steps.appendChild(skip);
 	steps.appendChild(addStep);
-
-  alert(stepnumber);
-	
 }
