@@ -2,9 +2,14 @@
 <html lang="en">
 	<head>
 	</head>
-	<body>
+	<body
 		<?php
-			 echo "Hello World";
+			 include 'includes/wikieatsheader.php'
+			
+		?>
+	
+		 <?php
+			echo "Hello World";
 		 ?>
 	</body>
 </html>
