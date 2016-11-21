@@ -13,7 +13,7 @@ mysql_select_db($database,$mysqli);
 	</head>
 	<body>
 		<?php
-			$x=1;
+			$x=0;
 			
 			
 			$title = $_POST["recipiename"];
@@ -23,12 +23,28 @@ mysql_select_db($database,$mysqli);
 			echo "</br>";
 			echo $_POST["description"];
 			
-			$etc = "step".$x;
-			echo "</br>";
-			echo $_POST[$etc];
+//			put the general recipe stuff in			
+			$sql = "INSERT INTO generalrecipes(description,Title) 
+			VALUES ('".$_POST['description']."','".$_POST['recipiename']."')";
+			
+			if(mysql_query($sql)){
+				echo "added!";
+			}
+			else{
+				echo "sad :(";
+			}
+			
+//			starting to put the steps in the database
+			$sqllast ="SELECT recipeid FROM generalrecipes ORDER BY recipeid DESC LIMIT 1";
+			
+			$result = mysql_query($sqllast);			
+			$number = mysql_result($result,0);
+			echo $number;
 			
 			
-			while($x>0){
+			
+			
+			while($x>-1){
 				$x++;
 				$etc = "step".$x;
 				
@@ -37,28 +53,24 @@ mysql_select_db($database,$mysqli);
 					break;
 				}
 				else{
+					
+					$sqlsteps = "INSERT INTO recipesteps(recipeID,stepnumber,stepdescription)
+					VALUES ('$number','$x','".$_POST[$etc]."')";
+					
+					if(mysql_query($sqlsteps)){
+						echo "added";
+					}
+					else{
+						echo "sad!";
+					}
 					echo $_POST[$etc];
 					echo "</br>";
 				}
 			}	
 			
-			$sqlget= "SELECT COUNT(*)FROM generalrecipes";
 			
-			$result=mysql_query($sqlget);
-			echo mysql_result($result,0);
-			
-			$sql = "INSERT INTO generalrecipes(description,Title) 
-			VALUES ('".$_POST['description']."','".$_POST['recipiename']."')";
-			
-			
-			
-			
-			if(mysql_query($sql)){
-				echo "added!";
-			}
-			else{
-				echo "sad :(";
-			}
+		
+
 						
 		?>
 	</body>
