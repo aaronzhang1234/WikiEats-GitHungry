@@ -42,8 +42,16 @@ mysql_select_db($database,$mysqli);
 				}
 			}	
 			
+			$sqlget= "SELECT COUNT(*)FROM generalrecipes";
+			
+			$result=mysql_query($sqlget);
+			echo mysql_result($result,0);
+			
 			$sql = "INSERT INTO generalrecipes(description,Title) 
 			VALUES ('".$_POST['description']."','".$_POST['recipiename']."')";
+			
+			
+			
 			
 			if(mysql_query($sql)){
 				echo "added!";
