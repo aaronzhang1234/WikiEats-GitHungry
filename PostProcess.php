@@ -1,3 +1,12 @@
+<?php
+
+$username="root";$password="";$database="recipes";
+$mysqli= mysql_connect('localhost',$username,$password);
+
+mysql_select_db($database,$mysqli);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,6 +14,10 @@
 	<body>
 		<?php
 			$x=1;
+			
+			
+			$title = $_POST["recipiename"];
+			$description = $_POST["description"];
 			
 			echo $_POST["recipiename"];
 			echo "</br>";
@@ -29,7 +42,15 @@
 				}
 			}	
 			
+			$sql = "INSERT INTO generalrecipes(description,Title) 
+			VALUES ('".$_POST['description']."','".$_POST['recipiename']."')";
 			
+			if(mysql_query($sql)){
+				echo "added!";
+			}
+			else{
+				echo "sad :(";
+			}
 						
 		?>
 	</body>
