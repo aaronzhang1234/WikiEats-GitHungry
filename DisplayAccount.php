@@ -1,5 +1,4 @@
 <?php
-	//$loggedIn = true; // Debug statement
 ?>
 
 <!DOCTYPE html>
@@ -23,22 +22,32 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					 <?php
-						echo "Hello World";
-					 ?>
+					 <h1>Account Summary For: <?php echo $_SESSION["username"]; ?></h1>
+					 <h3>&nbsp;Hello, fName lName</h3>
+					 <p>
+					 	<a href=#>Change Password</a>
+					 </p>
+		 		</div>
+		 		<div class="col-md-6">
+		 			<h2>Recipes</h2>
+		 			<div>
+		 				Recipe1
+		 			</div>
+		 			<div>
+		 				Recipe2
+		 			</div>
+		 		</div>
+		 		<div class="col-md-6">
+		 			<h2>Reviews</h2>
+		 			<div>
+		 				Review1
+		 			</div>
+		 			<div>
+		 				Review2
+		 			</div>
 		 		</div>
 		 	</div>
 		 </div>
-
-
-	   <!--<div id="copyrightRow">
-	      <div class="container">
-	         <div class="row">
-	           <p class="text-muted">All images are copyright to their owners.
-	           <span class="pull-right">&copy; 2016 Copyright</span></p>
-	         </div>
-	      </div>
-	   </div>-->
 
 	</body>
 </html>
