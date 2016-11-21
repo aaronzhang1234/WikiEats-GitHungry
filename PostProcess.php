@@ -11,23 +11,24 @@
 			echo $_POST["description"];
 			
 			$etc = "step".$x;
-			echo $etc;
 			echo "</br>";
 			echo $_POST[$etc];
 			
 			
-			while($x>=0){
+			while($x>0){
 				$x++;
 				$etc = "step".$x;
 				
-				if(isset($_POST[$etc])){
+				
+				if(!(isset($_POST[$etc]))){
 					break;
 				}
 				else{
 					echo $_POST[$etc];
+					echo "</br>";
 				}
 			}	
-			echo "hello";
+			
 			
 						
 		?>
