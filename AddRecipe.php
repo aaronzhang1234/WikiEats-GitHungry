@@ -13,12 +13,12 @@
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form method="POST"  action="http://www.randyconnolly.com/tests/process.php">
+			<form method="POST"  action="PostProcess.php">
 				<fieldset>
 				
 					<div>
 						<label>Title </br></label>
-						<input type="text" name="recipie name"/>
+						<input type="text" name="recipiename"/>
 					</div>
 					
 					<div>
