@@ -25,6 +25,18 @@
 						<label>Description</br></label>
 						<textarea name = "description"></textarea>
 					</div>
+					<div>
+						<label>Category</br>
+							<select name ="FoodCategory">
+								<option value=1>Breakfast</option>
+								<option value=2>Lunch</option>
+								<option value=3>Dinner</option>
+								<option value=4>Dessert</option>
+								<option value=5>Snack</option>
+								<option value=6>Soup</option>
+								<option value=7>Bread</option>
+							</select>
+					</div>
 					
 					<div id="steps">
 					    <label class="numbered">Step 1</label>
