@@ -20,7 +20,7 @@
 				$x++;
 				$etc = "step".$x;
 				
-				if(is_null($_POST[$etc])){
+				if(isset($_POST[$etc])){
 					break;
 				}
 				else{
