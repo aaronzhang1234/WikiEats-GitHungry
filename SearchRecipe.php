@@ -1,7 +1,3 @@
-<?php
-	//$loggedIn = true; // Debug statement
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -23,22 +19,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					 <?php
-						echo "Hello World";
-					 ?>
+					<h1>Search Results for "<?php if(isset($_GET["recipe"])) echo $_GET["recipe"]; ?>"<h1>
+					<p>
 		 		</div>
 		 	</div>
 		 </div>
-
-
-	   <!--<div id="copyrightRow">
-	      <div class="container">
-	         <div class="row">
-	           <p class="text-muted">All images are copyright to their owners.
-	           <span class="pull-right">&copy; 2016 Copyright</span></p>
-	         </div>
-	      </div>
-	   </div>-->
 
 	</body>
 </html>
