@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2016 at 02:57 AM
+-- Generation Time: Nov 22, 2016 at 06:08 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -39,12 +39,20 @@ CREATE TABLE `breakfastrecipes` (
 --
 
 CREATE TABLE `generalrecipes` (
-  `recipeid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `description` text NOT NULL,
   `parentid` int(11) NOT NULL,
-  `category` int(11) NOT NULL
+  `category` int(11) NOT NULL,
+  `Title` text NOT NULL,
+  `recipeid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `generalrecipes`
+--
+
+INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `Title`, `recipeid`) VALUES
+(12, 'food', 0, 5, 'testaccount5 food', 49);
 
 -- --------------------------------------------------------
 
@@ -55,8 +63,16 @@ CREATE TABLE `generalrecipes` (
 CREATE TABLE `recipesteps` (
   `recipeID` int(11) NOT NULL,
   `stepnumber` int(11) NOT NULL,
-  `stepdescription` text NOT NULL
+  `stepdescription` text NOT NULL,
+  `idk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recipesteps`
+--
+
+INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`) VALUES
+(49, 1, 'food by testaccount5', 55);
 
 -- --------------------------------------------------------
 
@@ -99,11 +115,63 @@ CREATE TABLE `reviews` (
 CREATE TABLE `users` (
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `userid` int(11) NOT NULL,
   `firstname` text NOT NULL,
-  `lastname` text NOT NULL
+  `lastname` text NOT NULL,
+  `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `password`, `firstname`, `lastname`, `userid`) VALUES
+('testaccount', 'test1', 'Aaron', 'Zhang', 4),
+('red', 'red', 'red', 'rederson', 8),
+('phil', 'phil', 'phil', 'phillerson', 10),
+('testaccount4', 'test4', 'Tester', 'Testerson', 11),
+('testaccount5', 'test', 'tester', 'test', 12);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `generalrecipes`
+--
+ALTER TABLE `generalrecipes`
+  ADD PRIMARY KEY (`recipeid`);
+
+--
+-- Indexes for table `recipesteps`
+--
+ALTER TABLE `recipesteps`
+  ADD PRIMARY KEY (`idk`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `generalrecipes`
+--
+ALTER TABLE `generalrecipes`
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+--
+-- AUTO_INCREMENT for table `recipesteps`
+--
+ALTER TABLE `recipesteps`
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
