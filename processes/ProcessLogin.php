@@ -1,18 +1,31 @@
 <?php
 	// TO DO: Be verification for Login.php (displays user login if invalid)
 
+	$username="root";$password="";$database="recipes";
+	$mysqli= mysql_connect('localhost',$username,$password);
+
+	mysql_select_db($database,$mysqli);
+	
 	// Gets username from database onto the session
 	session_start();
 	$_SESSION["username"] = $_POST["username"];
-	$_SESSION["userID"] = getUserID();
-
+	$_SESSION["userID"] = getUserID($_POST["username"]);
+	
+	
 	// Gets username from the database
-	function getUserID()
+	function getUserID($username)
 	{
-		return 0;
+		$sql = "Select userid from users
+			Where username = '".$username."'";
+			
+		$result = mysql_query($sql);
+	
+		$userid = mysql_result($result,0);
+		
+		return $userid;
 	}
 
-	header('Location: WikiEats.php');
+	header('Location: ../WikiEats.php');
 	exit();
 ?>
 

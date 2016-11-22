@@ -8,12 +8,13 @@
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
 		 <script src="javascripts/addStep.js"></script>
+		 <script src="javascripts/checkForms.js"></script>
 	</head>
 	
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form method="POST"  action="PostProcess.php">
+			<form method="POST"  action="processes/PostProcess.php">
 				<fieldset>
 				
 					<div>
@@ -25,6 +26,18 @@
 						<label>Description</br></label>
 						<textarea name = "description"></textarea>
 					</div>
+					<div>
+						<label>Category</br>
+							<select name ="FoodCategory">
+								<option value=1>Breakfast</option>
+								<option value=2>Lunch</option>
+								<option value=3>Dinner</option>
+								<option value=4>Dessert</option>
+								<option value=5>Snack</option>
+								<option value=6>Soup</option>
+								<option value=7>Bread</option>
+							</select>
+					</div>
 					
 					<div id="steps">
 					    <label class="numbered">Step 1</label>
@@ -33,7 +46,7 @@
 						<input type="file" name="fileToUpload"></input></br>
 						<button type = "button" onclick="more()"> Add new Step</button></div>
 					
-					<input type="submit"></input>
+					<input type="submit" onclick="checkAddRecipe(form)"></input>
 				</fieldset>
 			</form>
 		</div>

@@ -7,7 +7,8 @@
 
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
-		 <script src="javascripts/addStep.js"></script>
+		 <script src="javascripts/addStep.js"   ></script>
+		 <script src="javascripts/checkForms.js"></script>
 	</head>
 	
 	<body>
@@ -18,13 +19,13 @@
 				<h1>Create New Account</h1>
 			</div>
 
-			<form class="form-horizontal col-md-8" method="POST" action="http://www.randyconnolly.com/tests/process.php">
+			<form class="form-horizontal col-md-8" method="POST" action="processes/CreateAccountProcess.php">
 				<div class="form-group col-md-12">
 					<label class="sr-only" for="userName">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>
 				</div>
 				<div class="form-group col-md-6">
-					<input class="form-control" type="text" name="fName" placeholder="First Name"/>
+					<input class="form-control" type="text" name="fName"  placeholder="First Name"/>
 				</div>
 
 				<div class="form-group col-md-6">
@@ -45,7 +46,7 @@
 					<label><input type="checkbox" name="privacy" value=""> I agree to the <a href="#">privacy policy</a></label>
 				</div>
 
-				<button type="submit" class="btn btn-primary">Create New Account</button>
+				<button type="submit" onclick="checkCreateAccount(form)" class="btn btn-primary">Create New Account</button>
 			</form>
 		</div>
 
