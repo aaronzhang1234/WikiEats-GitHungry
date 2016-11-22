@@ -1,4 +1,4 @@
-<?php
+<?php // Error: creating an account gives the user a userID of 0
 
 $username="root";$password="";$database="recipes";
 $mysqli= mysql_connect('localhost',$username,$password);

@@ -42,7 +42,7 @@
 					<input class="form-control" type="password" name="password2" placeholder="Re-Type Password"/>
 				</div>
 
-				<div class="checlbox">
+				<div class="checkbox">
 					<label><input type="checkbox" name="privacy" value=""> I agree to the <a href="#">privacy policy</a></label>
 				</div>
 
