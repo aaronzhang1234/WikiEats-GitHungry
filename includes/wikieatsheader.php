@@ -6,7 +6,8 @@
 	* EditReview.php
 
 	* DisplayRecipe.php
-	* DisplayAccount.php
+	* DisplayAccount.php (For public use)
+	* DisplayUserAccount.php (Only For User)
 	* SearchRecipe.php
 	* ProcessCreateAccount
 -->
@@ -18,7 +19,7 @@
 	else
 		$loggedIn = false;
 
-	echo ($loggedIn)?$_SESSION["username"]:"Not Logged In";
+	echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
 
 ?>
 
