@@ -62,8 +62,7 @@ session_start();
 					echo "</br>";
 				}
 			}	
-			
-		
 		?>
+	
 	</body>
 </html>

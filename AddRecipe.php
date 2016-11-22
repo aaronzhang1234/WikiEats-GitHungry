@@ -13,7 +13,7 @@
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form method="POST"  action="PostProcess.php">
+			<form method="POST"  action="processes/PostProcess.php">
 				<fieldset>
 				
 					<div>

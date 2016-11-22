@@ -18,7 +18,7 @@
 				<h1>Create New Account</h1>
 			</div>
 
-			<form class="form-horizontal col-md-8" method="POST" action="http://www.randyconnolly.com/tests/process.php">
+			<form class="form-horizontal col-md-8" method="POST" action="processes/CreateAccountProcess.php">
 				<div class="form-group col-md-12">
 					<label class="sr-only" for="userName">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>

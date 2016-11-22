@@ -12,7 +12,7 @@
 		return 0;
 	}
 
-	header('Location: WikiEats.php');
+	header('Location: ../WikiEats.php');
 	exit();
 ?>
 

@@ -22,7 +22,7 @@
 				<h1>Login</h1>
 			</div>
 
-			<form class="form-horizontal col-md-8" method="POST" action="ProcessLogin.php">
+			<form class="form-horizontal col-md-8" method="POST" action="processes/ProcessLogin.php">
 				<div class="form-group col-md-12">
 					<label class="sr-only" for="username">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>
