@@ -16,6 +16,16 @@ session_start();
 			echo $_POST['password1'];
 			echo $_POST['fName'];
 			echo $_POST['lName'];
+			
+			$sql = "Insert into users (username,password,firstname,lastname)
+			Values ('".$_POST['username']."','".$_POST['password1']."','".$_POST['fName']."','".$_POST['lName']."')";
+			
+			if(mysql_query($sql)){
+				echo "added!";
+			}
+			else{
+				echo "sad :(";
+			}
 		?>
 	</body>
 </html>
