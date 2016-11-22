@@ -8,6 +8,7 @@
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
 		 <script src="javascripts/addStep.js"></script>
+		 <script src="javascripts/checkForms.js"></script>
 	</head>
 	
 	<body>
@@ -45,7 +46,7 @@
 						<input type="file" name="fileToUpload"></input></br>
 						<button type = "button" onclick="more()"> Add new Step</button></div>
 					
-					<input type="submit"></input>
+					<input type="submit" onclick="checkAddRecipe(form)"></input>
 				</fieldset>
 			</form>
 		</div>

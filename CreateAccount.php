@@ -7,7 +7,8 @@
 
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
-		 <script src="javascripts/addStep.js"></script>
+		 <script src="javascripts/addStep.js"   ></script>
+		 <script src="javascripts/checkForms.js"></script>
 	</head>
 	
 	<body>
@@ -45,7 +46,7 @@
 					<label><input type="checkbox" name="privacy" value=""> I agree to the <a href="#">privacy policy</a></label>
 				</div>
 
-				<button type="submit" class="btn btn-primary">Create New Account</button>
+				<button type="submit" onclick="checkCreateAccount(form)" class="btn btn-primary">Create New Account</button>
 			</form>
 		</div>
 
