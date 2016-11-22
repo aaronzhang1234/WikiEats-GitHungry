@@ -22,7 +22,7 @@ function checkCreateAccount(form){
 		form.password2.style.color='black';
 	}
 	
-	if(form.username.value==""){
+	if(/\s/.test(form.username.value) ||form.username.value ==""){
 		form.username.style.backgroundColor="red";
 		form.username.style.color='white';
 		errors=true;
@@ -32,6 +32,15 @@ function checkCreateAccount(form){
 		form.username.style.color="black";
 	}
 	
+	if(form.privacy.checked == false){
+		alert("you have to click the checkbox")
+		errors=true;
+	}
+	
+	
+	
+	
+	
 	if(errors){
 		event.preventDefault();
 	}
@@ -40,7 +49,7 @@ function checkCreateAccount(form){
 function checkAddRecipe(form){
 	var errors = false;
 	
-	if(form.recipiename.value == ""){
+	if(/\s/.test(form.recipiename.value)||form.recipiename.value == ""){
 		form.recipiename.style.backgroundColor="red";
 		form.recipiename.style.color="white";
 		errors=true;
@@ -50,7 +59,7 @@ function checkAddRecipe(form){
 		form.recipiename.style.color="black";
 	}
 	
-	if(form.step1.value=""){
+	if(/\s/.test(form.recipiename.value)||form.step1.value=""){
 		form.step1.style.backgroundColor="red";
 		form.step1.style.color="white";
 		errors=true;
