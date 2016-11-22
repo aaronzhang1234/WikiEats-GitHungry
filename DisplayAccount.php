@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					 <h1>Account Summary For: <?php echo $_SESSION["username"]; ?></h1>
+					 <h1>Account Summary For: <?php echo $_SESSION["username"]." ".$_SESSION["userID"]; ?></h1>
 					 <h3>&nbsp;Hello, fName lName</h3>
 					 <p>
 					 	<a href=#>Change Password</a>
