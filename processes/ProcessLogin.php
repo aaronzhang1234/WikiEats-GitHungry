@@ -6,8 +6,32 @@
 
 	mysql_select_db($database,$mysqli);
 	
+	
+	
+	
+	
+	
+	
 	// Gets username from database onto the session
 	session_start();
+	
+	$sqlfind="SELECT userid FROM users WHERE username ='".$_POST['username']."' 
+			  AND password ='".$_POST['password']."'";
+	
+	$result = mysql_query($sqlfind);
+	
+	
+	if($finder=mysql_result($result,0)){
+		echo "worked";
+	}
+	else
+	{
+		echo "wrong";
+		header('Location: ../wronglogin.php');
+		exit();
+	}
+	
+	
 	$_SESSION["username"] = $_POST["username"];
 	$_SESSION["userID"] = getUserID($_POST["username"]);
 	

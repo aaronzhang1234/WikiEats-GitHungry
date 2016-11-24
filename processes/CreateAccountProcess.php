@@ -17,6 +17,17 @@ session_start();
 			echo $_POST['fName'];
 			echo $_POST['lName'];
 			
+			$sqlfind="SELECT userid FROM users WHERE username ='".$_POST['username']."'";
+	
+			$result = mysql_query($sqlfind);
+			
+			
+			if($finder=mysql_result($result,0)){
+				echo "wrong";
+				header('Location: ../wronglogin.php');
+				exit();			
+			}
+			
 			$sql = "Insert into users (username,password,firstname,lastname)
 			Values ('".$_POST['username']."','".$_POST['password1']."','".$_POST['fName']."','".$_POST['lName']."')";
 			
@@ -26,6 +37,9 @@ session_start();
 			else{
 				echo "sad :(";
 			}
+			
+			header('Location: ../Login.php');
+			exit();
 		?>
 	</body>
 </html>
