@@ -37,6 +37,7 @@
 					<?php // Changes based on if user's logged in
 					if($loggedIn)
 						echo '
+					<li><a href="NewestRecipes.php">Newest Recipes</a></li>
 					<li><a href="addRecipe.php">Submit Recipe</a></li>
 					<li><a href="DisplayAccount.php">Account</a></li>
 					<li><a href="Logout.php">Logout</a></li>';
