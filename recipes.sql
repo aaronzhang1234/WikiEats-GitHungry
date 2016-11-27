@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 06:08 PM
+-- Generation Time: Nov 22, 2016 at 06:27 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -90,7 +90,13 @@ CREATE TABLE `recipiecategory` (
 --
 
 INSERT INTO `recipiecategory` (`categoryID`, `categoryName`) VALUES
-(1, 'breakfast');
+(1, 'breakfast'),
+(2, 'Lunch'),
+(3, 'Dinner'),
+(4, 'Dessert'),
+(5, 'Snack'),
+(6, 'Soup'),
+(8, 'Bread');
 
 -- --------------------------------------------------------
 
