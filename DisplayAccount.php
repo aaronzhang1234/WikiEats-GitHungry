@@ -1,6 +1,6 @@
-<!-- 
-	* Add More support for reviews table, recipes tables, format ratings 
-	* Format Reviews for this display
+<!-- TO DO
+	* Display image for each user-submitted recipe
+	* Show Parent recipe for each recipe
 	-->
 <?php include 'includes/AccessDatabase.php'; ?>
 
@@ -21,10 +21,10 @@
 		<?php include 'includes/wikieatsheader.php';?>
 		<?php 
 			// Gets User Info
-			$user = RecipeDB::getUserByID($_SESSION["userID"]); // User Info
+			$user = RecipeDB::getUserByID($_GET["userID"]); // User Info
 			$recipes = RecipeDB::getRecipesByUser($user["userid"]);
 			$reviews = RecipeDB::getReviewsByUser($user["userid"]);
-			print_r ($reviews);
+			//print_r ($reviews);
 
 			function printRecipe($recipe)
 			{
@@ -32,7 +32,7 @@
 				echo '
 						<div class="col-md-12 panel">
 							<div class="col-md-12">							
-								<h2><a href=#>'.$recipe["recipeid"].'</a></h2>
+								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a></h2>
 							</div>
 							<div class="col-md-4">
 								<img src="images/tacos.jpeg" alt="tacos" class="img-thumbnail" /> 
@@ -47,14 +47,14 @@
 
 			function printReview($review)
 			{
+				$recipe = RecipeDB::getGeneralRecipe($review["recipeid"]);
+				$userName = RecipeDB::getUserByID($recipe["userid"])["username"];
+				//echo $userName;
 				echo '
 						<div class="col-md-12 panel">
-							<h2 class="col-md-2">2/5</h2>
-							<div class="col-md-10">
-								<h3>Gave Me Gas</h3>
-								<h4>By <a href=#>username</a></h4>
-							</div>
-							<p>It made my ass into a fiery volcano. They were delicious though.</p>
+							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a><small> by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
+							<h2 class="col-md-2">'.$review["rating"].'/5</h2>
+							<p>'.$review["description"].'</p>
 						</div>
 						<hr>';
 			}
@@ -66,7 +66,7 @@
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
 					 <h1>Account Summary For: <?php echo $user["username"]?></h1>
-					 <h3><strong>Name:</strong> <?php echo $user["first"]." ".$user["last"] ?></h3>
+					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
 		 		</div>
 
 
@@ -85,7 +85,7 @@
 
 				<!-- Displays Reviews Submitted By User -->
 				<div class="panel-group panel-success col-md-6">
-					<h1 class="panel-heading">Reviews <small>3.5/5</small></h1>
+					<h1 class="panel-heading">Reviews (<?php echo count($reviews) ?>)</h1>
 					<div class="panel-body">
 						<?php 
 							foreach($reviews as $review)
@@ -93,16 +93,6 @@
 						?>
 					</div>
 				</div>
-
-		 		<div class="col-md-6">
-		 			<h2>Reviews</h2>
-		 			<div>
-		 				Review1
-		 			</div>
-		 			<div>
-		 				Review2
-		 			</div>
-		 		</div>
 		 	</div>
 		 </div>
 

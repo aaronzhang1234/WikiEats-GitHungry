@@ -21,8 +21,6 @@ class RecipeDB
 		{
 			$row = $result->fetch_assoc();
 			return $row["userid"];
-			//while($row = $result->fetch_assoc()) // Prints each result
-			//	echo $row["username"].":".$row["userid"]."\n";
 		}
 		else 
 			return NULL;
@@ -44,12 +42,13 @@ class RecipeDB
 		if($result) // If result has been found
 		{
 			$row = $result->fetch_assoc();
-			return Array("userid"=>$row["userid"], "username"=>$row["firstname"], "first"=>$row["firstname"], "last"=>$row["lastname"]);
+			return $row;
 		}
 		else 
 			return NULL;
 	}
 
+	// Gets recipes from userID
 	public static function getRecipesByUser($userID)
 	{
 		// Makes a connection to the database
@@ -66,8 +65,30 @@ class RecipeDB
 		{
 			$retval = Array(); // What's returned to  user
 			while($row = $result->fetch_assoc())
-				$retval[] = Array("userid"=>$row["userid"], "recipeid"=>$row["recipeid"], "description"=>$row["description"], "parentID"=>$row["parentid"], "categoryid"=>$row["category"]);
+				$retval[] = $row;//Array("userid"=>$row["userid"], "recipeid"=>$row["recipeid"], "description"=>$row["description"], "parentID"=>$row["parentid"], "categoryid"=>$row["category"]);
 			return $retval;
+		}
+		else 
+			return NULL;
+	}
+
+	// Gets general recipe by recipeID
+	public static function getGeneralRecipe($recipeID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM generalRecipes WHERE recipeid LIKE '".$recipeID."'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$row = $result->fetch_assoc();
+			return $row;
 		}
 		else 
 			return NULL;
@@ -124,6 +145,7 @@ class RecipeDB
 	}
 
 	// Returns average review for a recipe
+		// Returns 5 if there are no reviews
 	public static function getAverageReviewForRecipe($recipeID)
 	{
 		// Makes a connection to the database
@@ -146,7 +168,7 @@ class RecipeDB
 				$total += $row["rating"];
 				$count++;
 			}
-			return ($total / $count);
+			return ($count != 0)? ($total / $count) : 5;
 		}
 		else 
 			return NULL;

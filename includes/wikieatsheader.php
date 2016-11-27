@@ -39,7 +39,7 @@
 						echo '
 					<li><a href="NewestRecipes.php">Newest Recipes</a></li>
 					<li><a href="addRecipe.php">Submit Recipe</a></li>
-					<li><a href="DisplayAccount.php">Account</a></li>
+					<li><a href="DisplayAccount.php?userID='.$_SESSION["userID"].'">Account</a></li>
 					<li><a href="Logout.php">Logout</a></li>';
 					else
 						echo '
