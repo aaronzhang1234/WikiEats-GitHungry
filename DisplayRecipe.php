@@ -1,6 +1,9 @@
 <?php
 	// To Display Reviews as well
 	// Display related Reviews & parent review
+	// Something for branching off
+	// Editing/forking recipe
+	// Edit/Add Review
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +11,11 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Wiki Eats - Main</title>
+		<title>Showing Recipe</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
-
-		<!--<link href="chapter12-project02.css" rel="stylesheet">-->
 	</head>
 
 	<body>
@@ -61,11 +62,12 @@
 		 	<hr />
 		 </div>
 
-		 <!--Displays Reviews-->
-		 <!--Reviewer, Recipe, rating, description -->
+		 <!-- Displays Related Recipes & Reviews -->
 		<div class="container">
+			<!--Displays Related recipes -->
 			<div class="panel-group panel-info col-md-6">
-				<h1 class="panel-heading">Related Recipes</h1>
+				<h1 class="panel-heading">Related Recipes <a class="btn btn-success" href=# role="button"><span class="glyphicon glyphicon-edit"></span> Change Recipe</a></h1>
+				
 				<div class="panel-body">
 					<div class="col-md-12 panel">
 						<div class="col-md-12">							
@@ -83,6 +85,7 @@
 				</div>
 			</div>
 
+		 	<!--Displays Reviews-->
 			<div class="panel-group panel-success col-md-6">
 				<h1 class="panel-heading">Reviews <small>3.5/5</small></h1>
 				<div class="panel-body">
@@ -104,6 +107,10 @@
 						</div>
 						<p>This is life!!!</p>
 					</div>
+				</div>
+				<hr>
+				<div class="panel-body">
+					<a class="btn btn-success" href=# role="button"><span class="glyphicon glyphicon-pencil"></span> Write Review</a>
 				</div>
 			</div>
 		</div>
