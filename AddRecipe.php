@@ -14,12 +14,13 @@
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form method="POST"  action="processes/PostProcess.php">
+			<form method="POST"  action="processes/PostProcess.php" enctype="multipart/form-data">
 				<fieldset>
 				
 					<div>
 						<label>Title </br></label>
 						<input type="text" name="recipiename"/>
+						<input type="file" name="mainpic"></input></br>
 					</div>
 					
 					<div>
@@ -43,10 +44,10 @@
 					    <label class="numbered">Step 1</label>
 						<textarea name ="step1"></textarea></br>
 						Add a picture to help your readers out!
-						<input type="file" name="fileToUpload"></input></br>
+						<input type="file" name="image1"></input></br>
 						<button type = "button" onclick="more()"> Add new Step</button></div>
 					
-					<input type="submit" onclick="checkAddRecipe(form)"></input>
+					<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>
 				</fieldset>
 			</form>
 		</div>
