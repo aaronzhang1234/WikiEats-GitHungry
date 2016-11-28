@@ -18,10 +18,29 @@ session_start();
 			echo $_POST["recipiename"];
 			echo "</br>";
 			echo $_POST["description"];
-			echo "<br>";			
+			
+			
+			
+			
+			$titleimagename=$_FILES['mainpic']['name'];
+			echo "</br>";
+			$imagemain_temp=$_FILES['mainpic']['tmp_name'];
+			if(move_uploaded_file($imagemain_temp,"images/".$titleimagename)){
+				echo "yay";
+			}
+			else{
+				echo "nay";
+			}
+			echo "<br>";	
+
+
+
+
+
+			
 //			put the general recipe stuff in the generaldatabase	
-			$sql = "INSERT INTO generalrecipes(userid,description,category,Title) 
-			VALUES ('".$_SESSION['userID']."','".$_POST['description']."','".$_POST['FoodCategory']."','".$_POST['recipiename']."')";
+			$sql = "INSERT INTO generalrecipes(userid,description,category,Title,imagename) 
+			VALUES ('".$_SESSION['userID']."','".$_POST['description']."','".$_POST['FoodCategory']."','".$_POST['recipiename']."','$titleimagename')";
 		  
 		  //actually adding the stuff in	
 			if(mysql_query($sql)){
