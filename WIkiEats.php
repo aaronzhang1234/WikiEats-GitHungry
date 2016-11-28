@@ -45,7 +45,7 @@ $mysqli-> select_db($database);
 										echo $usernamerow['username'];
 							
 										echo "<tr>";
-										echo "<td>".$row['Title']. "</td>";
+										//echo "<td>".$row['Title']. "</td>";
 										echo "<td>".$row['description']."</td>";
 										echo "<td>".$usernamerow['username']. "</td>";
 										$sqlsteps = "SELECT stepnumber,stepdescription from recipesteps 

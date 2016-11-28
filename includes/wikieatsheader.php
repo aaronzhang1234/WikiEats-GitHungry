@@ -1,15 +1,8 @@
 <!-- TO DO:
-	* Login Verification & Process
-	* Create Account Verification, Process, & Functionality
-	* EditUser.php
-	* EditRecipe.php
-	* EditReview.php
-
-	* DisplayRecipe.php
-	* DisplayAccount.php (For public use)
-	* DisplayUserAccount.php (Only For User)
-	* SearchRecipe.php
-	* ProcessCreateAccount
+	* DisplayRecipe
+		* AddReview Function
+		* Related Recipes to have recipes of the same category
+	* Front Page Design
 -->
 <!-- Can change navbar be about the user-->
 <?php
@@ -39,7 +32,7 @@
 						echo '
 					<li><a href="NewestRecipes.php">Newest Recipes</a></li>
 					<li><a href="addRecipe.php">Submit Recipe</a></li>
-					<li><a href="DisplayAccount.php">Account</a></li>
+					<li><a href="DisplayAccount.php?userID='.$_SESSION["userID"].'">Account</a></li>
 					<li><a href="Logout.php">Logout</a></li>';
 					else
 						echo '
@@ -52,7 +45,7 @@
 					<li>
 						<form class="form-inline" method="GET" action="SearchRecipe.php">
 							<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search Recipes" name="recipe">
+							<input type="text" class="form-control" placeholder="Search Recipes, Descriptions, Users" name="search">
 							</div>
 							<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
 						</form>

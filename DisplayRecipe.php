@@ -1,10 +1,9 @@
 <?php
-	// To Display Reviews as well
-	// Display related Reviews & parent review
-	// Something for branching off
-	// Editing/forking recipe
-	// Edit/Add Review
+	// Add "Add Review Form"
+
+	// Related Recipes to display random recipes of the same category
 ?>
+<?php include 'includes/AccessDatabase.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +20,12 @@
 	<body>
 		<!-- Header -->
 		<?php include 'includes/wikieatsheader.php';?>
+		<?php
+			$recipeInfo = RecipeDB::getGeneralRecipe($_GET["recipeID"]);
+			$recipeSteps = RecipeDB::getRecipeSteps($_GET["recipeID"]);
+			print_r( $recipeInfo);
+			//print_r($recipeInfo);
+		?>
 	
 		<!-- Main Body: Displays Recipes -->
 		<div class="container">
