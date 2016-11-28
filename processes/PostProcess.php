@@ -95,19 +95,13 @@ session_start();
 							echo "nay";
 						}
 					echo "</br>";
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+		
 				}
 			}	
+		?>
+		<?php
+			header('Location: ../WikiEats.php');
+			exit();
 		?>
 	
 	</body>
