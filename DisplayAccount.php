@@ -1,7 +1,3 @@
-<!-- TO DO
-	* Display image for each user-submitted recipe
-	* Show Parent recipe for each recipe
-	-->
 <?php include 'includes/AccessDatabase.php'; ?>
 
 <!DOCTYPE html>
@@ -24,37 +20,19 @@
 			$user = RecipeDB::getUserByID($_GET["userID"]); // User Info
 			$recipes = RecipeDB::getRecipesByUser($user["userid"]);
 			$reviews = RecipeDB::getReviewsByUser($user["userid"]);
-			//print_r ($reviews);
-
-			function printRecipe($recipe)
-			{
-				$averageReview = RecipeDB::getAverageReviewForRecipe($recipe["recipeid"]); 
-				echo '
-						<div class="col-md-12 panel">
-							<div class="col-md-12">							
-								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a></h2>
-							</div>
-							<div class="col-md-4">
-								<img src="images/tacos.jpeg" alt="tacos" class="img-thumbnail" /> 
-							</div>
-							<div class="col-md-8">
-								<h4>'.$averageReview.'/5</h4>
-								<p>'.$recipe["description"].'</p>
-							</div>
-						</div>
-						<hr>';
-			}
 
 			function printReview($review)
 			{
 				$recipe = RecipeDB::getGeneralRecipe($review["recipeid"]);
 				$userName = RecipeDB::getUserByID($recipe["userid"])["username"];
+				$category = RecipeDB::getCategory($recipe["category"]);
 				//echo $userName;
 				echo '
 						<div class="col-md-12 panel">
-							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a><small> by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
+							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href=#>'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
 							<h2 class="col-md-2">'.$review["rating"].'/5</h2>
-							<p>'.$review["description"].'</p>
+							<h3>'.$review["title"].'</h3>
+							<p>'.$review["reviewTest"].'</p>
 						</div>
 						<hr>';
 			}
@@ -72,12 +50,12 @@
 
 				<!-- Displays Recipes Submitted By User -->
 				<div class="panel-group panel-info col-md-6">
-					<h1 class="panel-heading">Recipes (<?php echo count($recipes) ?>)</h1>
+					<h1 class="panel-heading">Recipes <small>(<?php echo count($recipes) ?>)</small></h1>
 					
 					<div class="panel-body">
 					<?php
 						foreach($recipes as $recipe)
-							printRecipe($recipe);
+							DisplayDB::printRecipe($recipe);
 					?>
 					</div>
 				</div>
@@ -85,7 +63,7 @@
 
 				<!-- Displays Reviews Submitted By User -->
 				<div class="panel-group panel-success col-md-6">
-					<h1 class="panel-heading">Reviews (<?php echo count($reviews) ?>)</h1>
+					<h1 class="panel-heading">Reviews <small>(<?php echo count($reviews) ?>)</small></h1>
 					<div class="panel-body">
 						<?php 
 							foreach($reviews as $review)

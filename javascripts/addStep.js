@@ -27,7 +27,7 @@ function more(){
 	
 	var fileupload = document.createElement("input");
 	fileupload.setAttribute("type","file")
-	fileupload.setAttribute("name","fileToUpload");
+	fileupload.setAttribute("name","image"+stepnumber);
 
 	
 	var recipiestep= document.createElement("textarea");

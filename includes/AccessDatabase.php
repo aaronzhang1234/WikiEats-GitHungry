@@ -1,7 +1,9 @@
 <?php
-// generalRecipes need: Title
-// review need: Title
+// Review needs: title, description
+// Add something for displaying links to categories
+// Display related image for each recipe
 
+// Defines classes for accessing the database
 class RecipeDB
 {
 	// Returns user ID from username
@@ -65,7 +67,7 @@ class RecipeDB
 		{
 			$retval = Array(); // What's returned to  user
 			while($row = $result->fetch_assoc())
-				$retval[] = $row;//Array("userid"=>$row["userid"], "recipeid"=>$row["recipeid"], "description"=>$row["description"], "parentID"=>$row["parentid"], "categoryid"=>$row["category"]);
+				$retval[] = $row;
 			return $retval;
 		}
 		else 
@@ -94,7 +96,29 @@ class RecipeDB
 			return NULL;
 	}
 
-	//public static function getRecipeSteps($recipeID){}
+	// Gets recipe steps for recipeID
+	public static function getRecipeSteps($recipeID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM recipesteps WHERE recipeid LIKE '".$recipeID."'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 
 	// Gets reviews given by a user
 	public static function getReviewsByUser($userID)
@@ -113,7 +137,7 @@ class RecipeDB
 		{
 			$retval = Array(); // What's returned to  user
 			while($row = $result->fetch_assoc())
-				$retval[] = Array("userid"=>$row["userid"], "recipeid"=>$row["recipeid"], "reviewid"=>$row["reviewID"], "description"=>$row["reviewTest"], "rating"=>$row["rating"]);
+				$retval[] = $row;
 			return $retval;
 		}
 		else 
@@ -137,7 +161,7 @@ class RecipeDB
 		{
 			$retval = Array(); // What's returned to  user
 			while($row = $result->fetch_assoc())
-				$retval[] = Array("userid"=>$row["userid"], "recipeid"=>$row["recipeid"], "reviewid"=>$row["reviewID"], "description"=>$row["reviewTest"], "rating"=>$row["rating"]);
+				$retval[] = $row;
 			return $retval;
 		}
 		else 
@@ -162,7 +186,6 @@ class RecipeDB
 		{
 			$count = 0;
 			$total = 0;
-			$retval = Array(); // What's returned to  user
 			while($row = $result->fetch_assoc())
 			{
 				$total += $row["rating"];
@@ -174,4 +197,118 @@ class RecipeDB
 			return NULL;
 	}
 
+	// Searches for users based on username
+	public static function searchUsers($search)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM users WHERE username LIKE '%".$search."%'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$users = Array();
+			while($row = $result->fetch_assoc())
+				$users[] = $row;
+			return $users;
+		}
+		else 
+			return NULL;
+	}
+
+	// Searches for recipes based on title and description
+	public static function searchRecipes($search)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT DISTINCT * FROM generalRecipes WHERE Title LIKE '%".$search."%' OR description LIKE'%".$search."%'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$users = Array();
+			while($row = $result->fetch_assoc())
+				$users[] = $row;
+			return $users;
+		}
+		else 
+			return NULL;
+	}
+
+	public static function getCategory($categoryID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM recipiecategory WHERE categoryID LIKE '".$categoryID."'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$row = $result->fetch_assoc();
+			return $row["categoryName"];
+		}
+		else 
+			return NULL;
+	}
+}// End Class RecipeDB
+
+// Defines functions for displaying quick user info
+class DisplayDB
+{
+	// Displays Recipe
+	public static function printRecipe($recipe)
+	{
+		$averageReview = RecipeDB::getAverageReviewForRecipe($recipe["recipeid"]);
+		$category = RecipeDB::getCategory($recipe["category"]);
+		$username = RecipeDB::getUserByID($recipe["userid"])["username"];
+		$imageFileName = ($recipe["imagename"] != "")? $recipe["imagename"]: "chef_hat.png";
+
+		echo '
+						<div class="col-md-12 panel">
+							<div class="col-md-12">							
+								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href=#>'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a></small></h2>
+							</div>
+							<div class="col-md-4">
+								<img src="images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 
+							</div>
+							<div class="col-md-8">
+								<h4>'.$averageReview.'/5</h4>
+								<p>'.$recipe["description"].'</p>
+							</div>
+						</div>
+						<hr>';
+	}
+
+	// Prints user info
+	public static function printUser($user)
+	{
+		$recipeCount = count(RecipeDB::getRecipesByUser($user["userid"]));
+		$reviewCount = count(RecipeDB::getReviewsByUser($user["userid"]));
+		echo '
+					<div class="col-md-12 panel">
+						<h2 class="col-md-12"><a href="DisplayAccount.php?userID='.$user["userid"].'">'.$user["username"].'</a></h2>
+						<div class="col-md-6">
+							'.$recipeCount.' Submitted Recipes
+						</div>
+						<div class="col-md-6">
+							'.$reviewCount.' Reviews
+						</div>
+					</div>
+					<hr/>';
+	}
 }
