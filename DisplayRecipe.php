@@ -10,6 +10,7 @@
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
+		<script src="javascripts/displayReviewForm.js"></script>
 	</head>
 
 	<body>

@@ -1,11 +1,11 @@
-<form class="form-horizontal" method ="POST" action="processes/reviewProcessing.php">
-	<h3>Write A Review</h3>
+<button id="writeReviewBtn" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Write A Review</button>
+
+<form id="writeReview" class="form-horizontal hidden" method="POST" action="processes/reviewProcessing.php">
+	<h3 class="col-md-11">Write A Review</h3>
+	<button type="button" id="closeWriteReview" class="btn col-md-1"><span class="glyphicon glyphicon-remove"></span></button>
 	<div class="form-group col-md-12">
 		<label class="sr-only" for="Title">Subject</label>
 		<input class="form-control" type="text" name="Title" placeholder="Title"></input>
-
-					<!--<label class="sr-only" for="username">Username</label>
-					<input class="form-control" type="text" name="username" placeholder="Username"/>-->
 	</div>
 	<div class="form-group col-md-12">
 		<label class="sr-only" for="review">Review</label>
