@@ -115,7 +115,10 @@
 				</div>
 				<hr>
 				<div class="panel-body">
-					<a class="btn btn-success" href=# role="button"><span class="glyphicon glyphicon-pencil"></span> Write Review</a>
+					
+					<?php
+					$_SESSION['recipeID']=$_GET["recipeID"];
+					include 'includes/ratingsystem.php'; ?>
 				</div>
 			</div>
 		</div>
