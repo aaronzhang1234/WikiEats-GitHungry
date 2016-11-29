@@ -1,7 +1,5 @@
-<?php
-// Review needs: title, description
-// Add something for displaying links to categories
-// Display related image for each recipe
+<?php 
+// Classes for accessing and displaying items from a database
 
 // Defines classes for accessing the database
 class RecipeDB
@@ -390,6 +388,38 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+
+	// Gets Related Recipes: recipes by the user and of the same category
+	public static function getRelatedRecipes($userID, $categoryID, $recipeID, $amount)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT * FROM generalRecipes WHERE (category LIKE '".$categoryID."' OR userid LIKE '".$userID."') AND recipeid NOT LIKE '".$recipeID."'";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			// Gets Query Values
+			$res = Array();
+			while($row = $result->fetch_assoc())
+				$res[] = $row;
+
+			// Gets random recipes from query
+			$keys = array_rand($res, $amount); // Gets random keys
+			$retval = Array();
+			for($i = 0; $i < count($keys); $i++) // Gets key items
+				$retval[] = $res[$keys[$i]];
+			return $retval;
+		}
+		else 
+			return NULL;
+
+	}
 }// End Class RecipeDB
 
 // Defines functions for displaying quick user info
@@ -406,7 +436,7 @@ class DisplayDB
 		echo '
 						<div class="col-md-12 panel">
 							<div class="col-md-12">							
-								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href=#>'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a></small></h2>
+								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a></small></h2>
 							</div>
 							<div class="col-md-4">
 								<img src="images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 

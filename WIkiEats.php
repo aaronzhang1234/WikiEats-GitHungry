@@ -1,7 +1,4 @@
 <?php
-// Slideshow
-// Featured Category icon (sunrise for bfast)
-
 $username="root";$password="";$database="recipes";
 $mysqli= new mysqli("localhost",$username,$password);
 $mysqli-> select_db($database);
@@ -21,9 +18,16 @@ $mysqli-> select_db($database);
 		<style>
   		.carousel-inner > .item > img,
   		.carousel-inner > .item > a > img {
-      		width: 70%;
+      		height: 100%;
+      		width: 100%;
       		margin: auto;
   		}
+
+		.carousel 
+		{
+		  height: 50em;
+		  overflow: hidden;
+		}
   		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

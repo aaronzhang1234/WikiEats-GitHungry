@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Add Recipe</title>
+		<title>Create Account</title>
 
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		

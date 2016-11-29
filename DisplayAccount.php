@@ -29,7 +29,7 @@
 				//echo $userName;
 				echo '
 						<div class="col-md-12 panel">
-							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href=#>'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
+							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
 							<h2 class="col-md-2">'.$review["rating"].'/5</h2>
 							<h3>'.$review["title"].'</h3>
 							<p>'.$review["reviewTest"].'</p>
