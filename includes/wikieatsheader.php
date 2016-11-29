@@ -1,8 +1,11 @@
 <!-- TO DO:
 	* DisplayRecipe
-		* AddReview Function
-		* Related Recipes to have recipes of the same category
+		* AddReview Function Beautify
+		* Related Recipes to work better
 	* Front Page Design
+		* Slideshow to have real images <images to fit in carousel>
+		* Featured Category icon (ie. sunrise for breakfast)
+	* Beautify addRecipe
 -->
 <!-- Can change navbar be about the user-->
 <?php
@@ -12,8 +15,7 @@
 	else
 		$loggedIn = false;
 
-	echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
-
+	//echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
 ?>
 
 <header>
