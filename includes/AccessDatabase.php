@@ -74,6 +74,30 @@ class RecipeDB
 			return NULL;
 	}
 
+	// Gets recipes by a category
+	public static function getRecipesByCategory($categoryID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM generalRecipes WHERE category LIKE '".$categoryID."'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$retval = Array(); // What's returned to  user
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
+
 	// Gets general recipe by recipeID
 	public static function getGeneralRecipe($recipeID)
 	{
@@ -197,6 +221,36 @@ class RecipeDB
 			return NULL;
 	}
 
+	// Returns review info for recipe
+	public static function getRecipeReviewInfo($recipeID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM reviews WHERE recipeid LIKE '".$recipeID."'";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$count = 0;
+			$total = 0;
+			while($row = $result->fetch_assoc())
+			{
+				$total += $row["rating"];
+				$count++;
+			}
+			$average = ($count != 0)? ($total / $count) : NULL;
+			return Array("total"=>$total, "count"=>$count, "average"=>$average);
+		}
+		else 
+			return NULL;
+	}
+
+
 	// Searches for users based on username
 	public static function searchUsers($search)
 	{
@@ -245,6 +299,7 @@ class RecipeDB
 			return NULL;
 	}
 
+	// Gets category name from category ID
 	public static function getCategory($categoryID)
 	{
 		// Makes a connection to the database
@@ -261,6 +316,76 @@ class RecipeDB
 		{
 			$row = $result->fetch_assoc();
 			return $row["categoryName"];
+		}
+		else 
+			return NULL;
+	}
+
+	// Gets top rated recipes
+	public static function getTopRatedRecipes($amount)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM generalRecipes";
+
+		// Performs query to get recipes
+		$recipes = Array();
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			while($row = $result->fetch_assoc())
+			{
+				$recipe = Array(RecipeDB::getRecipeReviewInfo($row["recipeid"]), $row);
+				if($recipe[0]["average"] != NULL)
+					$recipes[] = $recipe;
+			}
+		}
+		else 
+			return NULL;
+
+		// Sorts Recipes by average rating value then rating cout
+		usort($recipes, function($b, $a)
+		{
+			if($a[0]["average"] < $b[0]["average"])
+				return -1;
+			else if($a[0]["average"] > $b[0]["average"])
+				return 1;
+			else
+				return $a[0]["count"] - $b[0]["count"];
+			//return $a[0]["average"] - $b[0]["average"];
+		});
+
+		// Returns top rated recipes
+		$retval = Array();
+		for($i = 0; $i < $amount; $i++)
+			$retval[] = $recipes[$i][1];
+		return $retval;
+	}
+
+	// Gets category name from category ID
+	public static function getNewestRecipes($amount)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM generalRecipes ORDER BY recipeid DESC";
+
+		// Performs query and returns newest submitted recipes
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$i = 0;
+			$retval = Array();
+			while(++$i <= $amount && $row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
 		}
 		else 
 			return NULL;
