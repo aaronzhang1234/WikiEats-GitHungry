@@ -25,7 +25,7 @@ session_start();
 			$titleimagename=$_FILES['mainpic']['name'];
 			echo "</br>";
 			$imagemain_temp=$_FILES['mainpic']['tmp_name'];
-			if(move_uploaded_file($imagemain_temp,"images/".$titleimagename)){
+			if(move_uploaded_file($imagemain_temp,"../images/".$titleimagename)){
 				echo "yay";
 			}
 			else{
@@ -88,7 +88,7 @@ session_start();
 					echo $image_name=$_FILES[$image]['name'];
 					echo "</br>";
 					echo $image_temp=$_FILES[$image]['tmp_name'];
-						if(move_uploaded_file($image_temp,"images/".$image_name)){
+						if(move_uploaded_file($image_temp,"../images/".$image_name)){
 							echo "yay";
 						}
 						else{
