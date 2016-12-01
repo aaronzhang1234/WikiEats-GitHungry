@@ -28,7 +28,7 @@
 					<a class="navbar-brand" href="WikiEats.php">WikiEats - GitHungry</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href=#>About Us</a></li>
+					<li><a href="About.php">About Us</a></li>
 					<?php // Changes based on if user's logged in
 					if($loggedIn)
 						echo '
