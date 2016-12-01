@@ -19,6 +19,10 @@ function more(){
 	stepnumber++;
 	
 
+	var div = document.createElement("div");
+	div.className += "col-md-12 form-group";
+	
+	
 	var label=document.createElement("label");
 	label.setAttribute("class","numbered");
 	var t = document.createTextNode("Step "+stepnumber);
@@ -28,7 +32,10 @@ function more(){
 	
 	var fileupload = document.createElement("input");
 	fileupload.setAttribute("type","file")
-	fileupload.setAttribute("name","image"+stepnumber);
+	fileupload.setAttribute("name","image"+stepnumber)
+	fileupload.className += "col-md-5";
+	
+	
 
 	
 	var recipiestep= document.createElement("textarea");
@@ -36,6 +43,19 @@ function more(){
 	recipiestep.className += "col-md-5";
 	var skip = document.createElement("br");
 	
+	
+	
+	//var addStep = steps.lastChild;
+	//steps.removeChild(steps.lastChild);
+	
+	div.appendChild(label);
+	div.appendChild(recipiestep);
+	div.appendChild(fileupload);
+	//div.appendChild(addStep);
+	
+	steps.appendChild(div);
+	
+	/*
 	var addStep = steps.lastChild;
 	steps.removeChild(steps.lastChild);
 	
@@ -45,4 +65,5 @@ function more(){
 	steps.appendChild(fileupload);
 	steps.appendChild(skip);
 	steps.appendChild(addStep);
+	*/
 }
