@@ -19,7 +19,7 @@
 					<div class="form-group row">
 						<label class="col-md-2 control-label" for="recipiename">Title</label>
 						<div class="col-md-10">
-							<input class="form-control" type="text" id="recipiename" placeholder="Something to grab people's attention"/>
+							<input class="form-control" type="text" name="recipiename" id="recipiename" placeholder="Something to grab people's attention"/>
 						</div>
 					</div>
 					
@@ -27,7 +27,7 @@
 						<label class="col-md-2 control-label">Main Image</label>
 						<div class="col-md-10">
 							<label class="custom-file">
-								<input class="custom-file-input" type="file" id="mainpic">
+								<input class="custom-file-input" type="file" name="mainpic" id="mainpic">
 								<span class="custom-file-control"></span>
 							</label>
 						</div>
@@ -36,14 +36,14 @@
 					<div class="form-group row">
 						<label class="col-md-2 control-label" for="description">Description</label>
 						<div class="col-md-10">
-							<textarea class="form-control" id="description"></textarea>
+							<textarea class="form-control" name="description" id="description"></textarea>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label class="col-md-2 control-label" for="FoodCategory">Category</label>
+						<label class="col-md-2 control-label" name="FoodCategory" for="FoodCategory">Category</label>
 						<div class="col-md-10">
-							<select class="form-control col-md-10" id="FoodCategory">
+							<select class="form-control col-md-10" name ="FoodCategory" id="FoodCategory">
 								<option value=1>Breakfast</option>
 								<option value=2>Lunch</option>
 								<option value=3>Dinner</option>
