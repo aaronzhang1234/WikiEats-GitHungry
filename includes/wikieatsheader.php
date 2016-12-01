@@ -1,6 +1,5 @@
 <!-- TO DO:
-	* Front Page: 
-		images fit to carousel
+	* Searchbar to fill top
 	* Beautify addRecipe
 -->
 <!-- Can change navbar be about the user-->
@@ -11,7 +10,7 @@
 	else
 		$loggedIn = false;
 
-	echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
+	//echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
 ?>
 
 <header>
