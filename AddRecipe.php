@@ -64,7 +64,7 @@
 							</div>
 						</div>
 
-						<button class="col-md-12 btn btn-info" type="button" onclick="more()"> Add new Step</button>
+						<button class="btn btn-info col-md-12" type="button" onclick="more()"><span class="glyphicon glyphicon-plus"></span> Step</button>
 					</div>
 
 					<!--<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>-->
