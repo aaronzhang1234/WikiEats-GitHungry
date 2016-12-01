@@ -15,20 +15,6 @@ $mysqli-> select_db($database);
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
-		<style>
-  		.carousel-inner > .item > img,
-  		.carousel-inner > .item > a > img {
-      		height: 100%;
-      		width: 100%;
-      		margin: auto;
-  		}
-
-		.carousel 
-		{
-		  height: 50em;
-		  overflow: hidden;
-		}
-  		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

@@ -59,6 +59,7 @@
 					    <label class="numbered col-md-2 control-label">Step 1</label>
 						<textarea class="col-md-5" name="step1"></textarea>
 						<input class="col-md-5" type="file" name="image1"></input>
+						<br>
 
 						<button class="col-md-12" type="button" onclick="more()"> Add new Step</button>
 					</div>
