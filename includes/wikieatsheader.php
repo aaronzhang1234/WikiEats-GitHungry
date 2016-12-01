@@ -1,8 +1,6 @@
 <!-- TO DO:
-	* Create Account Fname/LName click
 	* Front Page: 
 		images fit to carousel
-		add icons to timed recipes
 	* Beautify addRecipe
 -->
 <!-- Can change navbar be about the user-->

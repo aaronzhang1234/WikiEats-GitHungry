@@ -11,3 +11,8 @@ hr
     	-1px 1px 0 #FFF,
     	1px 1px 0 #FFF;
 }
+
+.form-inline .form-group, .form-inline .checkbox
+{
+	padding-bottom: 0.7em;
+}

@@ -9,6 +9,7 @@
 		
 		 <script src="javascripts/addStep.js"   ></script>
 		 <script src="javascripts/checkForms.js"></script>
+		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
 	</head>
 	
 	<body>
@@ -19,16 +20,19 @@
 				<h1>Create New Account</h1>
 			</div>
 
-			<form class="form-horizontal col-md-8" method="POST" action="processes/CreateAccountProcess.php">
+			<form class="form-inline col-md-8" method="POST" action="processes/CreateAccountProcess.php">
 				<div class="form-group col-md-12">
-					<label class="sr-only" for="userName">Username</label>
+					<label class="control-label sr-only" for="userName">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>
-				</div>
-				<div class="form-group col-md-6">
-					<input class="form-control" type="text" name="fName"  placeholder="First Name"/>
 				</div>
 
 				<div class="form-group col-md-6">
+					<label class="control-label sr-only" for="fName">First Name</label>
+					<input class="form-control" type="text" name="fName" placeholder="First Name"/>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="sr-only" for="fName">First Name</label>
 					<input class="form-control" type="text" name="lName" placeholder="Last Name"/>
 				</div>
 
@@ -42,7 +46,7 @@
 					<input class="form-control" type="password" name="password2" placeholder="Re-Type Password"/>
 				</div>
 
-				<div class="checkbox">
+				<div class="checkbox col-md-12">
 					<label><input type="checkbox" name="privacy" value=""> I agree to the <a href="#">privacy policy</a></label>
 				</div>
 
