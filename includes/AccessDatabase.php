@@ -359,7 +359,7 @@ class RecipeDB
 
 		// Returns top rated recipes
 		$retval = Array();
-		for($i = 0; $i < $amount; $i++)
+		for($i = 0; $i < $amount && $i < count($retval); $i++)
 			$retval[] = $recipes[$i][1];
 		return $retval;
 	}
@@ -410,7 +410,11 @@ class RecipeDB
 				$res[] = $row;
 
 			// Gets random recipes from query
-			$keys = array_rand($res, $amount); // Gets random keys
+				// Gets smaller of the two: related recipes & amount requested
+			$amount = ($amount < count($res))? $amount: count($res);
+			$keys = Array();
+			if($amount > 0)
+				$keys = array_rand($res, $amount); // Gets random keys
 			$retval = Array();
 			for($i = 0; $i < count($keys); $i++) // Gets key items
 				$retval[] = $res[$keys[$i]];
