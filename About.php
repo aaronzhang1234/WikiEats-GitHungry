@@ -11,7 +11,7 @@
 			<div id = 'description'>
 				<h1>Wiki Eats</h1>
 				<img src="images/chef_hat.png" alt="chefHat" width="460" height="345">
-				<p><b>It's like Wikipedia but for recipes with some github on it. Users can upload recipes. Other uses can change the recipes and make their own branches to make the recipes more palatable to them.
+				<p><b>It's like Wikipedia but for recipes with some github on it. Users can upload recipes. 
 				Users can rate recipes and comment on them to give their feedback. Categories for food people want to eat and people can search for what food they want.
 				Users can make accounts and other users can rate their accounts and see their activity.</b></p>
 			</div>
