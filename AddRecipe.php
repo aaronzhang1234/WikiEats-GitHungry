@@ -14,22 +14,36 @@
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form method="POST"  action="processes/PostProcess.php" enctype="multipart/form-data">
-				<fieldset>
+			<form class="form-horizontal col-md-8" method="POST"  action="processes/PostProcess.php" enctype="multipart/form-data">
 				
-					<div>
-						<label>Title </br></label>
-						<input type="text" name="recipiename"/>
-						<input type="file" name="mainpic"></input></br>
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="recipiename">Title</label>
+						<div class="col-md-10">
+							<input class="form-control" type="text" id="recipiename" placeholder="Something to grab people's attention"/>
+						</div>
 					</div>
 					
-					<div>
-						<label>Description</br></label>
-						<textarea name = "description"></textarea>
+					<div class="form-group row">
+						<label class="col-md-2 control-label">Main Image</label>
+						<div class="col-md-10">
+							<label class="custom-file">
+								<input class="custom-file-input" type="file" id="mainpic">
+								<span class="custom-file-control"></span>
+							</label>
+						</div>
 					</div>
-					<div>
-						<label>Category</br>
-							<select name ="FoodCategory">
+
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="description">Description</label>
+						<div class="col-md-10">
+							<textarea class="form-control" id="description"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-md-2 control-label" for="FoodCategory">Category</label>
+						<div class="col-md-10">
+							<select class="form-control col-md-10" id="FoodCategory">
 								<option value=1>Breakfast</option>
 								<option value=2>Lunch</option>
 								<option value=3>Dinner</option>
@@ -38,17 +52,20 @@
 								<option value=6>Soup</option>
 								<option value=7>Bread</option>
 							</select>
+						</div>
 					</div>
 					
-					<div id="steps">
-					    <label class="numbered">Step 1</label>
-						<textarea name ="step1"></textarea></br>
-						Add a picture to help your readers out!
-						<input type="file" name="image1"></input></br>
-						<button type = "button" onclick="more()"> Add new Step</button></div>
-					
-					<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>
-				</fieldset>
+					<div id="steps" class="form-group row">
+					    <label class="numbered col-md-2 control-label">Step 1</label>
+						<textarea class="col-md-5" name="step1"></textarea>
+						<input class="col-md-5" type="file" name="image1"></input>
+
+						<button class="col-md-12" type="button" onclick="more()"> Add new Step</button>
+					</div>
+
+					<!--<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>-->	
+
+					<button type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)">
 			</form>
 		</div>
 	</body>

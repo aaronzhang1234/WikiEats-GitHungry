@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -6,6 +7,9 @@
 		<link href="AboutCss.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 		<title>About Us</title>
+		
+	</head>
+	
 		<body>
 			<?php include 'includes/wikieatsheader.php' ?>
 			<div id = 'description'>
@@ -26,6 +30,4 @@
 				</div>
 			</div>
 		</body>
-		
-	</head>
 </html>

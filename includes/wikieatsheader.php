@@ -1,12 +1,8 @@
 <!-- TO DO:
-	* Carousel, Contact Us, Create Account Fname/LName click
-
-	* DisplayRecipe
-		* AddReview Function Beautify
-		* Related Recipes to work better
-	* Front Page Design
-		* Slideshow to have real images <images to fit in carousel>
-		* Featured Category icon (ie. sunrise for breakfast)
+	* Create Account Fname/LName click
+	* Front Page: 
+		images fit to carousel
+		add icons to timed recipes
 	* Beautify addRecipe
 -->
 <!-- Can change navbar be about the user-->
