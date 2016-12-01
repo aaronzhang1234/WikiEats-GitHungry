@@ -88,31 +88,31 @@ $mysqli-> select_db($database);
 
 				<div class="carousel-inner" role="listbox">
 			      <div class="item active">
-			        <img src="images/chef_hat.png" alt="chefHat" width="460" height="345">
+			        <img src="images/<?php echo $newRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
 			        <div class="carousel-caption">
-			          <h3>Chefs Hat</h3>
-			          <p>Something Something</p>
+			          <h3><?php echo $newRecipes[0]["Title"];?></h3>
+			          <p><?php echo $newRecipes[0]["description"]; ?></p>
 			        </div>
 			      </div>
 			      <div class="item">
-			        <img src="images/giveth.png" alt="giveth" width="460" height="345">
+			        <img src="images/<?php echo $categoryRecipes[1]["imagename"]; ?>" alt="chefHat" width="460" height="345">
 			        <div class="carousel-caption">
-			          <h3>Giveth AND Taketh</h3>
-			          <p>Karma!</p>
+			          <h3><?php echo $categoryRecipes[1]["Title"];?></h3>
+			          <p><?php echo $categoryRecipes[1]["description"]; ?></p>
 			        </div>
 			      </div>
 			      <div class="item">
-			        <img src="images/tacos.jpeg" alt="tacos" width="460" height="345">
+			        <img src="images/<?php echo $categoryRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
 			        <div class="carousel-caption">
-			          <h3>Tacos</h3>
-			          <p>So Yummy!</p>
+			          <h3><?php echo $categoryRecipes[0]["Title"];?></h3>
+			          <p><?php echo $categoryRecipes[0]["description"]; ?></p>
 			        </div>
 			      </div>
 			      <div class="item">
-			        <img src="images/pokemon drake and josh.jpg" alt="Pokemon DJ" width="460" height="345">
+			        <img src="images/<?php echo $topRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
 			        <div class="carousel-caption">
-			          <h3>Next is Pokemon Black and Blue</h3>
-			          <p>Meh</p>
+			          <h3><?php echo $topRecipes[0]["Title"];?></h3>
+			          <p><?php echo $topRecipes[0]["description"]; ?></p>
 			        </div>
 			      </div>
 				</div>

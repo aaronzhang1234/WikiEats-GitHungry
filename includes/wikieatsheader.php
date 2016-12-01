@@ -1,5 +1,5 @@
 <!-- TO DO:
-	* Carousel, Contact Us, Create Account Fname/LName click
+	* Carousel, Create Account Fname/LName click
 
 	* DisplayRecipe
 		* AddReview Function Beautify
