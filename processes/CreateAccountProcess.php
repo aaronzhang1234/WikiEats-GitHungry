@@ -12,6 +12,8 @@ session_start();
 	<body>
 	
 		<?php
+		
+			
 			echo $_POST['username'];
 			echo $_POST['password1'];
 			echo $_POST['fName'];
@@ -27,9 +29,8 @@ session_start();
 				header('Location: ../wronglogin.php');
 				exit();			
 			}
-			
 			$sql = "Insert into users (username,password,firstname,lastname)
-			Values ('".$_POST['username']."','".$_POST['password1']."','".$_POST['fName']."','".$_POST['lName']."')";
+			Values ('".$_POST['username']."',MD5('".$_POST['password1']."'),'".$_POST['fName']."','".$_POST['lName']."')";
 			
 			if(mysql_query($sql)){
 				echo "added!";
@@ -38,8 +39,8 @@ session_start();
 				echo "sad :(";
 			}
 			
-			header('Location: ../Login.php');
-			exit();
+			//header('Location: ../Login.php');
+			//exit();
 		?>
 	</body>
 </html>

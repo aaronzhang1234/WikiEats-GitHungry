@@ -16,7 +16,7 @@
 	session_start();
 	
 	$sqlfind="SELECT userid FROM users WHERE username ='".$_POST['username']."' 
-			  AND password ='".$_POST['password']."'";
+			  AND password =MD5('".$_POST['password']."')";
 	
 	$result = mysql_query($sqlfind);
 	
