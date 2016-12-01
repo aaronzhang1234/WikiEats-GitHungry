@@ -38,10 +38,7 @@ session_start();
 				echo "sad :(";
 			}
 			
-			$_SESSION["username"] = $_POST["username"];
-			$_SESSION["userID"] = RecipeDB::getUserID($_POST["username"]);
-
-			header('Location: ../WikiEats.php');
+			header('Location: ../Login.php');
 			exit();
 		?>
 	</body>
