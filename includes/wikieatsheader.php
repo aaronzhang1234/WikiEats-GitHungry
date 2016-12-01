@@ -1,4 +1,6 @@
 <!-- TO DO:
+	* Carousel, Contact Us, Create Account Fname/LName click
+
 	* DisplayRecipe
 		* AddReview Function Beautify
 		* Related Recipes to work better
@@ -15,7 +17,7 @@
 	else
 		$loggedIn = false;
 
-	//echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
+	echo ($loggedIn)?$_SESSION["username"].': '.$_SESSION['userID']:"Not Logged In";
 ?>
 
 <header>
@@ -26,12 +28,10 @@
 					<a class="navbar-brand" href="WikiEats.php">WikiEats - GitHungry</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li><a href=#>Contact Us</a></li>
 					<li><a href=#>About Us</a></li>
 					<?php // Changes based on if user's logged in
 					if($loggedIn)
 						echo '
-					<li><a href="NewestRecipes.php">Newest Recipes</a></li>
 					<li><a href="addRecipe.php">Submit Recipe</a></li>
 					<li><a href="DisplayAccount.php?userID='.$_SESSION["userID"].'">Account</a></li>
 					<li><a href="Logout.php">Logout</a></li>';
@@ -42,16 +42,16 @@
 						';
 					?>
 				</ul>
-				<ul class="nav navbar-right">
-					<li>
-						<form class="form-inline" method="GET" action="SearchRecipe.php">
-							<div class="form-group">
+				<div class="nav navbar-right">
+					<form class="navbar-form" role="search" method="GET" action="SearchRecipe.php">
+						<div class="input-group">
 							<input type="text" class="form-control" placeholder="Search Recipes, Descriptions, Users" name="search">
+							<div class="input-group-btn">
+								<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
 							</div>
-							<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-						</form>
-					</li>
-				</ul>
+						</div>
+					</form>
+				</div>
 			</nav>
 		</div>
 	</div>

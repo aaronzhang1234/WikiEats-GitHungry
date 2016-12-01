@@ -1,3 +1,4 @@
+<?php include '../includes/AccessDatabase.php'; ?>
 <?php // Error: creating an account gives the user a userID of 0
 
 $username="root";$password="";$database="recipes";
@@ -39,8 +40,11 @@ session_start();
 				echo "sad :(";
 			}
 			
-			//header('Location: ../Login.php');
-			//exit();
+			$_SESSION["username"] = $_POST["username"];
+			$_SESSION["userID"] = RecipeDB::getUserID($_POST["username"]);
+
+			header('Location: ../WikiEats.php');
+			exit();
 		?>
 	</body>
 </html>
