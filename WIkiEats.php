@@ -37,7 +37,7 @@ $mysqli-> select_db($database);
 				else if ($hour < 10)
 					return Array(1, "Breakfast");
 				else if ($hour < 12)
-					return Array(8, "Bread");
+					return Array(7, "Bread");
 				else if ($hour < 15)
 					return Array(2, "Lunch");
 				else if ($hour < 18)
@@ -47,6 +47,33 @@ $mysqli-> select_db($database);
 				else
 					return Array(5, "Snack");
 			}
+
+			function printCarouselRecipe($recipe, $class = "")
+			{
+				echo '>
+			      <div class="item'.$class.'">
+			        <img src="images/'.$recipe["imagename"].'" alt="chefHat" width="460" height="345">
+			        <div class="carousel-caption">
+			          <h3>'.$recipe["Title"].'</h3>
+			          <p>'.$recipe["description"].'</p>
+			        </div>
+			      </div>';
+			}
+			/*function getDisplayRecipe()
+			{
+				$retval = Array();
+
+				$retval[] = $newRecipes[0];
+
+				if(isset($categoryRecipes[]))
+				{
+					$retval[] = $newRecipes[0];
+				if(isset($categoryRecipes[]))
+
+				}
+
+
+			}*/
 
 			// Gets newest recipes to display
 			$newRecipes = RecipeDB::getNewestRecipes(5);
@@ -73,34 +100,12 @@ $mysqli-> select_db($database);
 			    </ol>
 
 				<div class="carousel-inner" role="listbox">
-			      <div class="item active">
-			        <img src="images/<?php echo $newRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
-			        <div class="carousel-caption">
-			          <h3><?php echo $newRecipes[0]["Title"];?></h3>
-			          <p><?php echo $newRecipes[0]["description"]; ?></p>
-			        </div>
-			      </div>
-			      <div class="item">
-			        <img src="images/<?php echo $categoryRecipes[1]["imagename"]; ?>" alt="chefHat" width="460" height="345">
-			        <div class="carousel-caption">
-			          <h3><?php echo $categoryRecipes[1]["Title"];?></h3>
-			          <p><?php echo $categoryRecipes[1]["description"]; ?></p>
-			        </div>
-			      </div>
-			      <div class="item">
-			        <img src="images/<?php echo $categoryRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
-			        <div class="carousel-caption">
-			          <h3><?php echo $categoryRecipes[0]["Title"];?></h3>
-			          <p><?php echo $categoryRecipes[0]["description"]; ?></p>
-			        </div>
-			      </div>
-			      <div class="item">
-			        <img src="images/<?php echo $topRecipes[0]["imagename"]; ?>" alt="chefHat" width="460" height="345">
-			        <div class="carousel-caption">
-			          <h3><?php echo $topRecipes[0]["Title"];?></h3>
-			          <p><?php echo $topRecipes[0]["description"]; ?></p>
-			        </div>
-			      </div>
+			      <?php 
+			      	printCarouselRecipe($newRecipes[0], " active");
+			      	printCarouselRecipe($categoryRecipes[0]); 
+			      	printCarouselRecipe($categoryRecipes[1]); 
+			      	printCarouselRecipe($topRecipes[1]); 
+			      	?>
 				</div>
 
 			    <!-- Left and right controls -->
