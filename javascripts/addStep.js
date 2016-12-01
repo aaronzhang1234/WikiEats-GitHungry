@@ -22,6 +22,7 @@ function more(){
 	var label=document.createElement("label");
 	label.setAttribute("class","numbered");
 	var t = document.createTextNode("Step "+stepnumber);
+	label.className += " col-md-2 control-label";
 	label.append(t);
 	
 	
@@ -32,6 +33,7 @@ function more(){
 	
 	var recipiestep= document.createElement("textarea");
 	recipiestep.setAttribute("name","step"+ stepnumber);
+	recipiestep.className += "col-md-5";
 	var skip = document.createElement("br");
 	
 	var addStep = steps.lastChild;
