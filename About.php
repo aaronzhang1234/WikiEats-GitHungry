@@ -7,6 +7,7 @@
 		<link href="AboutCss.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 		<title>About Us</title>
+		
 	</head>
 	<body>
 		<?php include 'includes/wikieatsheader.php' ?>
