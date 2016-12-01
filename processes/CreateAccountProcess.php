@@ -13,8 +13,6 @@ session_start();
 	<body>
 	
 		<?php
-		
-			
 			echo $_POST['username'];
 			echo $_POST['password1'];
 			echo $_POST['fName'];
