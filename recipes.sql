@@ -1,8 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
+--
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2016 at 04:40 AM
+-- Generation Time: Dec 01, 2016 at 05:31 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -16,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `TestRecipes`
+-- Database: `recipes`
 --
 
 -- --------------------------------------------------------
@@ -50,36 +51,16 @@ CREATE TABLE `generalrecipes` (
 --
 -- Dumping data for table `generalrecipes`
 --
+
 INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `Title`, `recipeid`, `imagename`) VALUES
-(12, 'food', 0, 5, 'testaccount5 food', 49, ''),
-(10, 'Nice Bread', 0, 1, 'PhilsBread', 55, ''),
-(8, 'reder', 0, 3, 'redlife', 56, ''),
-(8, 'fasdfdsfs', 0, 1, 'dfasdfdf', 57, ''),
-(13, 'SoupySoup', 0, 6, 'MilesDeliciousSoup', 58, ''),
-(13, 'SoupySoup', 0, 6, 'MilesDeliciousSoup', 59, ''),
-(13, 'dfadsfdasfadsfs', 0, 2, 'fsdafadsfdsaf', 60, ''),
-(13, 'fdsafadsfdsa', 0, 1, 'fdfdasfdsa', 61, ''),
-(13, 'Breakfast', 0, 1, 'MilesBreakfast', 62, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 63, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 64, ''),
-(13, '', 0, 0, '', 65, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 66, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 67, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 68, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 69, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 70, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 71, ''),
-(13, 'dsfsdfsdf', 0, 1, 'efdsfadsf', 72, ''),
-(13, 'dsfdsfdsfasdf', 0, 1, 'dsafsdfdsf', 73, ''),
-(13, 'dsfdsafdsfdsf', 0, 4, 'dsafdsafdsf', 74, ''),
-(0, 'dsfdsafasdf', 0, 4, 'fasdfdsaf', 75, ''),
-(8, 'dfaasdfsdfsd', 0, 1, 'dsafsdafdsfs', 76, ''),
-(0, 'sdfdsafdsf', 0, 1, 'fdsfsdafsd', 77, ''),
-(8, 'dsfasdafsdf', 0, 3, 'dsafdsfdasfds', 78, ''),
-(8, 'afdsfsdfds', 0, 1, 'fdsafdsfsd', 79, ''),
-(8, 'yummy yummy', 0, 3, 'memesalad', 80, ''),
-(8, 'rdve', 0, 3, 'bedv', 81, ''),
-(8, 'soup', 0, 4, 'soupy', 82, '');
+(30, 'Some homemade tomato soup that you can eat', 0, 6, 'Tomato Soup', 93, 'tomatosoup1.jpg'),
+(30, 'Delicious ice cream', 0, 4, 'Ice cream', 94, 'icecream.jpg'),
+(31, 'Delicious bread', 0, 7, 'Cinnamon Raisin Bread', 95, 'rasinbread.jpg'),
+(32, 'Nostalgic Childhood snack', 0, 5, 'Ants on a Log', 96, 'celery.jpg'),
+(32, 'Delicious Fruit Salad Great snack', 0, 5, 'Fruit Salad', 97, 'fruitsalad.png'),
+(33, 'HomeMade Pancakes', 0, 1, 'Pancakes, pretty self explanatory', 98, 'pancake1.jpg'),
+(33, 'Scrambled eggs, are good for your heart and a good breakfast', 0, 1, 'Scrambled Eggs', 99, 'scrambled2.jpg'),
+(34, 'Pizza is good for you', 0, 2, 'Pizza', 100, 'pizza1.png');
 
 -- --------------------------------------------------------
 
@@ -100,57 +81,45 @@ CREATE TABLE `recipesteps` (
 --
 
 INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `imagename`) VALUES
-(49, 1, 'test', 56, ''),
-(49, 2, 'testing', 57, ''),
-(55, 1, '', 63, ''),
-(55, 2, 'Get Rasins and put them in bread', 64, ''),
-(55, 3, 'bake bread some more\r\n', 65, ''),
-(55, 4, 'eat bread', 66, ''),
-(56, 1, 'get the color red', 67, ''),
-(56, 2, 'get the color purple', 68, ''),
-(56, 3, 'put more reds', 69, ''),
-(57, 1, 'dfdsfdasfdsfaf', 70, ''),
-(57, 2, 'dsafasdfsdfsda', 71, ''),
-(58, 1, 'Get some broth', 72, ''),
-(58, 2, 'add some food to the broth', 73, ''),
-(58, 3, 'b r o t h ', 74, ''),
-(59, 1, 'Get some broth', 75, ''),
-(60, 1, 'dsfdsfsdfa', 76, ''),
-(61, 1, 'fadsfadsfsfa', 77, ''),
-(62, 1, 'brea', 78, ''),
-(63, 1, 'dsafsdfasdfsadf', 79, ''),
-(64, 1, 'dsafsdfasdfsadf', 80, ''),
-(64, 2, 'fsdaf', 81, ''),
-(66, 1, 'dsafsdfasdfsadf', 82, ''),
-(67, 1, 'dsafsdfasdfsadf', 83, ''),
-(68, 1, 'dsafsdfasdfsadf', 84, ''),
-(69, 1, 'dsafsdfasdfsadf', 85, ''),
-(69, 2, 'dsfdsfdsfsdaffdsdff', 86, ''),
-(70, 1, 'dsafsdfasdfsadf', 87, ''),
-(71, 1, 'dsafsdfasdfsadf', 88, ''),
-(72, 1, 'dsafsdfasdfsadf', 89, ''),
-(73, 1, 'dsfsdafsdafsdfsdsfsdd', 90, ''),
-(73, 2, 'dsafdsafds', 91, ''),
-(74, 1, 'sdfdasfds', 92, ''),
-(74, 2, 'dsfdsafsdafs', 93, ''),
-(74, 3, 'dsafsdfdfa', 94, ''),
-(75, 1, 'dsfsdafadsfs', 95, ''),
-(75, 2, 'dsfdsf', 96, ''),
-(76, 1, 'afdsafsdfsadfdafd', 97, ''),
-(76, 2, 'redsafdsfsdf', 98, ''),
-(76, 3, 'fsdfsdfsddf', 99, ''),
-(77, 1, 'sfdsfsdafdsfsadf', 100, 'cyber.gif'),
-(77, 2, 'dsfsdafsdafsda', 101, 'boxplot SelfConcept gender.PNG'),
-(78, 1, 'afdsfsdfasdf', 102, 'server_dust___swings_by_vioxtar-dae94r2.jpg'),
-(78, 2, 'dsafdsfdsfasdfsda', 103, 'time_paulryan_20111205_04021.jpg'),
-(79, 1, 'fsdfdsfsdafdsafsd', 104, 'somehting.png'),
-(79, 2, 'dsfdsfdsfsdafdsfsdafsd', 105, 'c29bf435b98b.jpg'),
-(80, 1, 'redted', 106, 'european city snow.jpg'),
-(80, 2, 'hrecfd', 107, 'snowy road.jpg'),
-(81, 1, 'ferv', 108, 'red room.jpg'),
-(81, 2, 'rcvfre', 109, 'snowy.jpg'),
-(82, 1, 'get soup from can', 110, 'img_8733.jpg'),
-(82, 2, 'eat soup', 111, 'winter in instanbull.jpg');
+(93, 1, 'Gather some tomatoes', 157, 'tomatosoup2.jpg'),
+(93, 2, 'Chop those tomatoes up', 158, 'tomatosoup3.jpg'),
+(93, 3, 'Boil those tomatoes and let them simmer', 159, 'tomatosoup4.jpg'),
+(93, 4, 'Your tomato soup should be at this consistency', 160, 'tomatosoup5.jpg'),
+(93, 5, 'Enjoy with bread or anything else!', 161, 'tomatosoup6.jpg'),
+(94, 1, 'Get some milk', 170, 'icecream1.jpg'),
+(94, 2, 'Get some sugar and put it in the milk', 171, 'icecream2.jpg'),
+(94, 3, 'get some vanilla extract and put it in the milk sugar thing.', 172, 'icecream3.jpg'),
+(94, 4, 'Mix it up until it becomes a creamy consistency', 173, 'icecream4.jpg'),
+(94, 5, 'Could be better to mix it up with ice cubes', 174, 'icecream5.jpg'),
+(94, 6, 'Freeze the mixture', 175, 'icecream6.jpg'),
+(94, 7, 'get your best cone', 176, 'icecream7.png'),
+(95, 1, 'Get some dough', 177, 'rasinbread1.jpg'),
+(95, 2, 'Get some raisins', 178, 'rasinbread2.jpg'),
+(95, 3, 'get some cinnamon', 179, 'rasinbread3.jpg'),
+(95, 4, 'mix up the raisins, cinammon, and milk', 180, 'rasinbread4.jpg'),
+(95, 5, 'Bake the bread', 181, 'rasinbread5.jpg'),
+(96, 1, 'get some Celery', 182, 'celery1.jpg'),
+(96, 2, 'get some peanut butter and put it on the celery', 183, 'celery2.jpeg'),
+(96, 3, 'put some raisins on the peanut butter', 184, 'celery3.jpg'),
+(97, 1, 'Get kiwis', 185, 'kiwi.png'),
+(97, 2, 'Get BlueBerries', 186, 'blueberries.jpg'),
+(97, 3, 'Get bananas', 187, 'bananas.jpg'),
+(97, 4, 'Get grapes', 188, 'grapes.jpg'),
+(97, 5, 'Get organges', 189, ''),
+(98, 1, 'get some pancake mix because im pretty lazy', 190, 'pancake2.jpg'),
+(98, 2, 'mix the mix with eggs and milk', 191, 'pancake3.jpg'),
+(98, 3, 'Pancake mix should look like this', 192, 'pancake4.jpg'),
+(98, 4, 'Pour pancake mix into a pan and cook until brown', 193, 'pancake5.jpg'),
+(99, 1, 'Get some eggs', 194, 'scrambled5.png'),
+(99, 2, 'Break and scrambled them I guess', 195, 'scrambled3.jpg'),
+(99, 3, 'Scramble some more', 196, 'scrambled4.jpg'),
+(99, 4, 'Eggs should be runny but not too runny, dry eggs make babies cry', 197, 'scrambled1.jpg'),
+(100, 1, 'Dough is good on pizza', 204, 'pizza2.jpg'),
+(100, 2, 'chop tomatoes for the pizza', 205, 'tomatosoup3.jpg'),
+(100, 3, 'puree the tomatoes to make some sauce', 206, 'pizza3.jpg'),
+(100, 4, 'Cheese is supposed to be for pizza', 207, 'pizza4.jpg'),
+(100, 5, 'only topping', 208, 'pizza5.png'),
+(100, 6, 'bake the pizza', 209, 'pizza6.jpg');
 
 -- --------------------------------------------------------
 
@@ -160,21 +129,22 @@ INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `
 
 CREATE TABLE `recipiecategory` (
   `categoryID` int(11) NOT NULL,
-  `categoryName` text NOT NULL
+  `categoryName` text NOT NULL,
+  `etc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recipiecategory`
 --
 
-INSERT INTO `recipiecategory` (`categoryID`, `categoryName`) VALUES
-(1, 'breakfast'),
-(2, 'Lunch'),
-(3, 'Dinner'),
-(4, 'Dessert'),
-(5, 'Snack'),
-(6, 'Soup'),
-(8, 'Bread');
+INSERT INTO `recipiecategory` (`categoryID`, `categoryName`, `etc`) VALUES
+(1, 'Breakfast', 1),
+(2, 'Lunch', 2),
+(3, 'Dinner', 3),
+(4, 'Dessert', 4),
+(5, 'Snack', 5),
+(6, 'Soup', 6),
+(7, 'Bread', 7);
 
 -- --------------------------------------------------------
 
@@ -183,22 +153,38 @@ INSERT INTO `recipiecategory` (`categoryID`, `categoryName`) VALUES
 --
 
 CREATE TABLE `reviews` (
-  `reviewID` int(11) NOT NULL,
   `reviewTest` text NOT NULL,
   `userid` int(11) NOT NULL,
   `recipeid` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
-  `title` text NOT NULL
+  `title` text NOT NULL,
+  `reviewID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reviews`
 --
 
-INSERT INTO `reviews` (`reviewID`, `reviewTest`, `userid`, `recipeid`, `rating`) VALUES
-(1, 'This is cold.', 4, 1, 5),
-(2, 'This is great!', 10, 1, 4),
-(3, 'Super Yummy. I made it of course. Not gonna write a bad review for myself of course.', 8, 1, 1);
+INSERT INTO `reviews` (`reviewTest`, `userid`, `recipeid`, `rating`, `title`, `reviewID`) VALUES
+('I made these eggs so I kinda have a bias, but these are delicious!', 8, 85, 5, 'Great Delicious Eggs', 4),
+('These eggs are actually terrible', 8, 85, 0, 'Actually I changed my mind', 5),
+('Looks pretty good, however, im rating this low so my recipes will be at the top', 8, 86, 1, 'Good soup', 6),
+('Red is right, these eggs are pretty bad, edible, but bad', 10, 85, 1, 'Yeah', 7),
+('This soup is pretty bad, but red is completely ruining this site', 10, 86, 3, 'red is rude', 8),
+('really helped me there buddy', 8, 88, 5, '5/5', 9),
+('DO YOU WANT WAR PHIL I WILL SHOW YOU WAR', 8, 87, 0, 'Rating low for ME', 10),
+('YOUR PIZZA WAS ACTUALLY REALLY BAD, LIKE INEDIBLE, I ACTUALLY CONTRACTED A DISEASE FROM THEM', 8, 85, 5, 'HOW DARE YOU INSULT MY RECIPES PHIL', 11),
+('good icecream', 16, 91, 4, 'delicious ', 12),
+('really stooping to a new low here. You should go get a life', 16, 85, 0, 'Wow red', 13),
+('Reminds me of my childhood', 16, 90, 5, 'Really Nostalgic and Really Good', 14),
+('could be better, my daughter makes better icecream really', 26, 91, 2, 'Eh', 15),
+('no', 26, 88, 0, 'Too soon', 16),
+('You should seriously consider a janitorial position, at least then the rats will enjoy your cooking', 8, 92, 0, 'Pancakes are terrible', 17),
+('good soup there buddy, i like that you can eat it with bread', 31, 93, 4, 'Looks pretty good', 18),
+('Im keeping my eye on you Miles', 32, 94, 3, 'I Guess it could be a snack', 19),
+('Snack Bread amirite', 32, 95, 5, 'Nice Snack', 20),
+('This can be used for a good nutritious breakfast', 33, 97, 5, 'Breakfast yes', 21),
+('For shame mleavitt you besmirch the breakfast name', 33, 94, 0, 'You cant eat this for breakfast', 22);
 
 -- --------------------------------------------------------
 
@@ -208,28 +194,25 @@ INSERT INTO `reviews` (`reviewID`, `reviewTest`, `userid`, `recipeid`, `rating`)
 
 CREATE TABLE `users` (
   `username` text NOT NULL,
-  `password` text NOT NULL,
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
-  `userid` int(11) NOT NULL
+  `userid` int(11) NOT NULL,
+  `Salt` text NOT NULL,
+  `Password` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `firstname`, `lastname`, `userid`) VALUES
-('testaccount', 'test1', 'Aaron', 'Zhang', 4),
-('red', 'red', 'red', 'rederson', 8),
-('phil', 'phil', 'phil', 'phillerson', 10),
-('testaccount4', 'test4', 'Tester', 'Testerson', 11),
-('testaccount5', 'test', 'tester', 'test', 12),
-('mleavitt', 'password', 'Miles', 'Leavitt', 13),
-('helloworld', 'hello', 'Hello', 'World', 14),
-('red2', 'red', 'red', 'rederson', 15),
-('red5', 'red5', 'red', 'redestson', 16),
-('testaccount2', 'test4', 'test', 'testerfather', 23),
-('testaccount3', 'rew', 'test', 'testermother', 24);
+INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Salt`, `Password`) VALUES
+('TheBreadMaster', 'ILuv', 'Bread', 27, '', '76264289b9567e3a7e4a7051f85af248'),
+('testaccount', 'test', 'testerson', 29, '', '098f6bcd4621d373cade4e832627b4f6'),
+('mleavitt', 'Miles', 'Leavitt', 30, '', 'a0f15d09df04d9ad657ce26e371ddf9a'),
+('xXBreadMasterXx', 'bread ', 'breader', 31, '', 'dba7b12a19fe9d49fbb53d65c49bbce6'),
+('SnackMan', 'Snack', 'Man', 32, '', '8119fbbffac2cf76f3fd54e0e15627a1'),
+('BreakTheFast', 'Early', 'Bird', 33, '', '835ef6c0b2999746e9a5bdc11b3e528c'),
+('PizzaPhil', 'Phil', 'Johnson', 34, '', '7cf2db5ec261a0fa27a502d3196a6f60');
 
 --
 -- Indexes for dumped tables
@@ -248,6 +231,18 @@ ALTER TABLE `recipesteps`
   ADD PRIMARY KEY (`idk`);
 
 --
+-- Indexes for table `recipiecategory`
+--
+ALTER TABLE `recipiecategory`
+  ADD PRIMARY KEY (`etc`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`reviewID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -261,17 +256,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `generalrecipes`
 --
 ALTER TABLE `generalrecipes`
-  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT for table `recipesteps`
 --
 ALTER TABLE `recipesteps`
-  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+--
+-- AUTO_INCREMENT for table `recipiecategory`
+--
+ALTER TABLE `recipiecategory`
+  MODIFY `etc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

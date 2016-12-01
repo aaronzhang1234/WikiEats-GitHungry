@@ -39,8 +39,8 @@ session_start();
 				echo "sad :(";
 			}
 			
-			//header('Location: ../Login.php');
-			//exit();
+			header('Location: ../Login.php');
+			exit();
 		?>
 	</body>
 </html>
