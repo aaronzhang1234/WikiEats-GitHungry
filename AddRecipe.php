@@ -55,18 +55,21 @@
 						</div>
 					</div>
 					
-					<div id="steps" class="form-group row">
-					    <label class="numbered col-md-2 control-label">Step 1</label>
-						<textarea class="col-md-5" name="step1"></textarea>
-						<input class="col-md-5" type="file" name="image1"></input>
-						<br>
+					<div class="form-group row">
+						<div id="steps" class="col-md-12">
+							<div class="col-md-12 form-group">
+						    	<label class="numbered col-md-2 control-label">Step 1</label>
+								<textarea class="col-md-5" name="step1"></textarea>
+								<input class="col-md-5" type="file" name="image1"></input>
+							</div>
+						</div>
 
-						<button class="col-md-12" type="button" onclick="more()"> Add new Step</button>
+						<button class="col-md-12 btn btn-info" type="button" onclick="more()"> Add new Step</button>
 					</div>
 
-					<!--<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>-->	
+					<!--<input type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)"></input>-->
 
-					<button type="submit" name="submit" value="submit" onclick="checkAddRecipe(form)">
+					<button class="btn btn-primary" type="submit" name="submit" onclick="checkAddRecipe(form)">Submit</button>
 			</form>
 		</div>
 	</body>
