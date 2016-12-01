@@ -16,3 +16,26 @@ hr
 {
 	padding-bottom: 0.7em;
 }
+
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img 
+{
+	height: auto;
+	width: 100%;
+	margin: auto;
+}
+
+.carousel-inner .carousel-caption
+{
+	position: absolute;
+	top: 20em;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.carousel 
+{
+	height: 30em;
+	overflow: hidden;
+}
