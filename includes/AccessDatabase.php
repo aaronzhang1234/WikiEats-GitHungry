@@ -448,7 +448,7 @@ class DisplayDB
 								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a></small></h2>
 							</div>
 							<div class="col-md-4">
-								<img src="images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 
+								<img src="../images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 
 							</div>
 							<div class="col-md-8">
 								<h4>'.$averageReview.'/5</h4>

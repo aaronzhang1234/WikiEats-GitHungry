@@ -1,4 +1,4 @@
-<?php include 'includes/AccessDatabase.php'; ?>
+<?php include '../includes/AccessDatabase.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,13 +8,13 @@
 		<title>Wiki Eats - Main</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
 	</head>
 
 	<body>
 		<!-- Header -->
-		<?php include 'includes/wikieatsheader.php';?>
+		<?php include '../includes/wikieatsheader.php';?>
 		<?php 
 			// Gets User Info
 			$user = RecipeDB::getUserByID($_GET["userID"]); // User Info

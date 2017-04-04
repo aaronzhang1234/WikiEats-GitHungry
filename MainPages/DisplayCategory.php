@@ -1,4 +1,4 @@
-<?php include 'includes/AccessDatabase.php'; ?>
+<?php include '../includes/AccessDatabase.php'; ?>
 <?php
 	$category = RecipeDB::getCategory($_GET["categoryID"]);
 	$recipes = RecipeDB::getRecipesByCategory($_GET["categoryID"]);
@@ -11,14 +11,14 @@
 		<title>Category: <?php echo $category; ?></title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 
-		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
+		<link rel="stylesheet" type="text/css" href="../includes/wiki-eats.css" >
 	</head>
 
 	<body>
 		<!-- Header -->
-		<?php include 'includes/wikieatsheader.php';?>
+		<?php include '../includes/wikieatsheader.php';?>
 	
 		<!-- Main Body -->
 		<div class="container">

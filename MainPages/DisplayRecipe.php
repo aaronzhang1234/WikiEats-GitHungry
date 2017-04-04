@@ -1,4 +1,4 @@
-<?php include 'includes/AccessDatabase.php'; ?>
+<?php include '../includes/AccessDatabase.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,14 +8,14 @@
 		<title>Showing Recipe</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
-		<script src="javascripts/displayReviewForm.js"></script>
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../includes/wiki-eats.css" >
+		<script src="../javascripts/displayReviewForm.js"></script>
 	</head>
 
 	<body>
 		<!-- Header -->
-		<?php include 'includes/wikieatsheader.php';?>
+		<?php include '../includes/wikieatsheader.php';?>
 		<?php
 			$recipeInfo = RecipeDB::getGeneralRecipe($_GET["recipeID"]);
 			$recipeSteps = RecipeDB::getRecipeSteps($_GET["recipeID"]);
@@ -44,7 +44,7 @@
 		 	</div>
 		 	<div class="row">
 		 		<div class="col-md-6">
-					<img src="images/<?php echo $recipeInfo['imagename']; ?>" alt="tacos" class="img-responsive" /> 
+					<img src="../images/<?php echo $recipeInfo['imagename']; ?>" alt="tacos" class="img-responsive" /> 
 		 		</div>
 		 		<div class="col-md-6">
 					<p><?php echo $recipeInfo['description']; ?></p>
@@ -60,7 +60,7 @@
 					echo		"<h2>Step ".$recipeSteps[$x]['stepnumber'] ."</h2>";
 					echo	"</div>";
 					echo	"<div class='col-md-3 col-md-offset-1'>";
-					echo		"<img src='images/".$recipeSteps[$x]['imagename']."' alt='tacos' class='img-responsive' />"; 
+					echo		"<img src='../images/".$recipeSteps[$x]['imagename']."' alt='tacos' class='img-responsive' />"; 
 					echo	"</div>";
 					echo	"<div class='col-md-5'>";
 					echo		"<p>".$recipeSteps[$x]['stepdescription']."</p>";
@@ -110,7 +110,7 @@
 						
 						<?php
 						$_SESSION['recipeID']=$_GET["recipeID"];
-						include 'includes/ratingsystem.php'; ?>
+						include '../includes/ratingsystem.php'; ?>
 					</div>
 				</div>
 			</div>

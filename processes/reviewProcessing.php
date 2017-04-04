@@ -21,6 +21,6 @@
 			else{
 				echo "sad :(";
 			}
-	header('Location: ../WikiEats.php');
+	header('Location: ../MainPages/WikiEats.php');
 	exit();
 ?>

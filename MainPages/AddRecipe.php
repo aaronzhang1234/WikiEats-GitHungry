@@ -5,16 +5,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Add Recipe</title>
 
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
-		 <script src="javascripts/addStep.js"></script>
-		 <script src="javascripts/checkForms.js"></script>
+		 <script src="../javascripts/addStep.js"></script>
+		 <script src="../javascripts/checkForms.js"></script>
 	</head>
 	
 	<body>
-		<?php include 'includes/wikieatsheader.php' ?>
+		<?php include '../includes/wikieatsheader.php' ?>
 		<div class="container">
-			<form class="form-horizontal col-md-8" method="POST"  action="processes/PostProcess.php" enctype="multipart/form-data">
+			<form class="form-horizontal col-md-8" method="POST"  action="../processes/PostProcess.php" enctype="multipart/form-data">
 				
 					<div class="form-group row">
 						<label class="col-md-2 control-label" for="recipiename">Title</label>

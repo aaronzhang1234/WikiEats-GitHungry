@@ -5,11 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Create Account</title>
 
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
-		 <script src="javascripts/addStep.js"   ></script>
-		 <script src="javascripts/checkForms.js"></script>
-		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
+		 <script src="../javascripts/addStep.js"   ></script>
+		 <script src="../javascripts/checkForms.js"></script>
+		<link rel="stylesheet" type="text/css" href="../includes/wiki-eats.css" >
 	</head>
 	
 	<body>
@@ -20,7 +20,7 @@
 				<h1>Create New Account</h1>
 			</div>
 
-			<form class="form-inline col-md-8" method="POST" action="processes/CreateAccountProcess.php">
+			<form class="form-inline col-md-8" method="POST" action="../processes/CreateAccountProcess.php">
 				<div class="form-group col-md-12">
 					<label class="control-label sr-only" for="userName">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>

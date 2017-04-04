@@ -100,7 +100,7 @@ session_start();
 			}	
 		?>
 		<?php
-			header('Location: ../WikiEats.php');
+			header('Location: ../MainPages/WikiEats.php');
 			exit();
 		?>
 	

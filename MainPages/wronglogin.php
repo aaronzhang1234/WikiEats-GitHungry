@@ -9,13 +9,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Login</title>
 
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
-		 <script src="javascripts/addStep.js"></script>
+		 <script src="../javascripts/addStep.js"></script>
 	</head>
 	
 	<body>
-		<?php include 'includes/wikieatsheader.php' ?>
+		<?php include '../includes/wikieatsheader.php' ?>
 
 		<div class="container">
 			<div class="row">
@@ -23,7 +23,7 @@
 				<h2>You failed the last time, Try again</h2>
 			</div>
 
-			<form class="form-horizontal col-md-8" method="POST" action="processes/ProcessLogin.php">
+			<form class="form-horizontal col-md-8" method="POST" action="../processes/ProcessLogin.php">
 				<div class="form-group col-md-12">
 					<label class="sr-only" for="username">Username</label>
 					<input class="form-control" type="text" name="username" placeholder="Username"/>

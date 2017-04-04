@@ -49,7 +49,7 @@
 		return $userid;
 	}
 
-	header('Location: ../WikiEats.php');
+	header('Location: ../MainPages/WikiEats.php');
 	exit();
 ?>
 

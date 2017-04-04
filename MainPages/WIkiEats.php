@@ -3,7 +3,7 @@ $username="root";$password="";$database="recipes";
 $mysqli= new mysqli("localhost",$username,$password);
 $mysqli-> select_db($database);
 ?>
-<?php include 'includes/AccessDatabase.php'; ?>
+<?php include '../includes/AccessDatabase.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +13,8 @@ $mysqli-> select_db($database);
 		<title>Wiki Eats - Main</title>
 
 		<!-- Bootstrap core CSS -->
-		<link href="bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
+		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../includes/wiki-eats.css" >
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@ $mysqli-> select_db($database);
 
 	<body>
 		<!-- Header -->
-		<?php include 'includes/wikieatsheader.php';?>
+		<?php include '../includes/wikieatsheader.php';?>
 		<?php
 
 			// Gets category to display based on the time
@@ -52,7 +52,7 @@ $mysqli-> select_db($database);
 			{
 				echo '
 			      <div class="item'.$class.'">
-			        <img src="images/'.$recipe["imagename"].'" alt="'.$recipe["Title"].'" width="460" height="345">
+			        <img src="../images/'.$recipe["imagename"].'" alt="'.$recipe["Title"].'" width="460" height="345">
 			        <div class="carousel-caption">
 			          <h3>'.$recipe["Title"].'</h3>
 			          <p>'.$recipe["description"].'</p>
