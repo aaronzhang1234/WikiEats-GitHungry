@@ -50,9 +50,9 @@ $mysqli-> select_db($database);
 
 			function printCarouselRecipe($recipe, $class = "")
 			{
-				echo '>
+				echo '
 			      <div class="item'.$class.'">
-			        <img src="images/'.$recipe["imagename"].'" alt="chefHat" width="460" height="345">
+			        <img src="images/'.$recipe["imagename"].'" alt="'.$recipe["Title"].'" width="460" height="345">
 			        <div class="carousel-caption">
 			          <h3>'.$recipe["Title"].'</h3>
 			          <p>'.$recipe["description"].'</p>
@@ -102,7 +102,7 @@ $mysqli-> select_db($database);
 				<div class="carousel-inner" role="listbox">
 			      <?php 
 			      	printCarouselRecipe($newRecipes[0], " active");
-			      	printCarouselRecipe($categoryRecipes[0]); 
+			      	printCarouselRecipe($categoryRecipes[0]);
 			      	printCarouselRecipe($categoryRecipes[1]); 
 			      	printCarouselRecipe($topRecipes[1]); 
 			      	?>
@@ -211,8 +211,8 @@ $mysqli-> select_db($database);
 	   <!--<div id="copyrightRow">
 	      <div class="container">
 	         <div class="row">
-	           <p class="text-muted">All images are copyright to their owners.
-	           <span class="pull-right">&copy; 2016 Copyright</span></p>
+	           <p class="text-muted">All images are copyright to their owners. WikiEats-GitHungry is a property of Aaron Zhang and Apolinar Ortega.
+	           <span class="pull-right">&copy; 2016-2017 Copyright</span></p>
 	         </div>
 	      </div>
 	   </div>-->
