@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Dec 01, 2016 at 05:02 PM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `recipes`
 --
@@ -30,6 +12,17 @@ CREATE TABLE `breakfastrecipes` (
   `recipeid` int(11) NOT NULL,
   `stepnumber` int(11) NOT NULL,
   `steptext` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `following`
+--
+
+CREATE TABLE `following` (
+  `FollowerID` int(11) NOT NULL,
+  `FollowingID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -62,7 +55,39 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (33, 'Scrambled eggs, are good for your heart and a good breakfast', 0, 1, 'Scrambled Eggs', 99, 'scrambled2.jpg'),
 (34, 'Pizza is good for you', 0, 2, 'Pizza', 100, 'pizza1.png'),
 (31, 'Old Time Classic the whole family will love', 0, 7, 'Sliced Bread', 101, 'slicedbread.png'),
-(31, 'Purple bread, because why not', 0, 7, 'Purple Bread', 103, 'purplebread.jpg');
+(31, 'Purple bread, because why not', 0, 7, 'Purple Bread', 103, 'purplebread.jpg'),
+(31, 'Mac and Cheese an old favorite', 0, 2, 'Mac And Cheese', 115, 'macandcheese.jpg'),
+(31, 'Delicious RibEye', 0, 3, 'Steak', 116, 'steak.jpg'),
+(31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
+(31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg'),
+(37, 'test', 0, 6, 'wew', 119, '4c7.jpg'),
+(38, 'test', 0, 7, 'gafdsfdsafdsa', 120, '58cc3702c36188c34a8b45c2.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `GroupID` int(11) NOT NULL,
+  `GroupName` text NOT NULL,
+  `GroupDescription` text NOT NULL,
+  `PinnedDescription` text NOT NULL,
+  `LeaderID` int(11) NOT NULL,
+  `GroupPicture` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pinnedrecipes`
+--
+
+CREATE TABLE `pinnedrecipes` (
+  `GroupID` int(11) NOT NULL,
+  `RecipeID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -128,7 +153,22 @@ INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `
 (103, 1, 'Get yeast', 222, 'purplebread2.jpg'),
 (103, 2, 'put yeast in hot water with sugar', 223, 'purplebread3.jpg'),
 (103, 3, 'add purple dye', 224, 'purplebread1.jpg'),
-(103, 4, 'bake bread', 225, 'purplebread4.jpg');
+(103, 4, 'bake bread', 225, 'purplebread4.jpg'),
+(114, 1, 'Test', 248, 'starwars.jpg'),
+(114, 2, 'test2', 249, 'Capture.PNG'),
+(115, 1, 'Mac ', 250, 'macarooni.jpg'),
+(115, 2, 'add cheese', 251, 'cheese.jpg'),
+(116, 1, 'Aquire Cow', 252, 'cow.jpg'),
+(116, 2, 'Cook cow', 253, 'cooking meat.jpg'),
+(117, 1, 'get shells', 254, 'PKU-Image_Tortillas.jpeg'),
+(117, 2, 'put ingredients in shells', 255, 'taco_ingredients.png'),
+(118, 1, 'dough', 256, 'doughnuts1.jpg'),
+(118, 2, 'icing', 257, 'doughnuts2.jpg'),
+(119, 1, 'test', 258, 'BRICS_heads_of_state_and_government_hold_hands_ahead_of_the_2014_G-20_summit_in_Brisbane_Australia_Agencia_Brasil.jpg'),
+(119, 2, 'test2', 259, '1384656661_id-10091691.jpg'),
+(119, 3, 'test3', 260, 'M4ZScZa.png'),
+(120, 1, 't', 261, ''),
+(120, 1, 'test', 262, '');
 
 -- --------------------------------------------------------
 
@@ -201,7 +241,8 @@ INSERT INTO `reviews` (`reviewTest`, `userid`, `recipeid`, `rating`, `title`, `r
 ('', 35, 100, 0, 'DownBump', 27),
 ('', 35, 99, 0, 'Wow, these eggs are terrible', 28),
 ('My mom was a horrible cook though', 35, 95, 2, 'Just like mom used to make', 29),
-('', 31, 98, 0, 'no', 30);
+('', 31, 98, 0, 'no', 30),
+('', 31, 97, 0, 'Terrible', 31);
 
 -- --------------------------------------------------------
 
@@ -214,24 +255,26 @@ CREATE TABLE `users` (
   `firstname` text NOT NULL,
   `lastname` text NOT NULL,
   `userid` int(11) NOT NULL,
-  `Salt` text NOT NULL,
-  `Password` text NOT NULL
+  `Password` text NOT NULL,
+  `LastLoggedIn` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Salt`, `Password`) VALUES
-('TheBreadMaster', 'ILuv', 'Bread', 27, '', '76264289b9567e3a7e4a7051f85af248'),
-('testaccount', 'test', 'testerson', 29, '', '098f6bcd4621d373cade4e832627b4f6'),
-('mleavitt', 'Miles', 'Leavitt', 30, '', 'a0f15d09df04d9ad657ce26e371ddf9a'),
-('xXBreadMasterXx', 'bread ', 'breader', 31, '', 'dba7b12a19fe9d49fbb53d65c49bbce6'),
-('SnackMan', 'Snack', 'Man', 32, '', '8119fbbffac2cf76f3fd54e0e15627a1'),
-('BreakTheFast', 'Early', 'Bird', 33, '', '835ef6c0b2999746e9a5bdc11b3e528c'),
-('PizzaPhil', 'Phil', 'Johnson', 34, '', '7cf2db5ec261a0fa27a502d3196a6f60'),
-('Airy1', 'Aaron', 'Zhang', 35, '', '0b0c1647f9c38d9e0a510108fbad18c1'),
-('NotWorkingForHamburgerHelpter', 'Ham', 'Burger', 36, '', '92d7a66e8f72b3eee281e58401285103');
+INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Password`, `LastLoggedIn`) VALUES
+('TheBreadMaster', 'ILuv', 'Bread', 27, '76264289b9567e3a7e4a7051f85af248', '0000-00-00'),
+('testaccount', 'test', 'testerson', 29, '098f6bcd4621d373cade4e832627b4f6', '0000-00-00'),
+('mleavitt', 'Miles', 'Leavitt', 30, 'a0f15d09df04d9ad657ce26e371ddf9a', '0000-00-00'),
+('xXBreadMasterXx', 'bread ', 'breader', 31, 'dba7b12a19fe9d49fbb53d65c49bbce6', '0000-00-00'),
+('SnackMan', 'Snack', 'Man', 32, '8119fbbffac2cf76f3fd54e0e15627a1', '0000-00-00'),
+('BreakTheFast', 'Early', 'Bird', 33, '835ef6c0b2999746e9a5bdc11b3e528c', '0000-00-00'),
+('PizzaPhil', 'Phil', 'Johnson', 34, '7cf2db5ec261a0fa27a502d3196a6f60', '0000-00-00'),
+('Airy1', 'Aaron', 'Zhang', 35, '0b0c1647f9c38d9e0a510108fbad18c1', '0000-00-00'),
+('NotWorkingForHamburgerHelpter', 'Ham', 'Burger', 36, '92d7a66e8f72b3eee281e58401285103', '0000-00-00'),
+('NewLIfe', 'New', 'Life', 37, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
+('NewLife2', 'Ne', 'wLife', 38, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -242,6 +285,12 @@ INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Salt`, `Pas
 --
 ALTER TABLE `generalrecipes`
   ADD PRIMARY KEY (`recipeid`);
+
+--
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`GroupID`);
 
 --
 -- Indexes for table `recipesteps`
@@ -275,12 +324,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `generalrecipes`
 --
 ALTER TABLE `generalrecipes`
-  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `recipesteps`
 --
 ALTER TABLE `recipesteps`
-  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 --
 -- AUTO_INCREMENT for table `recipiecategory`
 --
@@ -290,12 +344,12 @@ ALTER TABLE `recipiecategory`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
