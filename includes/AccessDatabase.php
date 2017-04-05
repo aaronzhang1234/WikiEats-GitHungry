@@ -389,6 +389,49 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	public static function getGroup($groupID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT * FROM groups WHERE GroupID = $groupID ";
+
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$row = $result->fetch_assoc();
+			return $row;
+		}
+		else 
+			return NULL;
+	}
+	public static function getTopGroups($amount)
+	{
+	 	// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT GroupID,COUNT(UserID) FROM groupmembers GROUP BY GroupID LIMIT $amount";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 
 	// Gets Related Recipes: recipes by the user and of the same category
 	public static function getRelatedRecipes($userID, $categoryID, $recipeID, $amount)

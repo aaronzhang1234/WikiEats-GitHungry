@@ -13,7 +13,7 @@
 	</head>
 	
 	<body>
-		<?php include 'includes/wikieatsheader.php' ?>
+		<?php include '../includes/wikieatsheader.php' ?>
 
 		<div class="container">
 			<div class="row">
