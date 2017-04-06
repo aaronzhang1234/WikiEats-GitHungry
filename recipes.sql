@@ -61,7 +61,12 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
 (31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg'),
 (37, 'test', 0, 6, 'wew', 119, '4c7.jpg'),
-(38, 'test', 0, 7, 'gafdsfdsafdsa', 120, '58cc3702c36188c34a8b45c2.jpg');
+(38, 'test', 0, 7, 'gafdsfdsafdsa', 120, '58cc3702c36188c34a8b45c2.jpg'),
+(38, 'testfdsafs', 0, 2, 'test', 121, 'badguymaybe.png'),
+(38, 'testfdsafs', 0, 2, 'test', 122, 'badguymaybe.png'),
+(38, 'dsfds', 0, 2, 'F', 123, 'IMG_20170127_185644.png'),
+(38, '', 0, 0, '', 124, ''),
+(38, '', 0, 0, '', 125, '');
 
 -- --------------------------------------------------------
 
@@ -77,6 +82,14 @@ CREATE TABLE `groups` (
   `LeaderID` int(11) NOT NULL,
   `GroupPicture` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groups`
+--
+
+INSERT INTO `groups` (`GroupID`, `GroupName`, `GroupDescription`, `PinnedDescription`, `LeaderID`, `GroupPicture`) VALUES
+(4, 'dsafdsafdfdsa', 'fdsafdsfdsafas', '', 38, 'RD0WPUR.jpg'),
+(5, 'Soups', 'Soup', '', 38, 'Cameron,_Obama,_Merkel,_Hollande,_Renzi_in_2016.jpeg');
 
 -- --------------------------------------------------------
 
@@ -168,7 +181,10 @@ INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `
 (119, 2, 'test2', 259, '1384656661_id-10091691.jpg'),
 (119, 3, 'test3', 260, 'M4ZScZa.png'),
 (120, 1, 't', 261, ''),
-(120, 1, 'test', 262, '');
+(120, 1, 'test', 262, ''),
+(121, 1, 'dsafd', 263, 'larrykuk.jpg'),
+(122, 1, 'dsafd', 264, 'larrykuk.jpg'),
+(123, 1, 'asfdd', 265, '16831650_1436283543062098_59458076_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -324,17 +340,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `generalrecipes`
 --
 ALTER TABLE `generalrecipes`
-  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `recipesteps`
 --
 ALTER TABLE `recipesteps`
-  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
 --
 -- AUTO_INCREMENT for table `recipiecategory`
 --
