@@ -1,7 +1,5 @@
 <?php include '../includes/AccessDatabase.php'; ?>
-<?php
-	$_SESSION["follow"]=$_GET["userID"];
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -18,6 +16,7 @@
 		<!-- Header -->
 		<?php include '../includes/wikieatsheader.php';?>
 		<?php 
+			$_SESSION["follow"] =  $_GET["userID"];
 			// Gets User Info
 			$user = RecipeDB::getUserByID($_GET["userID"]); // User Info
 			$recipes = RecipeDB::getRecipesByUser($user["userid"]);
@@ -41,14 +40,31 @@
 		?>
 	
 		<!-- Main Body -->
+		<?php
+			$following = RecipeDB::isFollowing($_SESSION["userID"],$_GET["userID"]);
+			echo $following;
+			if($following)
+				echo "You are following";
+			else
+				echo "You are not following";
+		?>
 		<div class="container">
 			<div class="row">
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
 					 <h1>Account Summary For: <?php echo $user["username"]?></h1>
-					 <form method="POST" action="../processes/Follow.php">
-					 	<input  type="submit" value="follow this guy">
-					</form>
+					 <?php
+					 	if($following){
+							 echo '<form method="POST" action="../processes/UnFollow.php">
+					 					<input  type="submit" value="unfollow this guy">
+								   </form>';
+						 }
+						 else{
+							  echo '<form method="POST" action="../processes/Follow.php">
+					 					<input  type="submit" value="follow this guy">
+								   </form>';
+						 }
+					 ?>
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
 		 		</div>
 

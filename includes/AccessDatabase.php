@@ -432,6 +432,49 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	
+	public static function isFollowing($userID,$otherUserID)
+	{
+		
+	 	// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT * FROM following WHERE FollowerID = $userID AND FollowingID= $otherUserID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+		if($result->num_rows===0) // If result has been found
+			return FALSE;
+		else 
+			return TRUE;
+	}
+
+	public static function getFollowing($userID)
+	{
+	 	// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT FollowingID FROM following WHERE FollowerID=$userID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 
 	// Gets Related Recipes: recipes by the user and of the same category
 	public static function getRelatedRecipes($userID, $categoryID, $recipeID, $amount)

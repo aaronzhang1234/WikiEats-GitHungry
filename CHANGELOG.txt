@@ -1,3 +1,8 @@
 Added Groups and a way to display them on the social tab.
 Started the rudimentary way of following people
 Added functions getGroup, getTopGroups, and printGroups to the AccessDatabase file.
+
+4/6/2017 4:33pm
+
+Added better following group, now can follow users and display who they're following on social tab.
+In order to follow users, go to their page and follow them, if you're following them you can unfollow them just as easily.

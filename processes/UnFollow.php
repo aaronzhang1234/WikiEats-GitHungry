@@ -19,10 +19,9 @@ if($connection->connect_error){
             $followerID=intval($_SESSION["userID"]);
             $followingID= intval($_SESSION["follow"]);
             if(isset($_SESSION["follow"]) && isset($_SESSION["userID"])){
-                    $sql ="INSERT INTO following (FollowerID,FollowingID)
-                    VALUES ('".$followerID."','".$followingID."')";
+                    $sql ="DELETE FROM following WHERE FollowerID=$followerID AND FollowingID=$followingID";
                     if($connection->query($sql)==TRUE)
-                        echo "added!";
+                        echo "deleted!";
                     else
                         echo "sad!";
             }

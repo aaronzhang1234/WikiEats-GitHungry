@@ -38,6 +38,23 @@
                         ?>
                     </div>
                 </div>
+                <?php
+                $users=RecipeDB::getFollowing($_SESSION["userID"]);
+                ?>
+
+                <div class="panel-group panel-success col-md-6">
+				<h1 class="panel-heading">Following <small>(<?php echo count($users); ?>)</small></h1>
+				
+				<div class="panel-body">
+					<?php  
+						// Prints each user found
+						foreach($users as $user)
+                            $actualuser= RecipeDB::getUserByID($user["FollowingID"]);
+							DisplayDB::printUser($actualuser);
+					?>
+
+				</div>
+			</div>
             </div>
         </div>
         
