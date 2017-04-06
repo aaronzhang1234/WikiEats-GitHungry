@@ -59,14 +59,7 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (31, 'Mac and Cheese an old favorite', 0, 2, 'Mac And Cheese', 115, 'macandcheese.jpg'),
 (31, 'Delicious RibEye', 0, 3, 'Steak', 116, 'steak.jpg'),
 (31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
-(31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg'),
-(37, 'test', 0, 6, 'wew', 119, '4c7.jpg'),
-(38, 'test', 0, 7, 'gafdsfdsafdsa', 120, '58cc3702c36188c34a8b45c2.jpg'),
-(38, 'testfdsafs', 0, 2, 'test', 121, 'badguymaybe.png'),
-(38, 'testfdsafs', 0, 2, 'test', 122, 'badguymaybe.png'),
-(38, 'dsfds', 0, 2, 'F', 123, 'IMG_20170127_185644.png'),
-(38, '', 0, 0, '', 124, ''),
-(38, '', 0, 0, '', 125, '');
+(31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg');
 
 -- --------------------------------------------------------
 
@@ -88,8 +81,12 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`GroupID`, `GroupName`, `GroupDescription`, `PinnedDescription`, `LeaderID`, `GroupPicture`) VALUES
-(4, 'dsafdsafdfdsa', 'fdsafdsfdsafas', '', 38, 'RD0WPUR.jpg'),
-(5, 'Soups', 'Soup', '', 38, 'Cameron,_Obama,_Merkel,_Hollande,_Renzi_in_2016.jpeg');
+(7, 'The Group to Start All Groups', 'Hopefully the first group works', '', 38, '220px-Red_Snapper.jpg'),
+(8, 'Second Group?', 'Second Group', '', 38, 'eyelashes.jpg'),
+(9, 'Third Group', 'Third Group', '', 38, '16251454_10206839814428928_1907262116_o.jpg'),
+(10, 'Fourth Group', 'Fourth Group', '', 38, 'Delete-Files-400x400.jpg'),
+(11, 'Fifth Group', 'Fifth Group', '', 38, 'a0f25e84dbab4a1ba15460eea4f71d39.jpg'),
+(12, 'SixthGroup', 'Should not be showing up', '', 38, 'giveth.png');
 
 -- --------------------------------------------------------
 
@@ -345,7 +342,7 @@ ALTER TABLE `generalrecipes`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `recipesteps`
 --
