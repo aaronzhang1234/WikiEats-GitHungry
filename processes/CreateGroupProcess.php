@@ -52,4 +52,8 @@ session_start();
             
 
         ?>
+        <?php
+            header('Location: ../MainPages/Social.php');
+            exit();
+        ?>
     </body>

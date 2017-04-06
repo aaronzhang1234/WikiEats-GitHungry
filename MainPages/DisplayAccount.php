@@ -1,5 +1,7 @@
 <?php include '../includes/AccessDatabase.php'; ?>
-
+<?php
+	$_SESSION["follow"]=$_GET["userID"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -44,6 +46,9 @@
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
 					 <h1>Account Summary For: <?php echo $user["username"]?></h1>
+					 <form method="POST" action="../processes/Follow.php">
+					 	<input  type="submit" value="follow this guy">
+					</form>
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
 		 		</div>
 

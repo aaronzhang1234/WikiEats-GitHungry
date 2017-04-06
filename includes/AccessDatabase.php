@@ -417,7 +417,7 @@ class RecipeDB
 		if($connection->connect_error)
 			die("Error: ".$connection->connect_error);
 		
-		$sql = "SELECT GroupID,COUNT(UserID) FROM groupmembers GROUP BY GroupID LIMIT $amount";
+		$sql = "SELECT GroupID,COUNT(UserID) FROM groupmembers GROUP BY GroupID ORDER BY COUNT(UserID) DESC LIMIT $amount";
 
 		// Performs query and stores values
 		$result = $connection->query($sql); // Does query
@@ -517,5 +517,24 @@ class DisplayDB
 						</div>
 					</div>
 					<hr/>';
+	}
+	public static function printGroups($group)
+	{
+		$name = $group["GroupName"];
+		$desc = $group["GroupDescription"];
+		$imageFileName = ($group["GroupPicture"] != "")? $group["GroupPicture"]: "chef_hat.png";
+		echo '
+			<div class="col-md-12 panel">
+				<div class="col-md-2">
+					<img src="../images/grouppics/'.$imageFileName.'" HEIGHT="250" WIDTH="250" alt="'.$imageFileName.'" class="img-thumbnail" /> 
+				</div>
+				<div class="col-md-10">
+					<h4>'.$name.'</h4>
+				</div>
+				<div class ="col-md-12">
+					<p>'.$desc.'</p>
+				</div>
+			</div>
+			<hr/>';
 	}
 }

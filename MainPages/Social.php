@@ -23,18 +23,22 @@
     </head>
     <body>
         <?php include '../includes/wikieatsheader.php'; ?>
-        <a href="CreateGroup.php">Create Group</a>
-        <?php 
-            $topGroups = RecipeDB::getTopGroups(5);
-            if($topGroups==NULL){
-                echo "meme";
-            }
-            foreach($topGroups as $group){
-              echo implode("?",$group);
-              echo $group['0'];
-              
-              
-            }
-        ?>
+        <div class="container">
+            <div class= "row">
+                <div class ="panel-group panel-success col-md-12">
+                    <h1 class ="col-md-12 panel"> GROUPS </h1>
+                    <a href="CreateGroup.php">Create Group</a>
+                    <div class="panel-body">
+                        <?php 
+                            $topGroups = RecipeDB::getTopGroups(20);
+                            foreach($topGroups as $group){
+                                $groupe=RecipeDB::getGroup($group['GroupID']);  
+                                DisplayDB::printGroups($groupe);
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
         
     </body>

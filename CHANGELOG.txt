@@ -1,0 +1,3 @@
+Added Groups and a way to display them on the social tab.
+Started the rudimentary way of following people
+Added functions getGroup, getTopGroups, and printGroups to the AccessDatabase file.
