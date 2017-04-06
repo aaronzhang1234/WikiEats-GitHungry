@@ -1,3 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 06, 2017 at 08:46 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Database: `recipes`
 --
@@ -60,6 +78,31 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (31, 'Delicious RibEye', 0, 3, 'Steak', 116, 'steak.jpg'),
 (31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
 (31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groupmembers`
+--
+
+CREATE TABLE `groupmembers` (
+  `UserID` int(11) NOT NULL,
+  `GroupID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `groupmembers`
+--
+
+INSERT INTO `groupmembers` (`UserID`, `GroupID`) VALUES
+(1, 10),
+(1, 12),
+(38, 7),
+(38, 8),
+(38, 9),
+(38, 10),
+(38, 11),
+(38, 12);
 
 -- --------------------------------------------------------
 
@@ -298,6 +341,12 @@ INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Password`, 
 --
 ALTER TABLE `generalrecipes`
   ADD PRIMARY KEY (`recipeid`);
+
+--
+-- Indexes for table `groupmembers`
+--
+ALTER TABLE `groupmembers`
+  ADD PRIMARY KEY (`UserID`,`GroupID`);
 
 --
 -- Indexes for table `groups`
