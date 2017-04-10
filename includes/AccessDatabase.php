@@ -433,6 +433,49 @@ class RecipeDB
 			return NULL;
 	}
 	
+	public static function leadsGroups($userID)
+	{
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT * FROM groups WHERE LeaderID = $userID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result->num_rows===0){
+			return NULL;
+		}
+		else
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		
+	}
+
+	public static function isPinned($groupID,$recipeID)
+	{
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT * FROM pinnedrecipes WHERE RecipeID = $recipeID AND GroupID=$groupID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result->num_rows===0)
+			return FALSE;
+		else
+			return TRUE;
+		
+	}
 	public static function isFollowing($userID,$otherUserID)
 	{
 		
@@ -460,7 +503,7 @@ class RecipeDB
 		if($connection->connect_error)
 			die("Error: ".$connection->connect_error);
 		
-		$sql = "SELECT FollowingID FROM following WHERE FollowerID=$userID";
+		$sql = "SELECT FollowingID FROM following WHERE FollowerID=$userID";  
 
 		// Performs query and stores values
 		$result = $connection->query($sql); // Does query

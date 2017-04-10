@@ -6,3 +6,7 @@ Added functions getGroup, getTopGroups, and printGroups to the AccessDatabase fi
 
 Added better following group, now can follow users and display who they're following on social tab.
 In order to follow users, go to their page and follow them, if you're following them you can unfollow them just as easily.
+
+4/10/2017
+
+Group leaders can now "pin" recipes.
