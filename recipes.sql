@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Apr 06, 2017 at 08:46 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `recipes`
 --
@@ -42,6 +24,16 @@ CREATE TABLE `following` (
   `FollowerID` int(11) NOT NULL,
   `FollowingID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`FollowerID`, `FollowingID`) VALUES
+(37, 31),
+(37, 38),
+(38, 29),
+(38, 31);
 
 -- --------------------------------------------------------
 
@@ -77,7 +69,11 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (31, 'Mac and Cheese an old favorite', 0, 2, 'Mac And Cheese', 115, 'macandcheese.jpg'),
 (31, 'Delicious RibEye', 0, 3, 'Steak', 116, 'steak.jpg'),
 (31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
-(31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg');
+(31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg'),
+(38, 'Chocolate is good', 0, 4, 'Chocolate', 119, 'I Users dougw_000 Pictures VLC Output - vlcsnap-00080.jpg'),
+(38, 'Whelp', 0, 4, 'test', 121, '7rmzdBs.png'),
+(37, 'test', 0, 6, 'test1', 122, 'INBvStO.png'),
+(37, 'life', 0, 3, 'wew', 123, '14632635_798835136924882_719594356_o.png');
 
 -- --------------------------------------------------------
 
@@ -95,8 +91,7 @@ CREATE TABLE `groupmembers` (
 --
 
 INSERT INTO `groupmembers` (`UserID`, `GroupID`) VALUES
-(1, 10),
-(1, 12),
+(37, 7),
 (38, 7),
 (38, 8),
 (38, 9),
@@ -141,6 +136,15 @@ CREATE TABLE `pinnedrecipes` (
   `GroupID` int(11) NOT NULL,
   `RecipeID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pinnedrecipes`
+--
+
+INSERT INTO `pinnedrecipes` (`GroupID`, `RecipeID`) VALUES
+(10, 97),
+(12, 118),
+(9, 121);
 
 -- --------------------------------------------------------
 
@@ -220,11 +224,9 @@ INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `
 (119, 1, 'test', 258, 'BRICS_heads_of_state_and_government_hold_hands_ahead_of_the_2014_G-20_summit_in_Brisbane_Australia_Agencia_Brasil.jpg'),
 (119, 2, 'test2', 259, '1384656661_id-10091691.jpg'),
 (119, 3, 'test3', 260, 'M4ZScZa.png'),
-(120, 1, 't', 261, ''),
-(120, 1, 'test', 262, ''),
-(121, 1, 'dsafd', 263, 'larrykuk.jpg'),
-(122, 1, 'dsafd', 264, 'larrykuk.jpg'),
-(123, 1, 'asfdd', 265, '16831650_1436283543062098_59458076_n.jpg');
+(121, 1, 'fdsafdsfa', 268, 'EN42UKT.jpg'),
+(122, 1, 'soup', 269, 'XFsPdIj04_ALnm-7LlKRg81JNQMlpH4svnKfRzni05w.jpg'),
+(123, 1, 'fdsfdsa', 270, 'hj50euO.jpg');
 
 -- --------------------------------------------------------
 
@@ -330,11 +332,18 @@ INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Password`, 
 ('Airy1', 'Aaron', 'Zhang', 35, '0b0c1647f9c38d9e0a510108fbad18c1', '0000-00-00'),
 ('NotWorkingForHamburgerHelpter', 'Ham', 'Burger', 36, '92d7a66e8f72b3eee281e58401285103', '0000-00-00'),
 ('NewLIfe', 'New', 'Life', 37, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
-('NewLife2', 'Ne', 'wLife', 38, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00');
+('NewLife2', 'Ne', 'wLife', 38, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
+('newlife3', 'new', 'life', 39, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `following`
+--
+ALTER TABLE `following`
+  ADD PRIMARY KEY (`FollowerID`,`FollowingID`);
 
 --
 -- Indexes for table `generalrecipes`
@@ -353,6 +362,12 @@ ALTER TABLE `groupmembers`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`GroupID`);
+
+--
+-- Indexes for table `pinnedrecipes`
+--
+ALTER TABLE `pinnedrecipes`
+  ADD PRIMARY KEY (`RecipeID`,`GroupID`);
 
 --
 -- Indexes for table `recipesteps`
@@ -386,7 +401,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `generalrecipes`
 --
 ALTER TABLE `generalrecipes`
-  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -396,7 +411,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `recipesteps`
 --
 ALTER TABLE `recipesteps`
-  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=266;
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 --
 -- AUTO_INCREMENT for table `recipiecategory`
 --
@@ -411,7 +426,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
