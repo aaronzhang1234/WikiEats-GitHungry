@@ -40,16 +40,25 @@
 		?>
 	
 		<!-- Main Body: Displays Recipes -->
+
+		<!-- Title -->
 		<div class="container">
+		
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php echo $recipeInfo['Title']; ?> <small>(<a href="DisplayCategory.php?categoryID=<?php echo $recipeInfo['category']; ?>"><?php echo $category; ?></a>) Made by <a href="DisplayAccount.php?userID=<?php echo $recipeInfo['userid']; ?>"><?php echo $user['username']; ?></a></small></h1>
+					<h1><?php echo $recipeInfo['Title']; ?> <small>(<a href="DisplayCategory.php?categoryID=<?php echo $recipeInfo['category']; ?>"><?php echo $category; ?></a>) Made by <a href="DisplayAccount.php?userID=<?php echo $recipeInfo['userid']; ?>"><?php echo $user['username']; ?></a></small></h1>	
+		 		</div>
+		 	</div>
+		 <!-- Add to group form -->
+		 	<div class="row">
+				<div class="col-md-12">
 					<?php
 						$_SESSION['recipeID']=$_GET["recipeID"];
 						if(isset($_SESSION["userID"]))
 						{
-							if($leadsGroups){
-								echo '<form method="POST" action="../processes/pinRecipe.php">
+							if($leadsGroups && !(count($leadsGroups)==1 && RecipeDB::isPinned($leadsGroups[0]["GroupID"],$_GET["recipeID"])))
+							{
+								echo '<form class="form-horizontal col-md-8" method="POST" action="../processes/pinRecipe.php">
 										<select name="pin" id="pin">';
 										foreach($leadsGroups as $group){
 											$isPinned = RecipeDB::isPinned($group["GroupID"],$_GET["recipeID"]);
@@ -57,11 +66,12 @@
 												echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
 										}
 								echo '  </select>
-										<input  type="submit" value="Pin this recipe to this group">
-									</form>';									
+										<button class="btn-info" type="submit"> Pin recipe to group</button>
+									</form>';
 							}
 						}
 					?>
+
 		 		</div>
 		 	</div>
 		 	<div class="row">

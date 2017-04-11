@@ -27,8 +27,8 @@
 						echo '
 					<li><a href="addRecipe.php">Submit Recipe</a></li>
 					<li><a href="DisplayAccount.php?userID='.$_SESSION["userID"].'">Account</a></li>
-					<li><a href="Logout.php">Logout</a></li>;
-					<li><a href="Social.php">Social</a></li>';
+					<li><a href="Social.php">Social</a></li>
+					<li><a href="Logout.php">Logout</a></li>';
 					else
 						echo '
 					<li><a href="CreateAccount.php">Create Account</a></li>

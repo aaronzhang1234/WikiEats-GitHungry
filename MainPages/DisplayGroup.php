@@ -29,14 +29,14 @@
 				if(isset($_SESSION["userID"])){
 					$inGroup = RecipeDB::isInGroup($_GET["groupID"],$_SESSION["userID"]);
 					if($inGroup){
-						echo '<form method="POST" action="../processes/LeaveGroup.php">
-												<input  type="submit" value="Leave Group">
-										</form>';
+						echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/LeaveGroup.php">
+									<button class="btn-danger" type="submit">Leave Group</button>
+								</form>';
 					}
 					else{
-						echo '<form method="POST" action="../processes/JoinGroup.php">
-												<input  type="submit" value="Join Group">
-										</form>';
+						echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/JoinGroup.php">
+								<button class="btn-success" type="submit">Join Group</button>
+								</form>';
 					}
 				}
 			?>
@@ -64,9 +64,9 @@
 								foreach($pinnedrecipes as $recipe){
 									$fullrecipe = RecipeDB::getGeneralRecipe($recipe["RecipeID"]);
 									if($isLeader){
-										echo '<form method="POST" action="../processes/RemovePinned.php">
+										echo '<form class=="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
 											<input type="hidden" name="recipe" value='.$recipe["RecipeID"].'>
-											<input  type="submit" value="REMOVE PINNED RECIPE">
+											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
 											</form>';
 									}
 				

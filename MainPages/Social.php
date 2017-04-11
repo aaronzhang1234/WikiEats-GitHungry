@@ -25,9 +25,8 @@
         <?php include '../includes/wikieatsheader.php'; ?>
         <div class="container">
             <div class= "row">
-                <div class ="panel-group panel-success col-md-12">
-                    <h1 class ="col-md-12 panel"> GROUPS </h1>
-                    <a href="CreateGroup.php">Create Group</a>
+                <div class ="panel-group panel-success col-md-6">
+                    <h1 class ="col-md-12 panel-heading">GROUPS <a href="CreateGroup.php"><button class="btn-success btn-sm">Create Group</button></a></h1>
                     <div class="panel-body">
                         <?php 
                             echo "<h1>Top Groups</h1>";

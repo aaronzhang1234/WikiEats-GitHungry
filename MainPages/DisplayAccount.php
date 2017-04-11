@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Wiki Eats - Main</title>
+		<title>Wiki Eats - Account</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
