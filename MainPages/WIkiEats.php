@@ -119,8 +119,25 @@ $mysqli-> select_db($database);
 			    </a>
 			</div>
 
+			<!-- Displays Top Groups -->
+            <div class ="panel-group panel-success col-md-6">
+				<h1 class ="col-md-12 panel-heading">Top Groups 
+					<?php 
+						if($loggedIn)
+							echo '<a href="CreateGroup.php"><button class="btn-success btn-sm">Create Group</button></a>';
+					?>		
+				</h1>
+				<div class="panel-body">
+					<?php 
+						$topGroups = RecipeDB::getTopGroups(5);
+			    		foreach($topGroups as $group)
+							DisplayDB::printGroups(RecipeDB::getGroup($group['GroupID']));
+					?>
+                </div>
+            </div>
+
 		 	<!--Displays Newest Recipes -->
-			<div class="panel-group panel-danger col-md-12">
+			<div class="panel-group panel-danger col-md-6">
 				<h1 class="panel-heading">Newest Recipes <small>(<?php echo count($newRecipes); ?>)</small></h1>
 				
 				<div class="panel-body">
@@ -133,7 +150,7 @@ $mysqli-> select_db($database);
 			</div>
 
 		 	<!--Displays Top Rated Recipes -->
-			<div class="panel-group panel-warning col-md-12">
+			<div class="panel-group panel-warning col-md-6">
 				<h1 class="panel-heading">Top Recipes <small>(<?php echo count($topRecipes); ?>)</small></h1>
 				
 				<div class="panel-body">
@@ -146,7 +163,7 @@ $mysqli-> select_db($database);
 			</div>
 
 		 	<!--Displays Recipes In The Given Category -->
-			<div class="panel-group panel-success col-md-12">
+			<div class="panel-group panel-success col-md-6">
 				<h1 class="panel-heading"><?php echo $displayCategory[1]; ?> <small>(<?php echo count($categoryRecipes); ?>)</small></h1>
 				
 				<div class="panel-body">
@@ -158,56 +175,6 @@ $mysqli-> select_db($database);
 				</div>
 			</div>
 
-				<!--<div class="col-md-12">
-					<table>
-						<tr>
-							<th>Title</th>
-							<th>Description</th>
-							<th>userid</th>
-							<th>steps</th>
-						</tr>
-					 <?php
-					 /*
-						$sqlrecipes = "SELECT * FROM generalrecipes";
-									   
-						if($result = mysqli_query($mysqli,$sqlrecipes)){
-							while($row = mysqli_fetch_assoc($result)){
-								$sqlusername = "SELECT username from users WHERE userid = '".$row['userid']."'";
-								
-								if($userresult = mysqli_query($mysqli,$sqlusername)){
-									while($usernamerow = mysqli_fetch_assoc($userresult)){
-										echo $usernamerow['username'];
-							
-										echo "<tr>";
-										//echo "<td>".$row['Title']. "</td>";
-										echo "<td>".$row['description']."</td>";
-										echo "<td>".$usernamerow['username']. "</td>";
-										$sqlsteps = "SELECT stepnumber,stepdescription from recipesteps 
-													 WHERE recipeID = '".$row['recipeid']."'";
-										if($stepresult = mysqli_query($mysqli,$sqlsteps)){
-											while($steprow = mysqli_fetch_assoc($stepresult)){
-												echo "<td>";
-												echo "Step".$steprow['stepnumber'].": ".$steprow['stepdescription'];
-												
-											}
-											
-										}
-										echo "</td>";
-													 
-										echo "</tr>";
-									}
-								}
-							}
-						}			   
-						*/
-					 ?>
-					 </table>
-					 
-					 
-		 		</div>
-		 	</div>
-		 </div> -->
-		 
 	   <!--<div id="copyrightRow">
 	      <div class="container">
 	         <div class="row">

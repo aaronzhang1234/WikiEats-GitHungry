@@ -736,13 +736,11 @@ class DisplayDB
 		$imageFileName = ($group["GroupPicture"] != "")? $group["GroupPicture"]: "chef_hat.png";
 		echo '
 			<div class="col-md-12 panel">
-				<div class="col-md-2">
+				<div class="col-md-4">
 					<img src="../images/grouppics/'.$imageFileName.'" class="img-thumbnail" /> 
 				</div>
-				<div class="col-md-10>
-					"<h4 class="col-md-10"><a href="DisplayGroup.php?groupID='.$id.'">'.$name.'</a></h4>
-				</div>
-				<div class ="col-md-12">
+				<div class="col-md-8">
+					<h3><a href="DisplayGroup.php?groupID='.$id.'">'.$name.'</a></h3>
 					<p>'.$desc.'</p>
 				</div>
 			</div>
