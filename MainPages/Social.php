@@ -30,7 +30,7 @@
                     <a href="CreateGroup.php">Create Group</a>
                     <div class="panel-body">
                         <?php 
-                            $topGroups = RecipeDB::getTopGroups(20);
+                            $topGroups = RecipeDB::getTopGroups(5);
                             foreach($topGroups as $group){
                                 $groupe=RecipeDB::getGroup($group['GroupID']);  
                                 DisplayDB::printGroups($groupe);
@@ -42,19 +42,21 @@
                 $users=RecipeDB::getFollowing($_SESSION["userID"]);
                 ?>
 
-                <div class="panel-group panel-success col-md-6">
-				<h1 class="panel-heading">Following <small>(<?php echo count($users); ?>)</small></h1>
-				
-				<div class="panel-body">
-					<?php  
-						// Prints each user found
-						foreach($users as $user)
-                            $actualuser= RecipeDB::getUserByID($user["FollowingID"]);
-							DisplayDB::printUser($actualuser);
-					?>
-
-				</div>
-			</div>
+                <?php if(count($users)!=0)
+                {
+                    echo "<div class='panel-group panel-success col-md-6'>";
+                        echo "<h1 class='panel-heading'>Following <small>(".count($users).")</small></h1>";
+                        
+                        echo "<div class='panel-body'>";             
+                                // Prints each user found
+                                foreach($users as $user){
+                                    $actualuser= RecipeDB::getUserByID($user["FollowingID"]);
+                                    DisplayDB::printUser($actualuser);
+                                }
+                        echo "</div>";
+                    echo "</div>";
+                }
+            ?>
             </div>
         </div>
         

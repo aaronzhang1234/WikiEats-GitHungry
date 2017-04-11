@@ -105,7 +105,7 @@ class RecipeDB
 		if($connection->connect_error)
 			die("Error: ".$connection->connect_error);
 
-		$sql = "SELECT * FROM generalRecipes WHERE recipeid LIKE '".$recipeID."'";
+		$sql = "SELECT * FROM generalRecipes WHERE recipeid =$recipeID";
 
 		// Performs queries
 		$result = $connection->query($sql); // Does query
@@ -389,6 +389,23 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	public static function isInGroup($groupID,$userID)
+	{
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT * FROM groupmembers WHERE UserID = $userID AND GroupID=$groupID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result->num_rows===0)
+			return FALSE;
+		else
+			return TRUE;
+	}
 	public static function getGroup($groupID)
 	{
 		// Makes a connection to the database
@@ -432,7 +449,29 @@ class RecipeDB
 		else 
 			return NULL;
 	}
-	
+	public static function getRecipesByGroups($groupID){
+			// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT generalrecipes.recipeid FROM generalrecipes LEFT JOIN groupmembers ON generalrecipes.userid=groupmembers.UserID 
+				WHERE groupmembers.GroupID=$groupID ORDER BY recipeid DESC LIMIT 5";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 	public static function leadsGroups($userID)
 	{
 		$connection = new mysqli("localhost", "root", "", "recipes");
@@ -455,7 +494,24 @@ class RecipeDB
 				$retval[] = $row;
 			return $retval;
 		}
+
+	}
+	public static function isGroupLeader($userID,$groupID)
+	{
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
 		
+		$sql = "SELECT * FROM groups WHERE LeaderID = $userID AND GroupID=$groupID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result->num_rows===0)
+			return FALSE;
+		else
+			return TRUE;
 	}
 
 	public static function isPinned($groupID,$recipeID)
@@ -475,6 +531,28 @@ class RecipeDB
 		else
 			return TRUE;
 		
+	}
+	public static function getPinnedRecipes($groupID){
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT RecipeID FROM pinnedrecipes WHERE GroupID = $groupID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result->num_rows===0){
+			return NULL;
+		}
+		else
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
 	}
 	public static function isFollowing($userID,$otherUserID)
 	{
@@ -504,6 +582,29 @@ class RecipeDB
 			die("Error: ".$connection->connect_error);
 		
 		$sql = "SELECT FollowingID FROM following WHERE FollowerID=$userID";  
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
+	public static function getFollowers($userID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT FollowerID FROM following WHERE FollowingID=$userID";  
 
 		// Performs query and stores values
 		$result = $connection->query($sql); // Does query
@@ -606,16 +707,17 @@ class DisplayDB
 	}
 	public static function printGroups($group)
 	{
+		$id = $group["GroupID"];
 		$name = $group["GroupName"];
 		$desc = $group["GroupDescription"];
 		$imageFileName = ($group["GroupPicture"] != "")? $group["GroupPicture"]: "chef_hat.png";
 		echo '
 			<div class="col-md-12 panel">
 				<div class="col-md-2">
-					<img src="../images/grouppics/'.$imageFileName.'" HEIGHT="250" WIDTH="250" alt="'.$imageFileName.'" class="img-thumbnail" /> 
+					<img src="../images/grouppics/'.$imageFileName.'" class="img-thumbnail" /> 
 				</div>
-				<div class="col-md-10">
-					<h4>'.$name.'</h4>
+				<div class="col-md-10>
+					"<h4 class="col-md-10"><a href="DisplayGroup.php?groupID='.$id.'">'.$name.'</a></h4>
 				</div>
 				<div class ="col-md-12">
 					<p>'.$desc.'</p>

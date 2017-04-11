@@ -17,7 +17,10 @@
 		<!-- Header -->
 		<?php include '../includes/wikieatsheader.php';?>
 		<?php
-			$leadsGroups = RecipeDB::leadsGroups($_SESSION["userID"]);
+			if(isset($_SESSION["userID"]))
+			{
+				$leadsGroups = RecipeDB::leadsGroups($_SESSION["userID"]);
+			}
 			$recipeInfo = RecipeDB::getGeneralRecipe($_GET["recipeID"]);
 			$recipeSteps = RecipeDB::getRecipeSteps($_GET["recipeID"]);
 			$recipeReviews = RecipeDB::getReviewsForRecipe($_GET["recipeID"]);
@@ -43,17 +46,20 @@
 					<h1><?php echo $recipeInfo['Title']; ?> <small>(<a href="DisplayCategory.php?categoryID=<?php echo $recipeInfo['category']; ?>"><?php echo $category; ?></a>) Made by <a href="DisplayAccount.php?userID=<?php echo $recipeInfo['userid']; ?>"><?php echo $user['username']; ?></a></small></h1>
 					<?php
 						$_SESSION['recipeID']=$_GET["recipeID"];
-						if($leadsGroups){
-							echo '<form method="POST" action="../processes/pinRecipe.php">
-									<select name="pin" id="pin">';
-									foreach($leadsGroups as $group){
-										$isPinned = RecipeDB::isPinned($group["GroupID"],$_GET["recipeID"]);
-										if(!$isPinned)
-											echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
-									}
-							echo '  </select>
-					 				<input  type="submit" value="Pin this recipe to this group">
-								</form>';									
+						if(isset($_SESSION["userID"]))
+						{
+							if($leadsGroups){
+								echo '<form method="POST" action="../processes/pinRecipe.php">
+										<select name="pin" id="pin">';
+										foreach($leadsGroups as $group){
+											$isPinned = RecipeDB::isPinned($group["GroupID"],$_GET["recipeID"]);
+											if(!$isPinned)
+												echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
+										}
+								echo '  </select>
+										<input  type="submit" value="Pin this recipe to this group">
+									</form>';									
+							}
 						}
 					?>
 		 		</div>

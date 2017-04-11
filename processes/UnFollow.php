@@ -26,5 +26,7 @@ if($connection->connect_error){
                         echo "sad!";
             }
             $connection->close();
+            header('Location: ../MainPages/Social.php');
+
         ?>  
     </body>

@@ -12,21 +12,21 @@ if($connection->connect_error){
     </head>
     <body>
         <?php
-            echo $_SESSION["follow"];
+            echo $_SESSION["group"];
             echo "</br>";
-            echo $_SESSION["userID"];
-
-            $followerID=intval($_SESSION["userID"]);
-            $followingID= intval($_SESSION["follow"]);
-            if(isset($_SESSION["follow"]) && isset($_SESSION["userID"])){
-                    $sql ="INSERT INTO following (FollowerID,FollowingID)
-                    VALUES ('".$followerID."','".$followingID."')";
+            echo $_POST["recipe"];
+            
+            $recipeID=intval($_POST["recipe"]);
+            $groupID= intval($_SESSION["group"]);
+            if(isset($_SESSION["group"]) && isset($_POST["recipe"])){
+                    $sql ="DELETE FROM pinnedrecipes WHERE GroupID=$groupID AND RecipeID=$recipeID";
                     if($connection->query($sql)==TRUE)
                         echo "added!";
                     else
                         echo "sad!";
             }
             $connection->close();
-            header('Location: ../MainPages/Social.php');
+           header('Location: ../MainPages/Social.php');
+	       exit();
         ?>  
     </body>

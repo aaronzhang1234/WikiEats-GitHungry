@@ -27,7 +27,7 @@
 	else
 	{
 		echo "wrong";
-		header('Location: ../wronglogin.php');
+		header('Location: ../MainPages/wronglogin.php');
 		exit();
 	}
 	
