@@ -30,10 +30,24 @@
                     <a href="CreateGroup.php">Create Group</a>
                     <div class="panel-body">
                         <?php 
+                            echo "<h1>Top Groups</h1>";
                             $topGroups = RecipeDB::getTopGroups(5);
                             foreach($topGroups as $group){
                                 $groupe=RecipeDB::getGroup($group['GroupID']);  
                                 DisplayDB::printGroups($groupe);
+                            }
+                        ?>
+                        <?php
+                            
+                            if(isset($_SESSION["userID"])){
+                                $groupsin = RecipeDB::getGroupsIn($_SESSION["userID"]);
+                                if(count($groupsin)!=0){
+                                    echo "<h1>Groups In</h1>";
+                                    foreach($groupsin as $group){
+                                        $groupe=RecipeDB::getGroup($group['GroupID']);  
+                                        DisplayDB::printGroups($groupe);
+                                    }
+                                }
                             }
                         ?>
                     </div>

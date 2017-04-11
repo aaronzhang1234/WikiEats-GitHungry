@@ -449,6 +449,29 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	public static function getGroupsIn($userID)
+	{
+		// Makes a connection to the database
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT GroupID FROM groupmembers WHERE UserID=$userID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 	public static function getRecipesByGroups($groupID){
 			// Makes a connection to the database
 		$connection = new mysqli("localhost", "root", "", "recipes");

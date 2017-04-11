@@ -1,6 +1,6 @@
 <button id="writeReviewBtn" class="btn btn-success <?php echo ($loggedIn)?"":"hidden"; ?>"><span class="glyphicon glyphicon-pencil"></span> Write A Review</button>
 
-<form id="writeReview" class="form-horizontal hidden" method="POST" action="processes/reviewProcessing.php">
+<form id="writeReview" class="form-horizontal hidden" method="POST" action="../processes/reviewProcessing.php">
 	<h3 class="col-md-11">Write A Review</h3>
 	<button type="button" id="closeWriteReview" class="btn col-md-1"><span class="glyphicon glyphicon-remove"></span></button>
 	<div class="form-group col-md-12">
