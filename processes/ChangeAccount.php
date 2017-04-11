@@ -12,19 +12,14 @@ if($connection->connect_error){
     </head>
     <body>
         <?php
-            echo empty($_POST["newusername"]);
+            $usernameChange= ctype_space($_POST["newusername"])||empty($_POST["newusername"]);
             echo $_POST["newusername"];
-            echo "</br>";
-            echo empty($_POST["firstname"]);
+            $firstnameChange= ctype_space($_POST["firstname"])||empty($_POST["firstname"]);
             echo $_POST["firstname"];
-            echo "</br>";
-            echo empty($_POST["lastname"]);
+            $lastnameChange= ctype_space($_POST["lastname"])||empty($_POST["lastname"]);
             echo $_POST["lastname"];
-            echo "</br>";
-            echo empty($_POST["newpassword"]);
+            $passwordChange=ctype_space($_POST["newpassword"])||empty($_POST["newpassword"]);
             echo $_POST["newpassword"];
-             echo "</br>";
-            echo empty($_POST["password"]);
             echo $_POST["password"];
 
             $password = MD5($_POST["password"]);
@@ -37,7 +32,48 @@ if($connection->connect_error){
                 if($result->num_rows==0){
                      echo "wrong password";
                 }else{
-                    echo "correct password";
+                    if(!$usernameChange){
+                        $newUserName = $_POST["newusername"];
+                        $sql = "SELECT * FROM users WHERE username='$newUserName'";
+                        $result =$connection->query($sql);
+                        if($result->num_rows===0){
+                            $sql ="UPDATE users SET username='$newUserName' WHERE userid=$user";
+                            if($connection->query($sql)){
+                                echo "Changed user name";
+                            }else{
+                                echo "failed to change user name";
+                            }
+                        }else{
+                            echo "username is already in use";
+                        }
+                    }
+                    if(!$firstnameChange){
+                        $newFirstName = $_POST["firstname"];
+                        $sql ="UPDATE users SET firstname='$newFirstName' WHERE userid=$user";
+                        if($connection->query($sql)){
+                            echo "Changed first name";
+                        }else{
+                            echo "failed to change first name";
+                        }
+                    }
+                    if(!$lastnameChange){
+                        $newLastName = $_POST["lastname"];
+                        $sql ="UPDATE users SET lastname='$newLastName' WHERE userid=$user";
+                        if($connection->query($sql)){
+                            echo "Changed last name";
+                        }else{
+                            echo "failed to change last name";
+                        }
+                    }
+                    if(!$passwordChange){
+                        $newPassword = MD5($_POST["newpassword"]);
+                        $sql ="UPDATE users SET password='$newPassword' WHERE userid=$user";
+                        if($connection->query($sql)){
+                            echo "Changed password";
+                        }else{
+                            echo "failed to change password";
+                        }
+                    }
                  }
             }else{
                 echo "f u g";
