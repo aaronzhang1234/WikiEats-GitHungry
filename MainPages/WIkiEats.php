@@ -119,9 +119,10 @@ $mysqli-> select_db($database);
 			    </a>
 			</div>
 
-			<!-- Displays Top Groups -->
-            <div class ="panel-group panel-success col-md-6">
-				<h1 class ="col-md-12 panel-heading">Top Groups 
+			<div class="col-md-6">
+			<!-- Popular Groups -->
+            <div class ="panel-group panel-success col-md-12">
+				<h1 class ="col-md-12 panel-heading">Popular Groups 
 					<?php 
 						if($loggedIn)
 							echo '<a href="CreateGroup.php"><button class="btn-success btn-sm">Create Group</button></a>';
@@ -134,6 +135,31 @@ $mysqli-> select_db($database);
 							DisplayDB::printGroups(RecipeDB::getGroup($group['GroupID']));
 					?>
                 </div>
+            </div>
+
+			<!-- Displays Top Users By Recipe Count-->
+            <div class ="panel-group panel-success col-md-12">
+				<h1 class ="col-md-12 panel-heading">Most Active Users</h1>
+				<div class="panel-body">
+					<?php 
+						$activeUsers = RecipeDB::getTopPeopleByRecipes();
+						foreach($activeUsers as $user)
+								DisplayDB::printUser(RecipeDB::getUserByID($user["userid"]));
+					?>
+                </div>
+            </div>
+
+			<!-- Displays Top Users By Review Count-->
+            <div class ="panel-group panel-success col-md-12">
+				<h1 class ="col-md-12 panel-heading">Most Active Critics</h1>
+				<div class="panel-body">
+					<?php 
+						$critics = RecipeDB::getTopPeopleByReviews();
+						foreach($critics as $user)
+								DisplayDB::printUser(RecipeDB::getUserByID($user["userid"]));
+					?>
+                </div>
+            </div>
             </div>
 
 		 	<!--Displays Newest Recipes -->

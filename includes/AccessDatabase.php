@@ -416,7 +416,7 @@ class RecipeDB
 		if($connection->connect_error)
 			die("Error: ".$connection->connect_error);
 
-		$sql = "SELECT userid,COUNT(reviewID) FROM reviews GROUP BY userid ORDER BY COUNT(reviewID) DESC LIMIT 5";
+		$sql = "SELECT userid,COUNT(reviewID) FROM reviews WHERE userid IN (SELECT userid FROM users) GROUP BY userid ORDER BY COUNT(reviewID) DESC LIMIT 5";
 		// Performs queries
 		$result = $connection->query($sql); // Does query
 		if($result) // If result has been found
@@ -744,7 +744,7 @@ class DisplayDB
 								<img src="../images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 
 							</div>
 							<div class="col-md-8">
-								<h4>'.$averageReview.'/5</h4>
+								<h4>'.round($averageReview, 1).'/5</h4>
 								<p>'.$recipe["description"].'</p>
 							</div>
 						</div>
