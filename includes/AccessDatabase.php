@@ -389,6 +389,46 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	public static function getTopPeopleByRecipes(){
+
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT userid,COUNT(recipeid) FROM generalrecipes GROUP BY userid ORDER BY COUNT(recipeid) DESC LIMIT 5";
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
+	public static function getTopPeopleByReviews(){
+
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+
+		$sql = "SELECT userid,COUNT(reviewID) FROM reviews GROUP BY userid ORDER BY COUNT(reviewID) DESC LIMIT 5";
+		// Performs queries
+		$result = $connection->query($sql); // Does query
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 	public static function isInGroup($groupID,$userID)
 	{
 		$connection = new mysqli("localhost", "root", "", "recipes");
