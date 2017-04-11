@@ -45,7 +45,7 @@
 			<div class="row">
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
-					 <h1>Account Summary For: <?php echo $user["username"]?></h1>
+					 <h1>Account Summary For: <?php echo $user["username"]?><a href="ChangeAccount.php"><img src="../images/gear.png" WIDTH=20 HEIGHT=20></a></h1>
 					 <?php
 					 	if(isset($_SESSION["userID"])){
 							if($_SESSION["userID"]!=$_GET["userID"]){
