@@ -58,7 +58,12 @@
 						?>
 					
 						<?php
-							$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
+							if(isset($_SESSION["userID"])){
+								$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
+
+							}else{
+								$isLeader=FALSE;
+							}
 							if(count($pinnedrecipes)!=0){
 								echo "<h1>Pinned Recipes</h1>";
 								foreach($pinnedrecipes as $recipe){
