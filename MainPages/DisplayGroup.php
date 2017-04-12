@@ -8,10 +8,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?php echo $groupstuff["GroupName"]; ?></title>
-
+		<script src="../javascripts/displayManage.js"></script> 
 		<!-- Bootstrap core CSS -->
 		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
-
+		<script src="../javascripts/rusure.js"></script>
 		<link rel="stylesheet" type="text/css" href="../includes/wiki-eats.css" >
 	</head>
 
@@ -28,16 +28,20 @@
 				$_SESSION["group"]=$_GET["groupID"];
 				if(isset($_SESSION["userID"])){
 					$inGroup = RecipeDB::isInGroup($_GET["groupID"],$_SESSION["userID"]);
-					if($inGroup){
+					$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);			
+					if($isLeader){
+						include '../includes/ManageGroup.php';
+					}else if($inGroup){
 						echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/LeaveGroup.php">
 									<button class="btn-danger" type="submit">Leave Group</button>
 								</form>';
-					}
-					else{
+					}else{
 						echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/JoinGroup.php">
 								<button class="btn-success" type="submit">Join Group</button>
 								</form>';
 					}
+				}else{
+					$isLeader=FALSE;
 				}
 			?>
 			 	<!--Displays Found Recipes -->
@@ -58,12 +62,6 @@
 						?>
 					
 						<?php
-							if(isset($_SESSION["userID"])){
-								$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
-
-							}else{
-								$isLeader=FALSE;
-							}
 							if(count($pinnedrecipes)!=0){
 								echo "<h1>Pinned Recipes</h1>";
 								foreach($pinnedrecipes as $recipe){
@@ -74,7 +72,6 @@
 											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
 											</form>';
 									}
-				
 									DisplayDB::printRecipe($fullrecipe);
 								}
 							}

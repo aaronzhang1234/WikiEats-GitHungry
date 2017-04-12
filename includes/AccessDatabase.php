@@ -535,6 +535,27 @@ class RecipeDB
 		else 
 			return NULL;
 	}
+	public static function getGroupMembers($groupID){
+		$connection = new mysqli("localhost", "root", "", "recipes");
+  
+		if($connection->connect_error)
+			die("Error: ".$connection->connect_error);
+		
+		$sql = "SELECT UserID FROM groupmembers WHERE GroupID=$groupID";
+
+		// Performs query and stores values
+		$result = $connection->query($sql); // Does query
+
+		if($result) // If result has been found
+		{
+			$retval = Array();
+			while($row = $result->fetch_assoc())
+				$retval[] = $row;
+			return $retval;
+		}
+		else 
+			return NULL;
+	}
 	public static function leadsGroups($userID)
 	{
 		$connection = new mysqli("localhost", "root", "", "recipes");
@@ -720,7 +741,6 @@ class RecipeDB
 		}
 		else 
 			return NULL;
-
 	}
 }// End Class RecipeDB
 
