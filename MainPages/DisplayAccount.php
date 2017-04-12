@@ -45,24 +45,31 @@
 			<div class="row">
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
-					 <h1>Account Summary For: <?php echo $user["username"]?><?php if($_SESSION["userID"]===$_GET["userID"])echo "<a href='ChangeAccount.php'><img src='../images/gear.png' WIDTH=20 HEIGHT=20></a>"; ?></h1>
-					 <?php
+					 <h1>Account Summary For: <?php 
+					 	echo $user["username"]; // UserName
+
 					 	if(isset($_SESSION["userID"])){
-							if($_SESSION["userID"]!=$_GET["userID"]){
+					 		// Display cog if user
+					 		if($_SESSION["userID"]===$_GET["userID"])
+					 			echo "<a href='ChangeAccount.php'><img src='../images/gear.png' WIDTH=20 HEIGHT=20></a>";
+
+					 		// Display follow/unfollow button if not displayed user
+							else if($_SESSION["userID"]!=$_GET["userID"]){
 								$following = RecipeDB::isFollowing($_SESSION["userID"],$_GET["userID"]);
 								if($following){
-									echo '<form method="POST" action="../processes/UnFollow.php">
-												<input  type="submit" value="unfollow this guy">
+									echo '<form class="form-inline" method="POST" action="../processes/UnFollow.php">
+										<button class="btn-warning btn-sm" type="submit">Unfollow</button>
 										</form>';
 								}
 								else{
-									echo '<form method="POST" action="../processes/Follow.php">
-												<input  type="submit" value="follow this guy">
+									echo '<form class="form-horizontal" method="POST" action="../processes/Follow.php">
+										<button class="btn-success">Follow</button>
 										</form>';
 								}
 							}
 						 }
 					 ?>
+					 </h1>
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
 		 		</div>
 
