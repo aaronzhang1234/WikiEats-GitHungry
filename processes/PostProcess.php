@@ -6,6 +6,10 @@ $mysqli= mysql_connect('localhost',$username,$password);
 mysql_select_db($database,$mysqli);
 
 session_start();
+if(!isset($_POST["recipiename"])||!isset($_SESSION['userID'])){
+    header('Location: ../MainPages/404.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

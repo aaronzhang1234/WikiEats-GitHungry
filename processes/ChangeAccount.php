@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_POST["newusername"])||!isset($_POST["firstname"])||!isset($_POST["lastname"])||!isset($_POST["newpassword"])||!isset($_POST["password"])){
+    header('Location: ../MainPages/404.php');
+    exit();
+}
 $connection = new mysqli("localhost", "root", "", "recipes");
 
 if($connection->connect_error){
@@ -31,6 +35,10 @@ if($connection->connect_error){
             if($result){
                 if($result->num_rows==0){
                      echo "wrong password";
+                     $_SESSION["error"]=TRUE;
+                     header('Location:'.$_SERVER['HTTP_REFERER']);
+                     exit();
+
                 }else{
                     if(!$usernameChange){
                         $newUserName = $_POST["newusername"];
@@ -80,18 +88,10 @@ if($connection->connect_error){
             }
 
 
-            /*$followerID=intval($_SESSION["userID"]);
-            $followingID= intval($_SESSION["follow"]);
-            if(isset($_SESSION["follow"]) && isset($_SESSION["userID"])){
-                    $sql ="INSERT INTO following (FollowerID,FollowingID)
-                    VALUES ('".$followerID."','".$followingID."')";
-                    if($connection->query($sql)==TRUE)
-                        echo "added!";
-                    else
-                        echo "sad!";
-            }
+          
             $connection->close();
-            header('Location: ../MainPages/Social.php');
-            */
+            header('Location:'.$_SERVER['HTTP_REFERER']);
+            exit();
+            
         ?>  
     </body>

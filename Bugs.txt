@@ -1,0 +1,2 @@
+Changing ownership of a group, the new group leader cannot unpin recipes
+The average reviews in the recipe page still shows a lot of decimals

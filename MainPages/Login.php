@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Login</title>
-
+		<link href="../css/login.css" rel="stylesheet">
 		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		
 		 <script src="../javascripts/addStep.js"></script>
@@ -16,6 +16,16 @@
 		<div class="container">
 			<div class="row">
 				<h1>Login</h1>
+				<?php
+					if(isset($_SESSION["error"]) && $_SESSION["error"]){
+						?>
+						<div class="alert">
+							<span class="closebtn" onclick ="this.parentElement.style.display='none';">&times;</span>
+							Wrong user credentials, please try again.
+						<?php
+						$_SESSION["error"]=false;
+					}
+				?>
 			</div>
 
 			<form class="form-horizontal col-md-8" method="POST" action="../processes/ProcessLogin.php">

@@ -1,6 +1,9 @@
 <?php include '../includes/AccessDatabase.php'; ?>
 <?php // Error: creating an account gives the user a userID of 0
-
+if(!isset($_POST["username"])||!isset($_POST["password1"])||!isset($_POST["fname"])||!isset($_POST["lname"])){
+    header('Location: ../MainPages/404.php');
+    exit();
+}
 $username="root";$password="";$database="recipes";
 $mysqli= mysql_connect('localhost',$username,$password);
 
@@ -25,7 +28,7 @@ session_start();
 			
 			if($finder=mysql_result($result,0)){
 				echo "wrong";
-				header('Location: ../wronglogin.php');
+				header('Location:'.$_SERVER['HTTP_REFERER']);
 				exit();			
 			}
 			$sql = "Insert into users (username,password,firstname,lastname)
@@ -41,7 +44,7 @@ session_start();
 			$_SESSION["username"] = $_POST["username"];
 			$_SESSION["userID"] = RecipeDB::getUserID($_POST["username"]);
 
-			header('Location: ../MainPages/WikiEats.php');
+			header('Location:'.$_SERVER['HTTP_REFERER']);
 			exit();
 		?>
 	</body>

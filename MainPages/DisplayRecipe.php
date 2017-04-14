@@ -21,7 +21,12 @@
 			{
 				$leadsGroups = RecipeDB::leadsGroups($_SESSION["userID"]);
 			}
+			
 			$recipeInfo = RecipeDB::getGeneralRecipe($_GET["recipeID"]);
+			if(count($recipeInfo)<1){
+				header('Location: 404.php');
+				exit();
+			}
 			$recipeSteps = RecipeDB::getRecipeSteps($_GET["recipeID"]);
 			$recipeReviews = RecipeDB::getReviewsForRecipe($_GET["recipeID"]);
 			$user = RecipeDB::getUserByID($recipeInfo['userid']);
@@ -132,6 +137,12 @@
 										echo			"<h4>By <a href='DisplayAccount.php?userID=".$recipeReviews[$x]["userid"]."'>".$userReview['username']."</a></h4>";
 										echo		"</div>";
 										echo		"<p>".$recipeReviews[$x]['reviewTest']."</p>";
+										if($recipeReviews[$x]['userid']==$_SESSION['userID']){
+											echo '<form class="form-inline" method="POST" action="../processes/DeleteReview.php">
+													<input type="hidden" name="review" value='.$recipeReviews[$x]["reviewID"].'>
+													<button class="btn-warning btn-sm" type="submit">Delete Review</button>
+												  </form>';
+										}
 										echo	"</div>";
 										echo	"<hr>";
 								}

@@ -1,4 +1,4 @@
-<button id="manageGroupBtn" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span>Manage Group</button>
+<button id="manageGroupBtn" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></button>
 <form id="managegroup" class="form-horizontal hidden" method="POST" action="../processes/ManageGroup.php">
 	<button type="button" id="closeManageGroup" class="btn col-md-1"><span class="glyphicon glyphicon-remove"></span></button>
     <?php
@@ -18,5 +18,5 @@
         echo '<button type="submit" class="btn btn-success">Save Changes</button>';
     }
     ?>
-    <a href="../processes/DELETEGROUP.php" onclick ="deleteGroup()"><span class ="glyphicon glyphicon-exclamation-sign"></span>Delete Group</a>
+    <a href="../processes/DELETEGROUP.php" onclick ="deleteGroup()"><span class ="glyphicon glyphicon-trash">Delete Group</span></a>
     </form>

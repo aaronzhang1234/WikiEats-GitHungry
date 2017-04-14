@@ -5,15 +5,14 @@
 	$mysqli= mysql_connect('localhost',$username,$password);
 
 	mysql_select_db($database,$mysqli);
-	
-	
-	
-	
-	
-	
-	
+
+
 	// Gets username from database onto the session
 	session_start();
+	if(!isset($_POST["username"])){
+    	header('Location: ../MainPages/404.php');
+		exit();
+	}
 	
 	$sqlfind="SELECT userid FROM users WHERE username ='".$_POST['username']."' 
 			  AND password =MD5('".$_POST['password']."')";
@@ -27,7 +26,8 @@
 	else
 	{
 		echo "wrong";
-		header('Location: ../MainPages/wronglogin.php');
+		$_SESSION["error"]=TRUE;
+		header('Location: ../MainPages/Login.php');
 		exit();
 	}
 	

@@ -1,6 +1,10 @@
 <?php include '../includes/AccessDatabase.php'; ?>
 <?php
 	$groupstuff = RecipeDB::getGroup($_GET["groupID"]);
+	if(count($groupstuff)<1){
+		header('Location: 404.php');
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">

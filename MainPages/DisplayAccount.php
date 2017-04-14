@@ -8,20 +8,27 @@
 		<title>Wiki Eats - Account</title>
 
 		<!-- Bootstrap core CSS -->
+		<script src="../javascripts/displayChange.js"></script>
 		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="includes/wiki-eats.css" >
+		<link href="../css/login.css" rel="stylesheet">
 	</head>
 
 	<body>
 		<!-- Header -->
 		<?php include '../includes/wikieatsheader.php';?>
 		<?php 
-			$_SESSION["follow"] =  $_GET["userID"];
 			// Gets User Info
 			$user = RecipeDB::getUserByID($_GET["userID"]); // User Info
+			if(count($user)<1){
+				header('Location: 404.php');
+				exit();
+			}
+			$_SESSION["follow"] =  $_GET["userID"];
 			$recipes = RecipeDB::getRecipesByUser($user["userid"]);
 			$reviews = RecipeDB::getReviewsByUser($user["userid"]);
-
+			$followers = RecipeDB::getFollowing($user["userid"]);
+			$following = RecipeDB::getFollowers($user["userid"]);
 			function printReview($review)
 			{
 				$recipe = RecipeDB::getGeneralRecipe($review["recipeid"]);
@@ -32,8 +39,14 @@
 						<div class="col-md-12 panel">
 							<h2 class="col-md-12"><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$userName.'</a></small></h2>
 							<h2 class="col-md-2">'.$review["rating"].'/5</h2>
-							<h3>'.$review["title"].'</h3>
-							<p>'.$review["reviewTest"].'</p>
+							<h3>'.$review["title"].'</h3>';
+							if($_SESSION["userID"]==$_GET["userID"]){
+							 echo '<form class="form-inline" method="POST" action="../processes/DeleteReview.php">
+							 	<input type="hidden" name="review" value='.$review["reviewID"].'>
+								<button class="btn-warning btn-sm" type="submit">Delete Recipe</button>
+							</form>';
+							}
+						echo '<p>'.$review["reviewTest"].'</p>
 						</div>
 						<hr>';
 			}
@@ -51,12 +64,19 @@
 					 	if(isset($_SESSION["userID"])){
 					 		// Display cog if user
 					 		if($_SESSION["userID"]===$_GET["userID"])
-					 			echo "<a href='ChangeAccount.php'><img src='../images/gear.png' WIDTH=20 HEIGHT=20></a>";
-
+								include '../includes/ChangeAccount.php';
+								if(isset($_SESSION["error"]) && $_SESSION["error"]){
+									?>
+									<div class="alert">
+										<span class="closebtn" onclick ="this.parentElement.style.display='none';">&times;</span>
+										Wrong user credentials, please try again.
+									<?php
+									$_SESSION["error"]=false;
+								}
 					 		// Display follow/unfollow button if not displayed user
 							else if($_SESSION["userID"]!=$_GET["userID"]){
-								$following = RecipeDB::isFollowing($_SESSION["userID"],$_GET["userID"]);
-								if($following){
+								$isFollowing = RecipeDB::isFollowing($_SESSION["userID"],$_GET["userID"]);
+								if($isFollowing){
 									echo '<form class="form-inline" method="POST" action="../processes/UnFollow.php">
 										<button class="btn-warning btn-sm" type="submit">Unfollow</button>
 										</form>';
@@ -71,6 +91,7 @@
 					 ?>
 					 </h1>
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
+					 <h4><strong>Followers</strong><?php echo "(".count($following).")";?><strong>Following</strong><?php echo "(".count($followers).")"; ?></h4> 
 		 		</div>
 
 

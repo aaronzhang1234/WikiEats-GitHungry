@@ -14,6 +14,7 @@
 ?>
 
 <header>
+	<link href="../css/dropdown.css" rel="stylesheet">
 	<div class="navbar navbar-inverse">
 		<div class="container">
 			<nav>
@@ -21,6 +22,19 @@
 					<a class="navbar-brand" href="WikiEats.php">WikiEats - GitHungry</a>
 				</div>
 				<ul class="nav navbar-nav">
+					<li><div class="dropdown">
+							<button class="dropbtn">Browse</button>
+							<div class="dropdown-content">
+								<a href="DisplayCategory.php?categoryID=1">Breakfast</a>
+								<a href="DisplayCategory.php?categoryID=2">Lunch</a>
+								<a href="DisplayCategory.php?categoryID=3">Dinner</a>
+								<a href="DisplayCategory.php?categoryID=4">Desserts</a>
+								<a href="DisplayCategory.php?categoryID=5">Snacks</a>
+								<a href="DisplayCategory.php?categoryID=6">Soups</a>
+								<a href="DisplayCategory.php?categoryID=7">Breads</a>
+							</div>
+						</div>
+					</li>
 					<li><a href="About.php">About Us</a></li>
 					<?php // Changes based on if user's logged in
 					if($loggedIn)

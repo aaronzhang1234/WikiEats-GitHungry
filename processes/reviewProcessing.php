@@ -1,11 +1,15 @@
 <?php
-	$username="root";$password="";$database="recipes";
-	$mysqli= mysql_connect('localhost',$username,$password);
+	$connection = new mysqli("localhost", "root", "", "recipes");
 
-	mysql_select_db($database,$mysqli);
-	
+	if($connection->connect_error){
+		die("Error: ".$connection->connect_error);
+	}
 	
 	session_start();
+	if(!isset($_SESSION["userID"])||!isset($_POST["Title"])){
+		header('Location: ../MainPages/404.php');
+		exit();
+	}
 	echo $_POST["Title"];
 	echo $_POST["review"];
 	echo $_POST["rating"];
@@ -15,12 +19,12 @@
 	$sql = "INSERT INTO REVIEWS(reviewTest,userid,recipeid,rating,title)
 			VALUES ('".$_POST['review']."','".$_SESSION['userID']."','".$_SESSION['recipeID']."','".$_POST['rating']."','".$_POST['Title']."')";
 			
-			if(mysql_query($sql)){
+			if($connection->query($sql)==TRUE){
 				echo "added!";
 			}
 			else{
 				echo "sad :(";
 			}
-	header('Location: ../MainPages/WikiEats.php');
+	header('Location:'.$_SERVER['HTTP_REFERER']);
 	exit();
 ?>

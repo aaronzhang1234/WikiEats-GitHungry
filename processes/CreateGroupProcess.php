@@ -1,10 +1,14 @@
 <?php
 
-$username="root";$password="";$database="recipes";
-$mysqli= mysql_connect('localhost',$username,$password);
+    $connection = new mysqli("localhost", "root", "", "recipes");
 
-mysql_select_db($database,$mysqli);
-
+	if($connection->connect_error){
+		die("Error: ".$connection->connect_error);
+	}
+    if(!isset($_POST["groupname"])||!isset($_POST["groupdesc"])){
+    header('Location: ../MainPages/404.php');
+    exit();
+}
 session_start();
 ?>
 <!DOCTYPE html>
@@ -24,18 +28,20 @@ session_start();
                     if(move_uploaded_file($imagemain_temp,"../images/grouppics/".$titleimagename)){
                         $sql= "INSERT INTO groups(GroupName,GroupDescription,LeaderID,GroupPicture)
                         VALUES ('".$_POST['groupname']."','".$_POST['groupdesc']."','".$_SESSION['userID']."','$titleimagename')";
-                        if(mysql_query($sql)){
+                        if($connection->query($sql)==TRUE){
                             echo "added!";
                         }else{
                             echo "sad :(";
                         }
                         $sqllast ="SELECT GroupID FROM groups ORDER BY GroupID DESC LIMIT 1";
                         
-                        $result = mysql_query($sqllast);
-                        $number = mysql_result($result,0);
+                        $result = $connection->query($sqllast);
+                        $result2 = $result -> fetch_assoc();
+                        $number =$result2['GroupID'];
+
                         $sql="INSERT INTO groupmembers(UserID,GroupID)
                         VALUES ('".$_SESSION["userID"]."','$number')";
-                         if(mysql_query($sql)){
+                         if($connection->query($sql)==TRUE){
                             echo "added!";
                         }else{
                             echo "sad :(";
@@ -53,7 +59,9 @@ session_start();
 
         ?>
         <?php
+        
             header('Location: ../MainPages/Social.php');
             exit();
+            
         ?>
     </body>
