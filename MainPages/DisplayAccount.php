@@ -27,8 +27,8 @@
 			$_SESSION["follow"] =  $_GET["userID"];
 			$recipes = RecipeDB::getRecipesByUser($user["userid"]);
 			$reviews = RecipeDB::getReviewsByUser($user["userid"]);
-			$followers = RecipeDB::getFollowing($user["userid"]);
-			$following = RecipeDB::getFollowers($user["userid"]);
+			$following = RecipeDB::getFollowing($user["userid"]);
+			$followers = RecipeDB::getFollowers($user["userid"]);
 			function printReview($review)
 			{
 				$recipe = RecipeDB::getGeneralRecipe($review["recipeid"]);
@@ -93,6 +93,20 @@
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
 					 <h4><strong>Followers</strong><?php echo "(".count($following).")";?><strong>Following</strong><?php echo "(".count($followers).")"; ?></h4> 
 		 		</div>
+
+		 		<!-- Displays following -->
+                <div class='panel-group panel-success col-md-6'>
+                	<h1 class='panel-heading'>Following <small>(<?php echo count($following); ?>)</small></h1>
+                	<div class='panel-body'>
+                	<?php
+					// Prints each user found
+					foreach($following as $fg){
+						$actualuser= RecipeDB::getUserByID($fg["FollowingID"]);
+						DisplayDB::printUser($actualuser);
+					}
+                	?>
+                	</div>
+                </div>
 
 
 				<!-- Displays Recipes Submitted By User -->
