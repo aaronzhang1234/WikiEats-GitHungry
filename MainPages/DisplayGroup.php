@@ -47,26 +47,39 @@
 				}else{
 					$isLeader=FALSE;
 				}
+			
+			// Gets recipes to display
+			$recipes = RecipeDB::getRecipesByGroups($_GET["groupID"]);
+			$pinnedrecipes = RecipeDB::getPinnedRecipes($_GET["groupID"]);
+
+			// Determines if user is group leader
+			if(isset($_SESSION["userID"]))
+				$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
+			else
+				$isLeader=0;
 			?>
-			 	<!--Displays Found Recipes -->
-				<div class="panel-group panel-success col-md-12">					
+
+				<!--Displays Found Recipes -->
+				<div class="panel-group panel-success col-md-12">
 					<div class="panel-body">
-					<?php
-						$recipes = RecipeDB::getRecipesByGroups($_GET["groupID"]);
-						$pinnedrecipes = RecipeDB::getPinnedRecipes($_GET["groupID"]);
-					?>
-						<h2>Newest Group Recipes</h2>
-						<?php  
-							// Prints each recipe found
-							
-							foreach($recipes as $recipe){
-								$fullrecipe = RecipeDB::getGeneralRecipe($recipe["recipeid"]);
+						<h2>Pinned Recipes (<?php echo count($pinnedrecipes); ?>)</h2>
+
+						<div class="panel-body">
+						<?php  // Prints each recipe found
+							if(count($pinnedrecipes) > 0)
+							foreach($pinnedrecipes as $recipe)
+							{
+								$fullrecipe = RecipeDB::getGeneralRecipe($recipe["RecipeID"]);
+								if($isLeader){
+									echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
+											<input type="hidden" name="recipe" value='.$recipe["RecipeID"].'>
+											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
+											</form>';
+								}
 								DisplayDB::printRecipe($fullrecipe);
 							}
-						?>
-					
-						<?php
-							if(count($pinnedrecipes)!=0){
+
+							/*if(count($pinnedrecipes)!=0){
 								echo "<h1>Pinned Recipes</h1>";
 								if(isset($_SESSION["userID"])){
 										$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
@@ -77,18 +90,27 @@
 									$fullrecipe = RecipeDB::getGeneralRecipe($recipe["RecipeID"]);
 									if($isLeader){
 										echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
-											<input type="hidden" name="recipe" value='.$recipe["RecipeID"].'>
-											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
-											</form>';
-									}
-									DisplayDB::printRecipe($fullrecipe);
-								}
-							}
+							*/
 						?>
-						
+						</div>
 					</div>
 				</div>
+
+				<div class="panel-group panel-success col-md-12">
+					<h2>Newest Recipes (<?php echo count($recipes); ?>)</h2>
+
+					<div class="panel-body">
+						<?php 
+							foreach($recipes as $recipe)
+							{
+								$fullrecipe = RecipeDB::getGeneralRecipe($recipe["recipeid"]);
+								DisplayDB::printRecipe($fullrecipe);
+							}
+						?>
+					</div>
+				</div>
+
 			</div>
-		 </div>
+		</div>
 	</body>
 </html>
