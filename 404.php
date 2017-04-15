@@ -14,7 +14,7 @@
     </head>
     <body>
         
-        <?php include '../includes/wikieatsheader.php'; ?>
+        <?php include '/includes/wikieatsheader.php'; ?>
         <?php $random = rand(1,7);
         echo $random;
         if($random==1){

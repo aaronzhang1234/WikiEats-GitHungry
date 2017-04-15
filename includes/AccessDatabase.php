@@ -758,7 +758,13 @@ class DisplayDB
 		echo '
 						<div class="col-md-12 panel">
 							<div class="col-md-12">							
-								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by <a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a></small></h2>
+								<h2><a href="DisplayRecipe.php?recipeID='.$recipe["recipeid"].'">'.$recipe["Title"].'</a> <small>(<a href="DisplayCategory.php?categoryID='.$recipe["category"].'">'.$category.'</a>) by ';
+								if(count($username)>0){
+									echo '<a href="DisplayAccount.php?userID='.$recipe["userid"].'">'.$username.'</a>';
+								}else{
+									echo "deleted";
+								}
+									echo '</small></h2>
 							</div>
 							<div class="col-md-4">
 								<img src="../images/'.$imageFileName.'" alt="'.$imageFileName.'" class="img-thumbnail" /> 

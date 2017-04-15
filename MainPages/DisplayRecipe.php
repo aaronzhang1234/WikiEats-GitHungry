@@ -51,7 +51,7 @@
 		
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php echo $recipeInfo['Title']; ?> <small>(<a href="DisplayCategory.php?categoryID=<?php echo $recipeInfo['category']; ?>"><?php echo $category; ?></a>) Made by <a href="DisplayAccount.php?userID=<?php echo $recipeInfo['userid']; ?>"><?php echo $user['username']; ?></a></small></h1>	
+					<h1><?php echo $recipeInfo['Title']; ?> <small>(<a href="DisplayCategory.php?categoryID=<?php echo $recipeInfo['category']; ?>"><?php echo $category; ?></a>) Made by <?php if(count($user)>0){ ?><a href="DisplayAccount.php?userID=<?php echo $recipeInfo['userid']; ?>"><?php echo $user['username']; ?></a><?php }else{echo "deleted";} ?></small></h1>	
 		 		</div>
 		 	</div>
 		 <!-- Add to group form -->
@@ -134,14 +134,22 @@
 										echo		"<h2 class='col-md-2'>" .$recipeReviews[$x]['rating']. "/5</h2>";
 										echo		"<div class='col-md-10'>";
 										echo			"<h3>" .$recipeReviews[$x]['title']. "</h3>";
-										echo			"<h4>By <a href='DisplayAccount.php?userID=".$recipeReviews[$x]["userid"]."'>".$userReview['username']."</a></h4>";
+										echo			"<h4>By ";
+										if(count($userReview)>0){
+											echo 		"<a href='DisplayAccount.php?userID=".$recipeReviews[$x]["userid"]."'>".$userReview['username']."</a>";
+										}else{
+											echo 		"Deleted";
+										}
+										echo		"</h4>";
 										echo		"</div>";
 										echo		"<p>".$recipeReviews[$x]['reviewTest']."</p>";
-										if($recipeReviews[$x]['userid']==$_SESSION['userID']){
-											echo '<form class="form-inline" method="POST" action="../processes/DeleteReview.php">
-													<input type="hidden" name="review" value='.$recipeReviews[$x]["reviewID"].'>
-													<button class="btn-warning btn-sm" type="submit">Delete Review</button>
-												  </form>';
+										if(isset($_SESSION['userID'])){
+											if($recipeReviews[$x]['userid']==$_SESSION['userID']){
+												echo '<form class="form-inline" method="POST" action="../processes/DeleteReview.php">
+														<input type="hidden" name="review" value='.$recipeReviews[$x]["reviewID"].'>
+														<button class="btn-warning btn-sm" type="submit">Delete Review</button>
+													</form>';
+											}
 										}
 										echo	"</div>";
 										echo	"<hr>";

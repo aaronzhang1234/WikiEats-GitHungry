@@ -1,6 +1,10 @@
 <?php include '../includes/AccessDatabase.php'; ?>
 <?php
 	$category = RecipeDB::getCategory($_GET["categoryID"]);
+	if(count($category)<1){
+		header('Location: 404.php');
+		exit();
+	}
 	$recipes = RecipeDB::getRecipesByCategory($_GET["categoryID"]);
 ?>
 <!DOCTYPE html>

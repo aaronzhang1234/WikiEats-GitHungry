@@ -68,10 +68,15 @@
 						<?php
 							if(count($pinnedrecipes)!=0){
 								echo "<h1>Pinned Recipes</h1>";
+								if(isset($_SESSION["userID"])){
+										$isLeader = RecipeDB::isGroupLeader($_SESSION["userID"],$_GET["groupID"]);
+								}else{
+									$isLeader=0;
+								}	
 								foreach($pinnedrecipes as $recipe){
 									$fullrecipe = RecipeDB::getGeneralRecipe($recipe["RecipeID"]);
 									if($isLeader){
-										echo '<form class=="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
+										echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
 											<input type="hidden" name="recipe" value='.$recipe["RecipeID"].'>
 											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
 											</form>';
