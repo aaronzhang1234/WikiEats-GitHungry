@@ -36,7 +36,6 @@
 							</div>
 						</div>
 					</li>
-					<li><p>l</p></li>
 					<?php // Changes based on if user's logged in
 					if($loggedIn)
 						echo '

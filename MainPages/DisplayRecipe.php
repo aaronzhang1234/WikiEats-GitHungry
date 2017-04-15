@@ -122,7 +122,7 @@
 
 			 	<!--Displays Reviews-->
 				<div class="panel-group panel-success col-md-6">
-					<h1 class="panel-heading">Reviews <small> (<?php echo count($recipeReviews); ?>) <?php echo $averageReview ?>/5</small></h1>
+					<h1 class="panel-heading">Reviews <small> (<?php echo count($recipeReviews); ?>) <?php echo round($averageReview,1) ?>/5</small></h1>
 					<div class="panel-body">
 						<?php
 								$x=-1;
