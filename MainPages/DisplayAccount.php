@@ -29,6 +29,7 @@
 			$reviews = RecipeDB::getReviewsByUser($user["userid"]);
 			$following = RecipeDB::getFollowing($user["userid"]);
 			$followers = RecipeDB::getFollowers($user["userid"]);
+			$groupsin = RecipeDB::getGroupsIn($user["userid"]);
 			function printReview($review)
 			{
 				$recipe = RecipeDB::getGeneralRecipe($review["recipeid"]);
@@ -73,8 +74,8 @@
 									<?php
 									$_SESSION["error"]=false;
 								}
-					 		// Display follow/unfollow button if not displayed user
-							else if($_SESSION["userID"]!=$_GET["userID"]){
+					 		// Display follow/unfollow button if not the displayed user
+							if($_SESSION["userID"]!=$_GET["userID"]){
 								$isFollowing = RecipeDB::isFollowing($_SESSION["userID"],$_GET["userID"]);
 								if($isFollowing){
 									echo '<form class="form-inline" method="POST" action="../processes/UnFollow.php">
@@ -83,7 +84,7 @@
 								}
 								else{
 									echo '<form class="form-horizontal" method="POST" action="../processes/Follow.php">
-										<button class="btn-success">Follow</button>
+										<button class="btn-success btn-sm" type="submit">Follow</button>
 										</form>';
 								}
 							}
@@ -91,11 +92,26 @@
 					 ?>
 					 </h1>
 					 <h3><strong>Name:</strong> <?php echo $user["firstname"]." ".$user["lastname"] ?></h3>
-					 <h4><strong>Followers</strong><?php echo "(".count($following).")";?><strong>Following</strong><?php echo "(".count($followers).")"; ?></h4> 
 		 		</div>
 
-		 		<!-- Displays following -->
-                <div class='panel-group panel-success col-md-6'>
+		 		<div class='col-md-12'>
+		 			<!-- Displays Groups In -->
+		 			<div class='panel-group panel-success col-md-12'>
+		 				<h1 class='panel-heading'>Groups In <small>(<?php echo count($groupsin); ?>)</small></h1>
+		 				<div class='panel-body'>
+                	<?php
+					// Prints each user found
+					foreach($groupsin as $group){
+						$groupe=RecipeDB::getGroup($group['GroupID']);  
+                        DisplayDB::printGroups($groupe);
+					}
+                	?>
+		 			</div>
+		 		</div>
+
+                <div class='col-md-6'>
+		 		<!-- Displays Following -->
+                <div class='panel-group panel-success col-md-12'>
                 	<h1 class='panel-heading'>Following <small>(<?php echo count($following); ?>)</small></h1>
                 	<div class='panel-body'>
                 	<?php
@@ -108,9 +124,24 @@
                 	</div>
                 </div>
 
+		 		<!-- Displays Followers -->
+                <div class='panel-group panel-success col-md-12'>
+                	<h1 class='panel-heading'>Followers <small>(<?php echo count($followers); ?>)</small></h1>
+                	<div class='panel-body'>
+                	<?php
+					// Prints each user found
+					foreach($followers as $fw){
+						$actualuser= RecipeDB::getUserByID($fw["FollowerID"]);
+						DisplayDB::printUser($actualuser);
+					}
+                	?>
+                	</div>
+                </div>
+                </div>
 
+                <div class='col-md-6'>
 				<!-- Displays Recipes Submitted By User -->
-				<div class="panel-group panel-info col-md-6">
+				<div class="panel-group panel-info col-md-12">
 					<h1 class="panel-heading">Recipes <small>(<?php echo count($recipes) ?>)</small></h1>
 					
 					<div class="panel-body">
@@ -121,9 +152,8 @@
 					</div>
 				</div>
 
-
 				<!-- Displays Reviews Submitted By User -->
-				<div class="panel-group panel-success col-md-6">
+				<div class="panel-group panel-success col-md-12">
 					<h1 class="panel-heading">Reviews <small>(<?php echo count($reviews) ?>)</small></h1>
 					<div class="panel-body">
 						<?php 
@@ -132,8 +162,8 @@
 						?>
 					</div>
 				</div>
-		 	</div>
-		 </div>
-
+				</div>
+		 	</div><!-- /row -->
+		 </div><!--/Main Container-->
 	</body>
 </html>
