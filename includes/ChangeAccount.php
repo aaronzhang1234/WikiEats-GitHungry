@@ -2,7 +2,7 @@
 
 <script src="../javascripts/rusure.js"></script>
 <form id="changeAccountForm" class="form-inline hidden col-md-8 col-md-offset-1" method="POST"  action="../processes/ChangeAccount.php" enctype="multipart/form-data">
-	<button type="button" id="closeAccountBtn" class="btn col-md-1 btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+	<button type="button" id="closeAccountBtn" name="closeAccountBtn" class="btn col-md-1 btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
 
 
     <div class="form-group col-md-12">

@@ -22,6 +22,7 @@
 					<a class="navbar-brand" href="WikiEats.php">WikiEats - GitHungry</a>
 				</div>
 				<ul class="nav navbar-nav">
+					<li><a href="About.php">About Us</a></li>
 					<li><div class="dropdown">
 							<button class="dropbtn">Browse</button>
 							<div class="dropdown-content">
@@ -35,13 +36,19 @@
 							</div>
 						</div>
 					</li>
-					<li><a href="About.php">About Us</a></li>
+					<li><p>l</p></li>
 					<?php // Changes based on if user's logged in
 					if($loggedIn)
 						echo '
-					<li><a href="addRecipe.php">Submit Recipe</a></li>
+					<li><div class="dropdown">
+							<button class="dropbtn">Create</button>
+							<div class="dropdown-content">
+								<a href="AddRecipe.php">Recipe</a>
+								<a href="CreateGroup.php">Group</a>
+							</div>
+						</div>
+					</li>
 					<li><a href="DisplayAccount.php?userID='.$_SESSION["userID"].'">Account</a></li>
-					<li><a href="Social.php">Social</a></li>
 					<li><a href="Logout.php">Logout</a></li>';
 					else
 						echo '

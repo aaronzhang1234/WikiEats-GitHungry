@@ -42,7 +42,7 @@
 
 				<div class="form-group col-md-12">
   					<label class="control-label sr-only" for="groupdesc">Group Description</label>
-  					<textarea class="form-control" rows="3" id="groupdesc">Group Description: Put a spicy hook for your group</textarea>
+  					<textarea class="form-control" rows="3" name="groupdesc">Group Description: Put a spicy hook for your group</textarea>
 				</div>
 				<div class="form-group col-md-12">
                 	<label class="contol-label">Group Picture</label>

@@ -5,10 +5,7 @@
 	if($connection->connect_error){
 		die("Error: ".$connection->connect_error);
 	}
-    if(!isset($_POST["groupname"])||!isset($_POST["groupdesc"])){
-    header('Location: ../MainPages/404.php');
-    exit();
-}
+    
 session_start();
 ?>
 <!DOCTYPE html>
@@ -21,6 +18,7 @@ session_start();
             echo "</br>";
             echo $_POST["groupdesc"];
             echo "</br>";
+            
 			if (isset($_FILES["grouppic"]["name"])) {
 
                 $titleimagename=$_FILES['grouppic']['name'];
@@ -53,10 +51,6 @@ session_start();
                 } else {
                     echo 'please choose a file';
                 }
-                
-            
-            
-
         ?>
         <?php
         
