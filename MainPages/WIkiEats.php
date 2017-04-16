@@ -28,7 +28,7 @@ $mysqli-> select_db($database);
 			// Gets category to display based on the time
 			function getDisplayCategory()
 			{// Categories: bfast, lunch, dinner, dessert, snack, soup, bread
-				date_default_timezone_set("EST"); // Sets to Eastern Time
+				date_default_timezone_set("Pacific/Honolulu"); // Sets to Eastern Time
 
 				// Gets category based on time of day
 				$hour = getdate()["hours"];
@@ -44,6 +44,8 @@ $mysqli-> select_db($database);
 					return Array(6, "Soup");
 				else if ($hour < 20)
 					return Array(3, "Dinner");
+				else if($hour <22)
+					return Array(4,"Dessert");
 				else
 					return Array(5, "Snack");
 			}

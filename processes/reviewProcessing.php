@@ -19,12 +19,19 @@
 	$sql = "INSERT INTO REVIEWS(reviewTest,userid,recipeid,rating,title)
 			VALUES ('".$_POST['review']."','".$_SESSION['userID']."','".$_SESSION['recipeID']."','".$_POST['rating']."','".$_POST['Title']."')";
 			
-			if($connection->query($sql)==TRUE){
-				echo "added!";
-			}
-			else{
-				echo "sad :(";
-			}
-	header('Location:'.$_SERVER['HTTP_REFERER']);
-	exit();
+	if($connection->query($sql)==TRUE){
+		echo "added!";
+		$lad=1;
+	}
+	else{
+		echo "sad :(";
+		$lad=1;
+	
+	}
+	
+	if(isset($lad)){
+		header('Location:'.$_SERVER['HTTP_REFERER']);
+		exit();
+	}
+
 ?>

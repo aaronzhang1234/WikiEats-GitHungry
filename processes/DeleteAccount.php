@@ -48,7 +48,7 @@ if(!isset($_SESSION["userID"])){
             $_SESSION["userID"] = NULL;
 
             $connection->close();
-            header('Location: WikiEats.php');
+            header('Location: ../MainPages/WikiEats.php');
             exit();
     
         ?>  
