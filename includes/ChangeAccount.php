@@ -1,11 +1,15 @@
-<button id="changeAccount" class="btn btn-success"><span class="glyphicon glyphicon-cog"></span></button>
+<!-- Change Account -->
+<button id="changeAccount" class="btn btn-success"><span class="glyphicon glyphicon-cog"></span> Edit Account</button>
 
 <script src="../javascripts/rusure.js"></script>
 <div id="changeAccountForm" class= "hidden">
 
-    <button type="button" id="closeAccountBtn" name="closeAccountBtn" class="btn col-md-1 col-md-offset-1 btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
-    </br>
+    <div class="col-md-12">
+        <button type="button" id="closeAccountBtn" name="closeAccountBtn" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+
     <form class="form-inline col-md-8 col-md-offset-1" method="POST"  action="../processes/ChangeAccount.php" enctype="multipart/form-data">
+        <button class="btn btn-xl disabled"><h2>Edit Account</h2></button>
         <div class="form-group col-md-12">
             <label class="control-label sr-only" for="newusername">Username</label>
             <input class="form-control" type="text" name="newusername" placeholder="Username"/>
@@ -33,6 +37,7 @@
 
         <button class="btn btn-primary" type="submit" name="submit">Save Changes</button>
     </form>
+
     <div class='row'>
         <form id="deleteAccount" class="form-horizontal hidden col-md-12" method="POST" action="../processes/DeleteAccount.php">
             <button class="btn btn-primary" onclick="deleteAccount()" type="submit" name="submit"><span class ="glyphicon glyphicon-trash"> Delete Account</span></button>

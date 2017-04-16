@@ -60,9 +60,10 @@
 				<!-- Displays Basic Info On User -->
 				<div class="col-md-12">
 					 <h1>Account Summary For: <?php 
-					 	echo $user["username"]; // UserName
+					 	echo $user["username"].' '; // UserName
 
-					 	if(isset($_SESSION["userID"])){
+					 	if(isset($_SESSION["userID"]))
+					 	{
 					 		// Display cog if user
 					 		if($_SESSION["userID"]===$_GET["userID"])
 								include '../includes/ChangeAccount.php';
