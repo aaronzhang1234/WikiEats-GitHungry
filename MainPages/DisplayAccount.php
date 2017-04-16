@@ -98,7 +98,7 @@
 		 		<div class='col-md-12'>
 		 			<!-- Displays Groups In -->
 		 			<div class='panel-group panel-success col-md-12'>
-		 				<h1 class='panel-heading'>Groups In <small>(<?php echo count($groupsin); ?>)</small></h1>
+		 				<h1 class='panel-heading'>Groups <small>(<?php echo count($groupsin); ?>)</small></h1>
 		 				<div class='panel-body'>
                 	<?php
 					// Prints each user found

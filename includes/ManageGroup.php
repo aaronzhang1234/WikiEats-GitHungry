@@ -1,4 +1,5 @@
-<button id="manageGroupBtn" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit Group</button>
+<div class='col-md-12'>
+<button id="manageGroupBtn" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span> Edit Group</button>
 <form id="managegroup" class="form-horizontal hidden row" method="POST" action="../processes/ManageGroup.php">
     <div class='col-md-12'>
 	   <button class="btn btn-danger" type="button" id="closeManageGroup" class="btn col-md-1"><span class="glyphicon glyphicon-remove"></span></button>
@@ -34,3 +35,4 @@
         <a href="../processes/DELETEGROUP.php" onclick ="deleteGroup()"><button class="btn btn-warning btn-sm"><span class ="glyphicon glyphicon-trash"> Delete Group</span></button></a>
     </div>
 </form>
+</div>

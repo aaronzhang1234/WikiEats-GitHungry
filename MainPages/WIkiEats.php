@@ -122,12 +122,7 @@ $mysqli-> select_db($database);
 			<div class="col-md-6">
 			<!-- Popular Groups -->
             <div class ="panel-group panel-success col-md-12">
-				<h1 class ="col-md-12 panel-heading">Popular Groups 
-					<?php 
-						if($loggedIn)
-							echo '<a href="CreateGroup.php"><button class="btn-success btn-sm">Create Group</button></a>';
-					?>		
-				</h1>
+				<h1 class ="col-md-12 panel-heading">Popular Groups</h1>
 				<div class="panel-body">
 					<?php 
 						$topGroups = RecipeDB::getTopGroups(5);

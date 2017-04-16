@@ -6,7 +6,7 @@
 		<link href="../bootstrap3_defaultTheme/dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../css/AboutCss.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-		<title>About Us</title>
+		<title>Wiki Eats - About Us</title>
 		
 	</head>
 	<body>
