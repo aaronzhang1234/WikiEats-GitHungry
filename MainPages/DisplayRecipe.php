@@ -157,7 +157,7 @@
 											if($recipeReviews[$x]['userid']==$_SESSION['userID']){
 												echo '<form class="form-inline" method="POST" action="../processes/DeleteReview.php">
 														<input type="hidden" name="review" value='.$recipeReviews[$x]["reviewID"].'>
-														<button class="btn-warning btn-sm" type="submit">Delete Review</button>
+														<button class="btn btn-danger btn-sm" type="submit"><span class="glyphicon glyphicon-trash"></span> Delete Review</button>
 													</form>';
 											}
 										}

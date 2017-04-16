@@ -10,6 +10,7 @@
 
     <form class="form-inline col-md-8 col-md-offset-1" method="POST"  action="../processes/ChangeAccount.php" enctype="multipart/form-data">
         <button class="btn btn-xl disabled"><h2>Edit Account</h2></button>
+        
         <div class="form-group col-md-12">
             <label class="control-label sr-only" for="newusername">Username</label>
             <input class="form-control" type="text" name="newusername" placeholder="Username"/>
