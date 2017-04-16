@@ -6,7 +6,7 @@
     </div>
 
     <?php
-    $delClass = "'col-md-8 col-md-offset-1'";
+    $delClass = "'col-md-8 col-md-offset-1 hidden'";
 
     $groupmembers = RecipeDB::getGroupMembers($_GET["groupID"]);
     if(count($groupmembers)>1){
@@ -27,12 +27,12 @@
         echo '<div class="col-md-12"><button type="submit" class="btn btn-success btn-sm">Save Changes</button></div>';
         echo '</div>';
 
-        $delClass="'col-md-8'";
+        $delClass="'col-md-8 hidden'";
     }
     ?>
 
-    <div class=<?php echo $delClass; ?>>
+</form>
+<div id="deletegroupBtn" class=<?php echo $delClass; ?>>
         <a href="../processes/DELETEGROUP.php" onclick ="deleteGroup()"><button class="btn btn-warning btn-sm"><span class ="glyphicon glyphicon-trash"> Delete Group</span></button></a>
     </div>
-</form>
 </div>

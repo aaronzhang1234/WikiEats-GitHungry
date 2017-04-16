@@ -37,7 +37,7 @@ if(!isset($_SESSION["group"])){
                         echo "sad!";
             }
             $connection->close();
-            header('Location: ../MainPages/Social.php');
+            header('Location: ../MainPages/WikiEats.php');
 	        exit();
            
            

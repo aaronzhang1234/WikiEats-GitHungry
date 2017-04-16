@@ -54,7 +54,7 @@ session_start();
         ?>
         <?php
         
-            header('Location: ../MainPages/Social.php');
+            header('Location: ../MainPages/WikiEats.php');
             exit();
             
         ?>
