@@ -1,45 +1,67 @@
-h1{
+#description h1
+{
 	font-family: 'Lobster', cursive;
-	font-size:9em;
-	padding-bottom: 0.1em;
+	font-size: 12em;
+	/*padding-bottom: 0.1em;*/
 }
-h1 small
+#description h1 small
+{
+	font-size: 0.6em;
+}
+#description h1 br
+{
+	display: block;
+	margin: -0.8em 0;
+}
+#description h2
+{
+	font-size: 4em;
+	font-family: "Arial";
+	font-variant: small-caps;
+	font-weight: bold;
+}
+#description p
+{
+	font-size: 1.5em;
+	font-family: "Georgia", "Times New Roman";
+}
+#description
+{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#developers h1
+{
+	text-align: center;
+	font-size: 9em;
+	padding-top: 0.5em;
+	font-variant: small-caps;
+	font-family: 'Lobster', cursive;
+}
+#developer h3
+{
+	font-size: 5em;
+	text-align: center;
+}
+#developer h3 small
 {
 	font-size: 0.5em;
+	font-style: italic;
 }
-h1 br
+#developer h3 br
 {
 	display: block;
 	margin: -0.5em 0;
 }
-
-#description{
-	margin-left: auto;
-    margin-right: auto;
-	text-align: center;
-	width:40em;
-	font-size:2em;
+#developers p
+{
+	font-family: "Courier", cursive;
+	font-style: italic;
+	font-size: 3em;
 }
-.developers{
-	margin-left: auto;
-    margin-right: auto;
-	text-align: center;
-	width:100em;
+#developers #images
+{
+	padding-bottom: 2em;
 }
-h2{
-	font-family: 'Lobster', cursive;
-	font-size:7em;
-}
-.authorsnotes{
-	float:left; 
-	display:inline; 
-	width:49%;
-	font-size:6em;
-
-}
-#images{
-	float:left; /*
-	display:inline; */
-	width:49%;
-}
-
