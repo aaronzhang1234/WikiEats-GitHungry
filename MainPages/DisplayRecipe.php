@@ -74,14 +74,14 @@
 
 								if(count($unpinnedGroups) > 0)
 								{
-									echo '<form class="form-inline col-md-12" method="POST" action="../processes/pinRecipe.php">
+									echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/pinRecipe.php">
 										<select name="pin" id="pin">';
 									foreach($unpinnedGroups as $group){
-										echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
+										echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</option>';
 									}
 									echo '  </select>
 										<button class="btn btn-success btn-xs" type="submit"><span class="glyphicon glyphicon-pushpin"></span> Pin recipe to group</button>
-									</form>';
+									</form><br/>';
 								}
 							}
 						}
