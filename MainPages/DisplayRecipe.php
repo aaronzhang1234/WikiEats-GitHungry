@@ -63,16 +63,26 @@
 						{
 							if($leadsGroups && !(count($leadsGroups)==1 && RecipeDB::isPinned($leadsGroups[0]["GroupID"],$_GET["recipeID"])))
 							{
-								echo '<form class="form-horizontal col-md-8" method="POST" action="../processes/pinRecipe.php">
+								// Gets where user pinned the recipe already
+								$unpinnedGroups = Array();
+								foreach($leadsGroups as $group)
+								{
+									$isPinned = RecipeDB::isPinned($group["GroupID"],$_GET["recipeID"]);
+									if(!$isPinned)
+										array_push($unpinnedGroups, $group);
+								}
+
+								if(count($unpinnedGroups) > 0)
+								{
+									echo '<form class="form-inline col-md-12" method="POST" action="../processes/pinRecipe.php">
 										<select name="pin" id="pin">';
-										foreach($leadsGroups as $group){
-											$isPinned = RecipeDB::isPinned($group["GroupID"],$_GET["recipeID"]);
-											if(!$isPinned)
-												echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
-										}
-								echo '  </select>
-										<button class="btn-info" type="submit"> Pin recipe to group</button>
+									foreach($unpinnedGroups as $group){
+										echo '<option value='.$group["GroupID"].'>'.$group["GroupName"].'</opinion>';
+									}
+									echo '  </select>
+										<button class="btn btn-success btn-xs" type="submit"><span class="glyphicon glyphicon-pushpin"></span> Pin recipe to group</button>
 									</form>';
+								}
 							}
 						}
 					?>

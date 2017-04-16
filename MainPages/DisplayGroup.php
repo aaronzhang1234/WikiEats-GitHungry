@@ -71,9 +71,9 @@
 							{
 								$fullrecipe = RecipeDB::getGeneralRecipe($recipe["RecipeID"]);
 								if($isLeader){
-									echo '<form class="form-horizontal col-md-12" method="POST" action="../processes/RemovePinned.php">
+									echo '<form class="form-inline col-md-12" method="POST" action="../processes/RemovePinned.php">
 											<input type="hidden" name="recipe" value='.$recipe["RecipeID"].'>
-											<button class="btn-danger" type="submit"><span class="glyphicon glyphicon-minus"></span> Unpin</button>
+											<button class="btn btn-danger" type="submit"><span class="glyphicon glyphicon-pushpin"></span> Unpin</button>
 											</form>';
 								}
 								DisplayDB::printRecipe($fullrecipe);
