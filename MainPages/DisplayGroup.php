@@ -28,7 +28,10 @@
 			
 			<div class="row">
 			<?php
+				$grouppic = ($groupstuff['GroupPicture']!="")? $groupstuff['GroupPicture']:"chef_hat.png";
+				echo "<img src='../images/grouppics/".$grouppic."' alt='".$grouppic."' HEIGHT=100 WIDTH=100 /img>";
 				echo "<h1>".$groupstuff["GroupName"]."</h1>";
+				echo "<h3><small>Group Description: ".$groupstuff["GroupDescription"]."</small></h3>";
 				$_SESSION["group"]=$_GET["groupID"];
 				if(isset($_SESSION["userID"])){
 					$inGroup = RecipeDB::isInGroup($_GET["groupID"],$_SESSION["userID"]);
