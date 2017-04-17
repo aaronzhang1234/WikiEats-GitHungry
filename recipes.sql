@@ -32,8 +32,9 @@ CREATE TABLE `following` (
 INSERT INTO `following` (`FollowerID`, `FollowingID`) VALUES
 (37, 31),
 (37, 38),
-(38, 29),
-(38, 31);
+(38, 37),
+(38, 48),
+(50, 38);
 
 -- --------------------------------------------------------
 
@@ -70,10 +71,11 @@ INSERT INTO `generalrecipes` (`userid`, `description`, `parentid`, `category`, `
 (31, 'Delicious RibEye', 0, 3, 'Steak', 116, 'steak.jpg'),
 (31, 'Tacos', 0, 2, 'Tacos', 117, 'tacos_main.jpeg'),
 (31, 'doughuts', 0, 4, 'Doughnuts', 118, 'doughnuts.jpg'),
-(38, 'Chocolate is good', 0, 4, 'Chocolate', 119, 'I Users dougw_000 Pictures VLC Output - vlcsnap-00080.jpg'),
-(38, 'Whelp', 0, 4, 'test', 121, '7rmzdBs.png'),
-(37, 'test', 0, 6, 'test1', 122, 'INBvStO.png'),
-(37, 'life', 0, 3, 'wew', 123, '14632635_798835136924882_719594356_o.png');
+(40, 'A cake for birthdays', 0, 4, 'Birthday Cake', 128, 'birthdaycake.jpg'),
+(38, 'Delicious roasted chicken, flavored with a million spices.', 0, 3, 'Roasted Chicken', 129, 'roastedchicken.jpg'),
+(38, 'Delicious soup for soup lovers', 0, 6, 'Broccoli Cheddar Soup', 130, 'bcsoup.jpg'),
+(49, 'Beef Wellington that would make gordon ramsey drool', 0, 3, 'Beef Wellington', 131, 'bw.jpg'),
+(50, 'Waffles to eat when you wake up', 0, 1, 'Waffles', 132, 'waffle.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,13 +93,9 @@ CREATE TABLE `groupmembers` (
 --
 
 INSERT INTO `groupmembers` (`UserID`, `GroupID`) VALUES
-(37, 7),
-(38, 7),
-(38, 8),
+(37, 9),
 (38, 9),
-(38, 10),
-(38, 11),
-(38, 12);
+(38, 27);
 
 -- --------------------------------------------------------
 
@@ -119,12 +117,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`GroupID`, `GroupName`, `GroupDescription`, `PinnedDescription`, `LeaderID`, `GroupPicture`) VALUES
-(7, 'The Group to Start All Groups', 'Hopefully the first group works', '', 38, '220px-Red_Snapper.jpg'),
-(8, 'Second Group?', 'Second Group', '', 38, 'eyelashes.jpg'),
-(9, 'Third Group', 'Third Group', '', 38, '16251454_10206839814428928_1907262116_o.jpg'),
-(10, 'Fourth Group', 'Fourth Group', '', 38, 'Delete-Files-400x400.jpg'),
-(11, 'Fifth Group', 'Fifth Group', '', 38, 'a0f25e84dbab4a1ba15460eea4f71d39.jpg'),
-(12, 'SixthGroup', 'Should not be showing up', '', 38, 'giveth.png');
+(9, 'Third Group', 'Third Group', '', 37, '16251454_10206839814428928_1907262116_o.jpg'),
+(27, 'grouploop', 'group', '', 38, '3(3).jpg');
 
 -- --------------------------------------------------------
 
@@ -142,9 +136,7 @@ CREATE TABLE `pinnedrecipes` (
 --
 
 INSERT INTO `pinnedrecipes` (`GroupID`, `RecipeID`) VALUES
-(10, 97),
-(12, 118),
-(9, 121);
+(27, 128);
 
 -- --------------------------------------------------------
 
@@ -221,12 +213,21 @@ INSERT INTO `recipesteps` (`recipeID`, `stepnumber`, `stepdescription`, `idk`, `
 (117, 2, 'put ingredients in shells', 255, 'taco_ingredients.png'),
 (118, 1, 'dough', 256, 'doughnuts1.jpg'),
 (118, 2, 'icing', 257, 'doughnuts2.jpg'),
-(119, 1, 'test', 258, 'BRICS_heads_of_state_and_government_hold_hands_ahead_of_the_2014_G-20_summit_in_Brisbane_Australia_Agencia_Brasil.jpg'),
-(119, 2, 'test2', 259, '1384656661_id-10091691.jpg'),
-(119, 3, 'test3', 260, 'M4ZScZa.png'),
-(121, 1, 'fdsafdsfa', 268, 'EN42UKT.jpg'),
-(122, 1, 'soup', 269, 'XFsPdIj04_ALnm-7LlKRg81JNQMlpH4svnKfRzni05w.jpg'),
-(123, 1, 'fdsfdsa', 270, 'hj50euO.jpg');
+(128, 2, 'Mix Cake Batter', 277, 'birthdaycake2.jpg'),
+(128, 3, 'Put in oven for some time until made', 278, 'birthdaycake3.jpg'),
+(128, 4, 'Put frosting over it', 279, 'birthdaycake4.jpg'),
+(129, 1, 'Get a chicken', 280, 'chicken1.png'),
+(129, 2, 'Roast it', 281, 'chicken2.jpg'),
+(129, 3, 'Season the chicken', 282, 'chicken3.jpg'),
+(130, 1, 'Gather Broccoli', 283, 'bcsoup1.jpg'),
+(130, 2, 'Gather Cheddar', 284, 'bcsoup2.jpg'),
+(130, 3, 'Eat with bread if possible', 285, 'bcsoup3.jpeg'),
+(131, 1, 'Get beef', 286, 'bw1.jpg'),
+(131, 2, 'Get Bread', 287, 'bw2.jpg'),
+(131, 3, 'Cook', 288, 'bw3.jpg'),
+(132, 1, 'Get waffle batter', 289, 'waffle1.jpg'),
+(132, 2, 'Bake Waffle in waffle maker', 290, 'waffe2.jpg'),
+(132, 3, 'Put whatever toppings you want', 291, 'waffle3.jpg');
 
 -- --------------------------------------------------------
 
@@ -273,20 +274,6 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`reviewTest`, `userid`, `recipeid`, `rating`, `title`, `reviewID`) VALUES
-('I made these eggs so I kinda have a bias, but these are delicious!', 8, 85, 5, 'Great Delicious Eggs', 4),
-('These eggs are actually terrible', 8, 85, 0, 'Actually I changed my mind', 5),
-('Looks pretty good, however, im rating this low so my recipes will be at the top', 8, 86, 1, 'Good soup', 6),
-('Red is right, these eggs are pretty bad, edible, but bad', 10, 85, 1, 'Yeah', 7),
-('This soup is pretty bad, but red is completely ruining this site', 10, 86, 3, 'red is rude', 8),
-('really helped me there buddy', 8, 88, 5, '5/5', 9),
-('DO YOU WANT WAR PHIL I WILL SHOW YOU WAR', 8, 87, 0, 'Rating low for ME', 10),
-('YOUR PIZZA WAS ACTUALLY REALLY BAD, LIKE INEDIBLE, I ACTUALLY CONTRACTED A DISEASE FROM THEM', 8, 85, 5, 'HOW DARE YOU INSULT MY RECIPES PHIL', 11),
-('good icecream', 16, 91, 4, 'delicious ', 12),
-('really stooping to a new low here. You should go get a life', 16, 85, 0, 'Wow red', 13),
-('Reminds me of my childhood', 16, 90, 5, 'Really Nostalgic and Really Good', 14),
-('could be better, my daughter makes better icecream really', 26, 91, 2, 'Eh', 15),
-('no', 26, 88, 0, 'Too soon', 16),
-('You should seriously consider a janitorial position, at least then the rats will enjoy your cooking', 8, 92, 0, 'Pancakes are terrible', 17),
 ('good soup there buddy, i like that you can eat it with bread', 31, 93, 4, 'Looks pretty good', 18),
 ('Im keeping my eye on you Miles', 32, 94, 3, 'I Guess it could be a snack', 19),
 ('Snack Bread amirite', 32, 95, 5, 'Nice Snack', 20),
@@ -300,7 +287,11 @@ INSERT INTO `reviews` (`reviewTest`, `userid`, `recipeid`, `rating`, `title`, `r
 ('', 35, 99, 0, 'Wow, these eggs are terrible', 28),
 ('My mom was a horrible cook though', 35, 95, 2, 'Just like mom used to make', 29),
 ('', 31, 98, 0, 'no', 30),
-('', 31, 97, 0, 'Terrible', 31);
+('', 31, 97, 0, 'Terrible', 31),
+('title says alll', 40, 97, 0, 'pretty bad', 32),
+('', 38, 93, 4, 'Nice', 38),
+('Delicious BirthDay Cake', 48, 128, 5, 'Birthday Cake', 44),
+('Looks Great', 49, 129, 5, 'Love chicken', 47);
 
 -- --------------------------------------------------------
 
@@ -325,15 +316,17 @@ INSERT INTO `users` (`username`, `firstname`, `lastname`, `userid`, `Password`, 
 ('TheBreadMaster', 'ILuv', 'Bread', 27, '76264289b9567e3a7e4a7051f85af248', '0000-00-00'),
 ('testaccount', 'test', 'testerson', 29, '098f6bcd4621d373cade4e832627b4f6', '0000-00-00'),
 ('mleavitt', 'Miles', 'Leavitt', 30, 'a0f15d09df04d9ad657ce26e371ddf9a', '0000-00-00'),
-('xXBreadMasterXx', 'bread ', 'breader', 31, 'dba7b12a19fe9d49fbb53d65c49bbce6', '0000-00-00'),
+('Bread Gentleman', 'bread ', 'breader', 31, 'dba7b12a19fe9d49fbb53d65c49bbce6', '0000-00-00'),
 ('SnackMan', 'Snack', 'Man', 32, '8119fbbffac2cf76f3fd54e0e15627a1', '0000-00-00'),
 ('BreakTheFast', 'Early', 'Bird', 33, '835ef6c0b2999746e9a5bdc11b3e528c', '0000-00-00'),
 ('PizzaPhil', 'Phil', 'Johnson', 34, '7cf2db5ec261a0fa27a502d3196a6f60', '0000-00-00'),
 ('Airy1', 'Aaron', 'Zhang', 35, '0b0c1647f9c38d9e0a510108fbad18c1', '0000-00-00'),
 ('NotWorkingForHamburgerHelpter', 'Ham', 'Burger', 36, '92d7a66e8f72b3eee281e58401285103', '0000-00-00'),
 ('NewLIfe', 'New', 'Life', 37, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
-('NewLife2', 'Ne', 'wLife', 38, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
-('newlife3', 'new', 'life', 39, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00');
+('wewlads2', 'wew', 'lads', 38, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
+('newlife3', 'new', 'life', 39, 'c48c29157e2b358cc144027f3e2d8cb4', '0000-00-00'),
+('BirthdayBoi', 'Birthday', 'Boi', 48, 'a3e2a6cbf4437e50816a60a64375490e', '0000-00-00'),
+('BreakfastMan', 'Breafkast', '4lyfe', 50, '31d4541b8e926a24f0c9b835b68cfdf3', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -401,17 +394,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `generalrecipes`
 --
 ALTER TABLE `generalrecipes`
-  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `recipeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `GroupID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `recipesteps`
 --
 ALTER TABLE `recipesteps`
-  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
+  MODIFY `idk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 --
 -- AUTO_INCREMENT for table `recipiecategory`
 --
@@ -421,12 +414,12 @@ ALTER TABLE `recipiecategory`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
